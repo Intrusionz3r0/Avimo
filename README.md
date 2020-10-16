@@ -44,3 +44,11 @@ $ git add <archivo>
 $ git commit -m "nombre del cambio"
 $ git push
 ```
+
+
+
+### Librerias
+
+```console
+$ pip3 install flask flask-mysqldb
+```
