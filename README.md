@@ -14,7 +14,7 @@ $ git add <archivo>
 Crear commit
 
 ```console
-$git commit -m "nombre del commit"
+$ git commit -m "nombre del commit"
 ```
 
 
@@ -41,4 +41,3 @@ $ git add <archivo>
 $ git commit -m "nombre del cambio"
 $ git push
 ```
-
