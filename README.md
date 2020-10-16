@@ -1,6 +1,8 @@
 # Avimo
 
 
+![git](https://www.syloper.com/wp-content/uploads/git_destacada-1024x426.png)
+
 1-. **Recuerden clonar el repositorio en una ruta que conozcan.** (Documentos|Escritorio)
 
 2-. **Todos los comandos deben ser ejecutados dentro de la carpeta del proyecto.**
