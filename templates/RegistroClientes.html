@@ -51,7 +51,8 @@
             <div id="RegCliente">
                <fieldset>
                    <label>Nombre Completo:</label>
-                       <input type="text" size="50" placeholder="ApellidoPaterno ApellidoMaterno Nombre(S)" name="NomCliente"  required>
+                       <input type="text" size="40" placeholder="ApellidoPaterno ApellidoMaterno Nombre(S)" name="NomCliente"  required>
+                    &nbsp;&nbsp;&nbsp;
                    <label>Sexo:</label>
                        <select name="Sexo"> 
                            <option>Masculino</option>
@@ -60,41 +61,67 @@
                        </select>
                    <br>
                    <label>Telefono:</label>
-                   <input type="tel"  name="TelCLIENTE" id="TelefCliente" required>
-                   <label>Fotografía Cliente</label>
+                   <input type="tel" size="11" maxlength="13" placeholder="000-000-00-00" name="TelCLIENTE" id="TelefCliente" required>
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   <label >Fotografía Cliente:</label>
+                   <br>
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   <input type="file" reuired>
+                   <br>
                    <label>Direccion:</label>
-                       <input type="text" placeholder="" name="DirCliente" required>
+                       <input type="text" size="50" maxlength="100" placeholder="Colonia Calle Número Ciudad,Municipio" name="DirCliente" required>
                    <br>
                    <label>CURP</label>
-                       <input type="text" size="18" placeholder="18 Digitos Completos" name="CURP" required>
-                   <label>Fecha De Nacimiento</label>
+                       <input type="text" size="18" maxlength="18" placeholder="18 Digitos Completos" name="CURP" required>
+                       &nbsp;&nbsp;&nbsp;&nbsp;
+                  <label>Fecha De Nacimiento</label>
+                   <input type="date"  size="15" name="" id="">
                    <br>
                    <label>Fecha De Registro </label>
+                   <input type="date" size="15" name="" id="">
                    <br>
-                   <label>Fotografía INE DELANTERA</label>
+                   <label>Fotografía INE DELANTERA </label>
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                    <label>Fotografía INE TRASERA</label>
                    <br>
-                   <label>Comprobante Dimicilio</label>
+                   <input type="file" required>
+                   <input type="file" required>
+                   <br>
+                   <label>Comprobante Dimicilio:</label>
+                   <br>
+                   <input type="file" required>
+                   <br>
                    <br>
                    <button>Seguir</button>
                </fieldset>
             </div>
+
+            <br><br>
+
             <div id="RegAval">
                 <fieldset>
                     <button>Atras</button>
                     <br>
                     <label>Nombre AVAL:</label>
-                       <input type="text" name="NomAval" required>
+                    <input type="text" size="40" placeholder="ApellidoPaterno ApellidoMaterno Nombre(S)" name="NomAval" required>
+                    &nbsp;&nbsp;&nbsp;
                    <label>Telefono De AVAL:</label>
-                       <input type="tel" name="TelAVAL" id="TelefAval" required>
+                       <input type="tel"  size="11" maxlength="13" placeholder="000-000-00-00" name="TelAVAL" id="TelefAval" required>
                    <br>
                    <label>Dirección:</label>
+                   <input type="text" size="50" maxlength="100" placeholder="Colonia Calle Número Ciudad,Municipio" name="DirAval" required>
                    <br>
                    <label>Fotografía INE DELANTERA</label>
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                    <label>Fotografía INE TRASERA</label>
                    <br>
-                   <label>Comprobante DE Domicilio</label>
-                       <input type="text" name="DirAval" required>
+                   <input type="file" required>
+                   <input type="file" required>
+                   <br>
+                   <label>Comprobante De Domicilio:</label>
+                   <br>
+                   <input type="file" name="DirAval" required>
+                   <br>
                    <br>
                    <button>Finalizar</button>
                 </fieldset>
