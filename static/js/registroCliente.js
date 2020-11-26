@@ -13,7 +13,8 @@ function ValidarArchivo(oninput) {
                 }                                                                                                                                                                                 
             }                                                                  
                                                                         
-            if (!bandera) {                                            
+            if (!bandera) {    
+                                                        
                 alert("Solo se permiten archivos con extensiones: " + extValidas.join(", "));                                                                                                
                 oninput.value = "";                                             
                 return false;                                   
@@ -54,15 +55,21 @@ function validarDatos(){
     formDatos['fnacimiento'] = document.getElementById('fnacimiento').value
     formDatos['fregistro'] = document.getElementById('fregistro').value
 
-    
+    for (const key in formDatos) {
+        if(formDatos[key] == ""){
+            mensaje = mensaje + "Alguno de los campos esta vacio.\n\n"
+            aux =false;
+            break;
+        }
+    }
  
     if(!validarCURP(formDatos['curp'])){
-        mensaje = mensaje + "La curp introducida es invalida.\n"
+        mensaje = mensaje + "La curp introducida es invalida.\n\n"
         aux =false;
     }
 
     if(!validarTelefono(formDatos['telefono'])){
-        mensaje = mensaje + "El telefono introducido es invalido.\n"
+        mensaje = mensaje + "El telefono introducido es invalido.\n\n"
         aux =false;
     }
 
@@ -70,13 +77,14 @@ function validarDatos(){
         return formDatos
     }
     else{
-        alert(mensaje)
+        var modal = $('#errorModal')
+        modal.find('.modal-title').text("Error")
+        modal.find('.modal-body').text(mensaje)
+        modal.modal('show')
     }
     
 
 }
-
-
                                                                                
 function validarCURP(valor){                                                                
         var regex = /^[A-Z]{4}\d{6}\w{8}/                                                     
@@ -174,3 +182,21 @@ function consultarColonia(){
 function desactivarColonia(){
     document.getElementById('colonia').disabled=true;
 }
+
+
+$(document).ready(function(){
+    $("#mostrar").click(function(){
+       $("#divmuestra").each(function() {
+         displaying = $(this).css("display");
+         if(displaying == "block") {
+           $(this).fadeOut('slow',function() {
+            $(this).css("display","none");
+           });
+         } else {
+           $(this).fadeIn('slow',function() {
+             $(this).css("display","block");
+           });
+         }
+       });
+     });
+   });
