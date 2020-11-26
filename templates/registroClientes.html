@@ -28,13 +28,13 @@
             <a href="#clientesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Clientes</a>
             <ul class="collapse list-unstyled" id="clientesSubmenu">
               <li>
-                <a href="#">Registro Cliente</a>
+                <a href="../templates/registroClientes.html">Registro Cliente</a>
               </li>
               <li>
-                <a href="#">Consulta Cliente</a>
+                <a href="../templates/consultaCliente.html">Consulta Cliente</a>
               </li>
               <li>
-                <a href="#">Opciones Cliente</a>
+                <a href="../templates/opcionesCliente.html">Opciones Cliente</a>
               </li>
             </ul>
           </li>
@@ -123,18 +123,18 @@
           
           <div class="col">
             <label for="nombre">Nombre</label>
-            <input type="text" class="form-control" name="nombre" id="nombre">
+            <input type="text" class="form-control" name="nombre" id="nombre" required>
           </div>
          
           <div class="col">
             <label for="apellido">Apellido</label>
-            <input type="text" class="form-control" name="apellido" id="apellido">
+            <input type="text" class="form-control" name="apellido" id="apellido" required>
           </div>
          
           <div class="col">
             <div class="form-group">
               <label for="genero">Genero</label>
-              <select class="form-control" id="genero" name="genero">
+              <select class="form-control" id="genero" name="genero" required>
                 <option value="" disabled selected>Seleccione una opcion...</option>
                 <option>Masculino</option>
                 <option>Femenino</option>
@@ -151,7 +151,7 @@
           <div class="col">
             <div class="form-group">
               <label for="estado">Estado</label>
-              <select class="form-control" id="estado" name="estado" onblur="consultarMunicipio()">
+              <select class="form-control" id="estado" name="estado" onblur="consultarMunicipio()" required>
                 <option value="" disabled selected>Seleccione un Estado...</option>
               </select>
             </div>
@@ -159,7 +159,7 @@
           <div class="col">
             <div class="form-group">
               <label for="municipio">Municipio</label>
-              <select class="form-control" id="municipio" name="municipio" onblur="consultarColonia()">
+              <select class="form-control" id="municipio" name="municipio" onblur="consultarColonia()" required>
                 <option value="" disabled selected>Seleccione un Municipio...</option>
               </select>
             </div>
@@ -167,7 +167,7 @@
           <div class="col">
             <div class="form-group">
               <label for="colonia">Colonia</label>
-              <select class="form-control" id="colonia" name="colonia" onblur="desactivarColonia()">
+              <select class="form-control" id="colonia" name="colonia" onblur="desactivarColonia()" required>
                 <option value="" disabled selected>Seleccione una Colonia...</option>
               </select>
             </div>
@@ -177,36 +177,38 @@
         <div class="row">
           <div class="col">
             <label for="calle1">Calle 1</label>
-            <input type="text" class="form-control" id="calle1" name="calle1">
+            <input type="text" class="form-control" id="calle1" name="calle1" required>
+            
           </div>
           <div class="col">
             <label for="calle2">Calle 2</label>
-            <input type="text" class="form-control" id="calle2" name="calle2">
+            <input type="text" class="form-control" id="calle2" name="calle2" required>
           </div>
           <div class="col">
             <label for="ninterno">Numero interno</label>
-            <input type="text" class="form-control" id="ninterno" name="ninterno">
+            <input type="text" class="form-control" id="ninterno" name="ninterno" required>
           </div>
           <div class="col">
             <label for="nexterno">Numero externo</label>
-            <input type="text" class="form-control" id="nexterno" name="nexterno">
+            <input type="text" class="form-control" id="nexterno" name="nexterno" >
           </div>
         </div>
         <br>
         <div class="form-group">
           <label for="telefono">Telefono</label>
-          <input type="text" class="form-control" id="telefono" name="telefono" maxlength="13">
+          <input type="text" class="form-control" id="telefono" name="telefono" maxlength="13" required >
+          
         </div>
         <div class="form-group">
           <label for="curp">Curp</label>
-          <input type="text" class="form-control" id="curp" name="curp" maxlength="18">
+          <input type="text" class="form-control" id="curp" name="curp" maxlength="18" required>
         </div>
         <br>
 
         <div class="form-group row">
           <label for="fnacimiento" class="col-2 col-form-label">Fecha de Nacimiento</label>
           <div class="col-10">
-            <input class="form-control" type="date" value="1990-01-01" id="fnacimiento" name="fnacimiento">
+            <input class="form-control" type="date" value="1990-01-01" id="fnacimiento" name="fnacimiento" required>
           </div>
         </div>
 
@@ -214,7 +216,7 @@
           <label for="fregistro" class="col-2 col-form-label">Fecha de registro</label>
           <div class="col-10">
             <input class="form-control" type="datetime-local" value="2020-01-13T13:45:00" id="fregistro"
-              name="fregistro">
+              name="fregistro" required>
           </div>
         </div>
 
@@ -222,15 +224,15 @@
         <div class="row">
           <div class="form-group col">
             <label for="file">Foto INE 1</label>
-            <input type="file" class="form-control-file" id="file" onchange="ValidarArchivo(this);">
+            <input type="file" class="form-control-file" id="file" onchange="ValidarArchivo(this);" required>
           </div>
           <div class="form-group col">
             <label for="file">Foto INE 2</label>
-            <input type="file" class="form-control-file" id="file" onchange="ValidarArchivo(this);">
+            <input type="file" class="form-control-file" id="file" onchange="ValidarArchivo(this);" required>
           </div>
           <div class="form-group col">
             <label for="file">Comprobante de domicilio</label>
-            <input type="file" class="form-control-file" id="file" onchange="ValidarArchivo(this);">
+            <input type="file" class="form-control-file" id="file" onchange="ValidarArchivo(this);" required>
           </div>
         </div>
 
@@ -238,95 +240,27 @@
 
       </form>
 
-      <!--   <br><br>
-       
-      <h3>Consulta Cliente </h3>
+      <!--Aqui va mi modal para cuando hay un erro-->
 
-      <form action="" method="get">
-
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <div class="input-group-text" id="btnGroupAddon">ID</div>
-          </div>
-          <input type="text" class="form-control" maxlength="4" aria-label="Input group example" aria-describedby="btnGroupAddon">
-          <button type="submit" class="btn btn-primary">Buscar</button>
-        </div>
-      </form>
-      <br><br>
-      <table class="table">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Nombre Completo</th>
-            <th scope="col">Genero</th>
-            <th scope="col">Dirección</th>
-            <th scope="col">Telefono</th>
-            <th scope="col">Fecha de nacimiento</th>
-            <th scope="col">Fecha de registro</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Luis Adrian Morales Guzman</td>
-            <td>Masculino</td>
-            <td>Rinconada 5 #33 Progreso Nacional</td>
-            <td>351-280-0928</td>
-            <td>13-01-1998</td>
-            <td>23-11-2020</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Luis Adrian Morales Guzman</td>
-            <td>Masculino</td>
-            <td>Rinconada 5 #33 Progreso Nacional</td>
-            <td>351-280-0928</td>
-            <td>13-01-1998</td>
-            <td>23-11-2020</td>
-          </tr>
-        </tbody>
-      </table>
-    -->
-
-      <!--Elimina Cliente
-       <br>
-       <h3>Eliminar Cliente</h3>
-
-       <div class="input-group">
-        <div class="input-group-prepend">
-          <div class="input-group-text" id="btnGroupAddon">ID</div>
-        </div>
-        <input type="text" class="form-control" maxlength="4" aria-label="Input group example" aria-describedby="btnGroupAddon">
-        <button type="submit" class="btn btn-primary">Buscar</button>
-       
-      </div>
-      
-      <br>
-    
-
-
-
-      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" class="btn btn-danger btn-lg btn-block">Eliminar</button>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal -->
+<div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">¡Advertencia!</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ¿ Esta seguro de que quiere eliminar el registro ?
+        ...
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-        <button type="button" class="btn btn-danger">Si</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
-</div>-->
-
+</div>
 
 
 
