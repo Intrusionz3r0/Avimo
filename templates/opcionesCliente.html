@@ -38,18 +38,19 @@
               </li>
             </ul>
           </li>
-          <!--Menu de Crédito-->
+          <!--Menu de prestamos-->
           <li>
-            <a href="#creditoSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Crédito</a>
-            <ul class="collapse list-unstyled" id="creditoSubmenu">
+            <a href="#prestamosSubmenu" data-toggle="collapse" aria-expanded="false"
+              class="dropdown-toggle">Prestamos</a>
+            <ul class="collapse list-unstyled" id="prestamosSubmenu">
               <li>
-                <a href="../templates/registroCredito.html">Registro Crédito</a>
+                <a href="#">Registro prestamo</a>
               </li>
               <li>
-                <a href="../templates/consultaCredito.html">Consulta Crédito</a>
+                <a href="#">Consulta prestamo</a>
               </li>
               <li>
-                <a href="../templates/opcionesCredito.html">Opciones Crédito</a>
+                <a href="#">Opciones prestamo</a>
               </li>
             </ul>
           </li>
@@ -58,13 +59,10 @@
             <a href="#pagosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pagos</a>
             <ul class="collapse list-unstyled" id="pagosSubmenu">
               <li>
-                <a href="../templates/registroPago.html">Registrar Pago</a>
+                <a href="../templates/registroPago.html">Registrar pago</a>
               </li>
               <li>
-                <a href="../templates/consultaPago.html">Consulta Pago</a>
-              </li>
-              <li>
-                <a href="..//templates/opcionesPago.html">Opciones Pago</a>
+                <a href="../templates/consultaPago.html">Consulta pago</a>
               </li>
             </ul>
           </li>
@@ -121,17 +119,16 @@
       <div id="divOpcionesCliente">
         <div class="input-group">
           <div class="input-group-prepend">
-            <div class="input-group-text" id="btnGroupAddon">ID</div>
+            <div class="input-group-text" id="btnGroupAddon">Nombre Completo</div>
           </div>
           <input type="text" class="form-control" maxlength="4" aria-label="Input group example"
             aria-describedby="btnGroupAddon">
           <button type="submit" class="btn btn-primary">Buscar</button>
           <button type="submit" class="btn btn-warning" id="mostrar">Modificar</button>
-          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"
-            class="btn btn-danger btn-lg btn-block">Eliminar</button>
+          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" class="btn btn-danger btn-lg btn-block">Eliminar</button>
         </div>
-
-
+  
+  
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -156,11 +153,11 @@
 
 
 
-      <div id="divmuestra" style="display:none">
+<div id="divmuestra" style="display:none">
 
-        Formulario para Modificar
+  Formulario para Modificar
 
-      </div>
+</div>
 
       <!--Arriba de esto va tu código-->
     </div>
@@ -171,7 +168,7 @@
   <script src="../static/js/popper.js"></script>
   <script src="../static/js/bootstrap.min.js"></script>
   <script src="../static/js/main.js"></script>
-  <script src="../static/js/registroCliente.js"></script>
+  <script src="../static/js/opcionesCliente.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </body>
 

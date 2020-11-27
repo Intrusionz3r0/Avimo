@@ -1,7 +1,7 @@
 var extValidas = [".jpg", ".jpeg",".png"];                                                                                                                                 
                                                                                                                                                                
-function ValidarArchivo(oninput) {                                                                                                                                                      
-    if (oninput.type == "file") {                                                                                                                                                                  
+function ValidarArchivo(oninput) { //Verifica las extenciones de lo archivos.                                                                                                                                                      
+    if (oninput.type == "file") {  // S                                                                                                                                                           
         var nombre = oninput.value;                                                                                                                                   
          if (nombre.length > 0) {                                                                                                                                                              
             var bandera = false;                                                                                                                                               
@@ -14,8 +14,10 @@ function ValidarArchivo(oninput) {
             }                                                                  
                                                                         
             if (!bandera) {    
-                                                        
-                alert("Solo se permiten archivos con extensiones: " + extValidas.join(", "));                                                                                                
+                var modal = $('#errorfileModal')
+                modal.find('.modal-title').text("Error")
+                modal.find('.modal-body').text("Solo se permiten archivos con extenciones: jpg,png,jpeg.")
+                modal.modal('show')                                                                                                                                     
                 oninput.value = "";                                             
                 return false;                                   
             }                                                                  
@@ -40,43 +42,48 @@ function validarDatos(){
     var formDatos = {};
     var mensaje = ""
     var aux = true;
-    formDatos['nombre'] = document.getElementById('nombre').value
-    formDatos['apellido'] = document.getElementById('apellido').value
-    formDatos['genero'] = document.getElementById('genero').value
-    formDatos['estado'] = document.getElementById('estado').value
-    formDatos['municipio'] = document.getElementById('municipio').value
-    formDatos['colonia'] = document.getElementById('colonia').value
-    formDatos['calle1'] = document.getElementById('calle1').value
-    formDatos['calle2'] = document.getElementById('calle2').value
-    formDatos['ninterno'] = document.getElementById('ninterno').value
-    formDatos['nexterno'] = document.getElementById('nexterno').value
-    formDatos['telefono'] = document.getElementById('telefono').value
-    formDatos['curp'] = document.getElementById('curp').value
-    formDatos['fnacimiento'] = document.getElementById('fnacimiento').value
-    formDatos['fregistro'] = document.getElementById('fregistro').value
+    formDatos[0] = document.getElementById('nombreCliente').value
+    formDatos[1] = document.getElementById('apellidoCliente').value
+    formDatos[2] = document.getElementById('generoCliente').value
+    formDatos[3] = document.getElementById('estadoCliente').value
+    formDatos[4] = document.getElementById('municipioCliente').value
+    formDatos[5] = document.getElementById('coloniaCliente').value
+    formDatos[6] = document.getElementById('calleCliente').value
+    formDatos[7] = document.getElementById('entrecallesCliente').value
+    formDatos[8] = document.getElementById('ninternoCliente').value
+    formDatos[9] = document.getElementById('nexternoCliente').value
+    formDatos[10] = document.getElementById('telefonoCliente').value
+    formDatos[11] = document.getElementById('curpCliente').value
+    formDatos[12] = document.getElementById('fnacimientoCliente').value
+    formDatos[13] = document.getElementById('fregistroCliente').value
+    formDatos[14] = document.getElementById('file1Cliente').value
+    formDatos[15] = document.getElementById('file2Cliente').value
+    formDatos[16] = document.getElementById('file3Cliente').value
 
-    for (const key in formDatos) {
-        if(formDatos[key] == ""){
+
+    for (const key in formDatos) { //Recorre todo los campos del formulario.
+
+        if(formDatos[key] == ""){ //Verifica si los campos estan vacios y si es así devuelve un error y en la variable aux devuelve un false.
             mensaje = mensaje + "Alguno de los campos esta vacio.\n\n"
             aux =false;
             break;
         }
     }
  
-    if(!validarCURP(formDatos['curp'])){
+    if(!validarCURP(formDatos[11])){ // Si la curp es invalida devuelve un false.
         mensaje = mensaje + "La curp introducida es invalida.\n\n"
         aux =false;
     }
 
-    if(!validarTelefono(formDatos['telefono'])){
+    if(!validarTelefono(formDatos[10])){ // si el telefono es invalido devuelve un false.
         mensaje = mensaje + "El telefono introducido es invalido.\n\n"
         aux =false;
     }
 
-    if(aux){
+    if(aux){ //Si la variable aux es True entonces envia los datos.
         return formDatos
     }
-    else{
+    else{// si la variable aux es false entonces muestra un error en pantalla.
         var modal = $('#errorModal')
         modal.find('.modal-title').text("Error")
         modal.find('.modal-body').text(mensaje)
@@ -85,7 +92,8 @@ function validarDatos(){
     
 
 }
-                                                                               
+
+
 function validarCURP(valor){                                                                
         var regex = /^[A-Z]{4}\d{6}\w{8}/                                                     
         var reponse = regex.test(valor)                                 
@@ -115,7 +123,7 @@ function validarNumero(valor){
 function agregarEstados(array){
 
     for (const key in array) {
-        document.getElementById('estado').innerHTML += "<option value='"+array[key]+"'>"+array[key]+"</option>";
+        document.getElementById('estadoCliente').innerHTML += "<option value='"+array[key]+"'>"+array[key]+"</option>";
     }
 }
 
@@ -136,14 +144,14 @@ function consultaEstados(){
 function agregarMunicipio(array){
 
     for (const key in array) {
-        document.getElementById('municipio').innerHTML += "<option value='"+array[key]+"'>"+array[key]+"</option>";
+        document.getElementById('municipioCliente').innerHTML += "<option value='"+array[key]+"'>"+array[key]+"</option>";
     }
-    document.getElementById('estado').disabled=true;
+    document.getElementById('estadoCliente').disabled=true;
 }
 
 function consultarMunicipio(){
     var array = [];
-    var estado = document.getElementById('estado').value
+    var estado = document.getElementById('estadoCliente').value
     let url ='https://api-sepomex.hckdrk.mx/query/get_municipio_por_estado/'+estado
     var r2 = new XMLHttpRequest();
     r2.open("GET",url,false)
@@ -158,15 +166,15 @@ function consultarMunicipio(){
 
 function agregarColonia(array){
     for (const key in array) {
-        document.getElementById('colonia').innerHTML += "<option value='"+array[key]+"'>"+array[key]+"</option>";
+        document.getElementById('coloniaCliente').innerHTML += "<option value='"+array[key]+"'>"+array[key]+"</option>";
     }
-    document.getElementById('municipio').disabled=true;
+    document.getElementById('municipioCliente').disabled=true;
 }
 
 
 function consultarColonia(){
     var array = [];
-    var municipio = document.getElementById('municipio').value
+    var municipio = document.getElementById('municipioCliente').value
     let url ='https://api-sepomex.hckdrk.mx/query/get_colonia_por_municipio/'+municipio
     var r3 = new XMLHttpRequest();
     r3.open("GET",url,false)
@@ -180,23 +188,6 @@ function consultarColonia(){
 }
 
 function desactivarColonia(){
-    document.getElementById('colonia').disabled=true;
+    document.getElementById('coloniaCliente').disabled=true;
 }
 
-
-$(document).ready(function(){
-    $("#mostrar").click(function(){
-       $("#divmuestra").each(function() {
-         displaying = $(this).css("display");
-         if(displaying == "block") {
-           $(this).fadeOut('slow',function() {
-            $(this).css("display","none");
-           });
-         } else {
-           $(this).fadeIn('slow',function() {
-             $(this).css("display","block");
-           });
-         }
-       });
-     });
-   });

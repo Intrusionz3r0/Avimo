@@ -38,18 +38,19 @@
               </li>
             </ul>
           </li>
-          <!--Menu de Crédito-->
+          <!--Menu de prestamos-->
           <li>
-            <a href="#creditoSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Crédito</a>
-            <ul class="collapse list-unstyled" id="creditoSubmenu">
+            <a href="#prestamosSubmenu" data-toggle="collapse" aria-expanded="false"
+              class="dropdown-toggle">Prestamos</a>
+            <ul class="collapse list-unstyled" id="prestamosSubmenu">
               <li>
-                <a href="../templates/registroCredito.html">Registro Crédito</a>
+                <a href="#">Registro prestamo</a>
               </li>
               <li>
-                <a href="../templates/consultaCredito.html">Consulta Crédito</a>
+                <a href="#">Consulta prestamo</a>
               </li>
               <li>
-                <a href="../templates/opcionesCredito.html">Opciones Crédito</a>
+                <a href="#">Opciones prestamo</a>
               </li>
             </ul>
           </li>
@@ -58,13 +59,10 @@
             <a href="#pagosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pagos</a>
             <ul class="collapse list-unstyled" id="pagosSubmenu">
               <li>
-                <a href="../templates/registroPago.html">Registrar Pago</a>
+                <a href="../templates/registroPago.html">Registrar pago</a>
               </li>
               <li>
-                <a href="../templates/consultaPago.html">Consulta Pago</a>
-              </li>
-              <li>
-                <a href="..//templates/opcionesPago.html">Opciones Pago</a>
+                <a href="../templates/consultaPago.html">Consulta pago</a>
               </li>
             </ul>
           </li>
@@ -118,25 +116,26 @@
 
 
       <!--Registra Cliente-->
-      <h3>Registro Clientes <span class="badge badge-secondary">New</span></h3>
+      <div id="divRCliente" >
+        <h3>Registro Clientes <span class="badge badge-secondary">New</span></h3>
       <form>
 
         <div class="row">
-
+          
           <div class="col">
             <label for="nombre">Nombre</label>
-            <input type="text" class="form-control" name="nombre" id="nombre" required>
+            <input type="text" class="form-control" name="nombreCliente" id="nombreCliente" required>
           </div>
-
+         
           <div class="col">
             <label for="apellido">Apellido</label>
-            <input type="text" class="form-control" name="apellido" id="apellido" required>
+            <input type="text" class="form-control" name="apellidoCliente" id="apellidoCliente" required>
           </div>
-
+         
           <div class="col">
             <div class="form-group">
-              <label for="genero">Genero</label>
-              <select class="form-control" id="genero" name="genero" required>
+              <label>Genero</label>
+              <select class="form-control" id="generoCliente" name="generoCliente" required>
                 <option value="" disabled selected>Seleccione una opcion...</option>
                 <option>Masculino</option>
                 <option>Femenino</option>
@@ -146,14 +145,13 @@
           </div>
 
         </div>
-        <!--Estado Municipio Colonia (calle 1) (calle 2) (numero externo interno-->
-
+       
 
         <div class="row">
           <div class="col">
             <div class="form-group">
               <label for="estado">Estado</label>
-              <select class="form-control" id="estado" name="estado" onblur="consultarMunicipio()" required>
+              <select class="form-control" id="estadoCliente" name="estadoCliente" onblur="consultarMunicipio()" required>
                 <option value="" disabled selected>Seleccione un Estado...</option>
               </select>
             </div>
@@ -161,7 +159,7 @@
           <div class="col">
             <div class="form-group">
               <label for="municipio">Municipio</label>
-              <select class="form-control" id="municipio" name="municipio" onblur="consultarColonia()" required>
+              <select class="form-control" id="municipioCliente" name="municipioCliente" onblur="consultarColonia()" required>
                 <option value="" disabled selected>Seleccione un Municipio...</option>
               </select>
             </div>
@@ -169,7 +167,7 @@
           <div class="col">
             <div class="form-group">
               <label for="colonia">Colonia</label>
-              <select class="form-control" id="colonia" name="colonia" onblur="desactivarColonia()" required>
+              <select class="form-control" id="coloniaCliente" name="coloniaCliente" onblur="desactivarColonia()" required>
                 <option value="" disabled selected>Seleccione una Colonia...</option>
               </select>
             </div>
@@ -178,92 +176,114 @@
         <br>
         <div class="row">
           <div class="col">
-            <label for="calle1">Calle 1</label>
-            <input type="text" class="form-control" id="calle1" name="calle1" required>
-
-          </div>
-          <div class="col">
-            <label for="calle2">Calle 2</label>
-            <input type="text" class="form-control" id="calle2" name="calle2" required>
+            <label for="calle1">Calle</label>
+            <input type="text" class="form-control" id="calleCliente" name="calleCliente" required>
+            
           </div>
           <div class="col">
             <label for="ninterno">Numero interno</label>
-            <input type="text" class="form-control" id="ninterno" name="ninterno" required>
+            <input type="text" class="form-control" id="ninternoCliente" name="ninternoCliente" required>
           </div>
           <div class="col">
             <label for="nexterno">Numero externo</label>
-            <input type="text" class="form-control" id="nexterno" name="nexterno">
+            <input type="text" class="form-control" id="nexternoCliente" name="nexternoCliente" >
+          </div>
+          <div class="col">
+            <label for="calle2">Entre calles</label>
+            <input type="text" class="form-control" id="entrecallesCliente" name="entrecallesCliente" required>
           </div>
         </div>
         <br>
         <div class="form-group">
           <label for="telefono">Telefono</label>
-          <input type="text" class="form-control" id="telefono" name="telefono" maxlength="13" required>
-
+          <input type="text" class="form-control" id="telefonoCliente" name="telefonoCliente" maxlength="13" required >
+          
         </div>
         <div class="form-group">
           <label for="curp">Curp</label>
-          <input type="text" class="form-control" id="curp" name="curp" maxlength="18" required>
+          <input type="text" class="form-control" id="curpCliente" name="curpCliente" maxlength="18" required>
         </div>
         <br>
 
         <div class="form-group row">
           <label for="fnacimiento" class="col-2 col-form-label">Fecha de Nacimiento</label>
           <div class="col-10">
-            <input class="form-control" type="date" value="1990-01-01" id="fnacimiento" name="fnacimiento" required>
+            <input class="form-control" type="date" value="1998-01-13" id="fnacimientoCliente" name="fnacimientoCliente" required>
           </div>
         </div>
 
         <div class="form-group row">
           <label for="fregistro" class="col-2 col-form-label">Fecha de registro</label>
           <div class="col-10">
-            <input class="form-control" type="datetime-local" value="2020-01-13T13:45:00" id="fregistro"
-              name="fregistro" required>
+            <input class="form-control" type="datetime-local" value="2020-11-22T02:00:00" id="fregistroCliente"
+              name="fregistroCliente" required>
           </div>
         </div>
 
 
         <div class="row">
           <div class="form-group col">
-            <label for="file">Foto INE 1</label>
-            <input type="file" class="form-control-file" id="file" onchange="ValidarArchivo(this);" required>
+            <label>Foto INE 1</label>
+            <input type="file" class="form-control-file" id="file1Cliente" name="file1Cliente" onchange="ValidarArchivo(this);" required>
           </div>
           <div class="form-group col">
-            <label for="file">Foto INE 2</label>
-            <input type="file" class="form-control-file" id="file" onchange="ValidarArchivo(this);" required>
+            <label>Foto INE 2</label>
+            <input type="file" class="form-control-file" id="file2Cliente" name="file2Cliente" onchange="ValidarArchivo(this);" required>
           </div>
           <div class="form-group col">
-            <label for="file">Comprobante de domicilio</label>
-            <input type="file" class="form-control-file" id="file" onchange="ValidarArchivo(this);" required>
+            <label>Comprobante de domicilio</label>
+            <input type="file" class="form-control-file" id="file3Cliente" name="file3Cliente" onchange="ValidarArchivo(this);" required>
           </div>
         </div>
 
-        <button type="button" class="btn btn-primary" onclick="onFormSubmit()">Registrar Cliente</button>
+        <button type="button" class="btn btn-primary" onclick="onFormSubmit()">Siguiente: </button>
 
       </form>
 
-      <!--Aqui va mi modal para cuando hay un erro-->
-
-      <!-- Modal -->
-      <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
       </div>
+      <!---->
 
+      <!--Aqui va mi modal para cuando hay un error-->
+
+<!-- Modal -->
+<div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="errorfileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
       <!--Arriba de esto va tu código-->
