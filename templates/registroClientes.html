@@ -38,19 +38,18 @@
               </li>
             </ul>
           </li>
-          <!--Menu de prestamos-->
+          <!--Menu de Crédito-->
           <li>
-            <a href="#prestamosSubmenu" data-toggle="collapse" aria-expanded="false"
-              class="dropdown-toggle">Prestamos</a>
-            <ul class="collapse list-unstyled" id="prestamosSubmenu">
+            <a href="#creditoSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Crédito</a>
+            <ul class="collapse list-unstyled" id="creditoSubmenu">
               <li>
-                <a href="#">Registro prestamo</a>
+                <a href="../templates/registroCredito.html">Registro Crédito</a>
               </li>
               <li>
-                <a href="#">Consulta prestamo</a>
+                <a href="../templates/consultaCredito.html">Consulta Crédito</a>
               </li>
               <li>
-                <a href="#">Opciones prestamo</a>
+                <a href="../templates/opcionesCredito.html">Opciones Crédito</a>
               </li>
             </ul>
           </li>
@@ -59,10 +58,13 @@
             <a href="#pagosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pagos</a>
             <ul class="collapse list-unstyled" id="pagosSubmenu">
               <li>
-                <a href="#">Registrar pago</a>
+                <a href="../templates/registroPago.html">Registrar Pago</a>
               </li>
               <li>
-                <a href="#">Consulta pago</a>
+                <a href="../templates/consultaPago.html">Consulta Pago</a>
+              </li>
+              <li>
+                <a href="..//templates/opcionesPago.html">Opciones Pago</a>
               </li>
             </ul>
           </li>
@@ -120,17 +122,17 @@
       <form>
 
         <div class="row">
-          
+
           <div class="col">
             <label for="nombre">Nombre</label>
             <input type="text" class="form-control" name="nombre" id="nombre" required>
           </div>
-         
+
           <div class="col">
             <label for="apellido">Apellido</label>
             <input type="text" class="form-control" name="apellido" id="apellido" required>
           </div>
-         
+
           <div class="col">
             <div class="form-group">
               <label for="genero">Genero</label>
@@ -178,7 +180,7 @@
           <div class="col">
             <label for="calle1">Calle 1</label>
             <input type="text" class="form-control" id="calle1" name="calle1" required>
-            
+
           </div>
           <div class="col">
             <label for="calle2">Calle 2</label>
@@ -190,14 +192,14 @@
           </div>
           <div class="col">
             <label for="nexterno">Numero externo</label>
-            <input type="text" class="form-control" id="nexterno" name="nexterno" >
+            <input type="text" class="form-control" id="nexterno" name="nexterno">
           </div>
         </div>
         <br>
         <div class="form-group">
           <label for="telefono">Telefono</label>
-          <input type="text" class="form-control" id="telefono" name="telefono" maxlength="13" required >
-          
+          <input type="text" class="form-control" id="telefono" name="telefono" maxlength="13" required>
+
         </div>
         <div class="form-group">
           <label for="curp">Curp</label>
@@ -242,25 +244,25 @@
 
       <!--Aqui va mi modal para cuando hay un erro-->
 
-<!-- Modal -->
-<div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+      <!-- Modal -->
+      <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 
 

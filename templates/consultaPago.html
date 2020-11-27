@@ -26,59 +26,67 @@
           <!--Menu de Clientes-->
           <li>
             <a href="#clientesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Clientes</a>
-            <ul class="collapse list-unstyled" id="clientesSubmenu">
+            <ul class="list-unstyled components mb-5">
+              <!--Menu de Clientes-->
               <li>
-                <a href="#">Registro Cliente</a>
+                <a href="#clientesSubmenu" data-toggle="collapse" aria-expanded="false"
+                  class="dropdown-toggle">Clientes</a>
+                <ul class="collapse list-unstyled" id="clientesSubmenu">
+                  <li>
+                    <a href="../templates/registroClientes.html">Registro Cliente</a>
+                  </li>
+                  <li>
+                    <a href="../templates/consultaCliente.html">Consulta Cliente</a>
+                  </li>
+                  <li>
+                    <a href="../templates/opcionesCliente.html">Opciones Cliente</a>
+                  </li>
+                </ul>
+              </li>
+              <!--Menu de Crédito-->
+              <li>
+                <a href="#creditoSubmenu" data-toggle="collapse" aria-expanded="false"
+                  class="dropdown-toggle">Crédito</a>
+                <ul class="collapse list-unstyled" id="creditoSubmenu">
+                  <li>
+                    <a href="../templates/registroCredito.html">Registro Crédito</a>
+                  </li>
+                  <li>
+                    <a href="../templates/consultaCredito.html">Consulta Crédito</a>
+                  </li>
+                  <li>
+                    <a href="../templates/opcionesCredito.html">Opciones Crédito</a>
+                  </li>
+                </ul>
+              </li>
+              <!--Menu de Pagos-->
+              <li>
+                <a href="#pagosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pagos</a>
+                <ul class="collapse list-unstyled" id="pagosSubmenu">
+                  <li>
+                    <a href="../templates/registroPago.html">Registrar Pago</a>
+                  </li>
+                  <li>
+                    <a href="../templates/consultaPago.html">Consulta Pago</a>
+                  </li>
+                  <li>
+                    <a href="..//templates/opcionesPago.html">Opciones Pago</a>
+                  </li>
+                </ul>
               </li>
               <li>
-                <a href="#">Consulta Cliente</a>
-              </li>
-              <li>
-                <a href="#">Opciones Cliente</a>
+                <a href="#">Cerrar Sesión</a>
               </li>
             </ul>
-          </li>
-          <!--Menu de prestamos-->
-          <li>
-            <a href="#prestamosSubmenu" data-toggle="collapse" aria-expanded="false"
-              class="dropdown-toggle">Prestamos</a>
-            <ul class="collapse list-unstyled" id="prestamosSubmenu">
-              <li>
-                <a href="#">Registro prestamo</a>
-              </li>
-              <li>
-                <a href="#">Consulta prestamo</a>
-              </li>
-              <li>
-                <a href="#">Opciones prestamo</a>
-              </li>
-            </ul>
-          </li>
-          <!--Menu de Pagos-->
-          <li>
-            <a href="#pagosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pagos</a>
-            <ul class="collapse list-unstyled" id="pagosSubmenu">
-              <li>
-                <a href="#">Registrar pago</a>
-              </li>
-              <li>
-                <a href="#">Consulta pago</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">Cerrar Sesión</a>
-          </li>
-        </ul>
 
-        <div class="footer">
-          <p>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Avimo Software &copy;
-            <script>document.write(new Date().getFullYear());</script> All rights reserved.</a>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-          </p>
-        </div>
+            <div class="footer">
+              <p>
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                Avimo Software &copy;
+                <script>document.write(new Date().getFullYear());</script> All rights reserved.</a>
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              </p>
+            </div>
 
       </div>
     </nav>
@@ -112,9 +120,64 @@
         </div>
       </nav>
       <!--Abajo de esto va tu código-->
+      <h3>Consulta Pago</h3>
+      <form action="" method="GET">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text" id="btnGroupAddon">ID</div>
+
+          </div>
+          <input type="text" class="form-control" maxlength="4" aria-label="Input group example"
+            aria-describedby="btnGroupAddon">
+          <button type="submit" class="btn btn-primary">Buscar</button>
+
+        </div>
+
+      </form>
+      <br><br>
+
+      <table class="table" id="tbl_Con_Pagos">
+        <thead>
+          <tr>
+            <th scope="col">Cliente</th>
+            <th scope="col">iD Pago</th>
+            <th scope="col">iD Crédito</th>
+            <th scope="col">Número Semana</th>
+            <th scope="col">Monto</th>
+            <th scope="col">Fecha de Pago</th>
+            <th scope="col">Foto Comprobante</th>
+
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+
+            <td>Geovanni Sarmiento Avila</td>
+            <td>10</td>
+            <td>1</td>
+            <td>1</td>
+            <td>2500</td>
+            <td>26-11-2020</td>
+            <td><button><img src="../static/images/comprobantente.png" width="40" height="40"></button></td>
+          </tr>
+
+          <tr>
+
+            <td>Geovanni Sarmiento Avila</td>
+            <td>11</td>
+            <td>1</td>
+            <td>2</td>
+            <td>2500</td>
+            <td>27-11-2020</td>
+            <td><button><img src="../static/images/comprobantente.png" width="40" height="40"></button></td>
+          </tr>
+        </tbody>
+
+      </table>
 
 
-      
+
 
       <!--Arriba de esto va tu código-->
     </div>

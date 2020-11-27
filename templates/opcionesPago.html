@@ -116,43 +116,45 @@
       <!--Abajo de esto va tu código-->
 
 
-      <h3>Opciones Clientes</h3>
-
-      <div id="divOpcionesCliente">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <div class="input-group-text" id="btnGroupAddon">ID</div>
+      <h3>Opciones Pago</h3>
+      <form>
+        <div id="divOpcionesPago">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text" id="btnGroupAddon">ID</div>
+            </div>
+            <input type="text" class="form-control" maxlength="4" aria-label="Input group example"
+              aria-describedby="btnGroupAddon">
+            <button type="submit" class="btn btn-primary">Buscar</button>
+            <button type="submit" class="btn btn-warning" id="mostrar">Modificar</button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"
+              class="btn btn-danger btn-lg btn-block">Eliminar</button>
           </div>
-          <input type="text" class="form-control" maxlength="4" aria-label="Input group example"
-            aria-describedby="btnGroupAddon">
-          <button type="submit" class="btn btn-primary">Buscar</button>
-          <button type="submit" class="btn btn-warning" id="mostrar">Modificar</button>
-          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"
-            class="btn btn-danger btn-lg btn-block">Eliminar</button>
-        </div>
 
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">¡Advertencia!</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                ¿ Esta seguro de que quiere eliminar el registro ?
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                <button type="button" class="btn btn-danger">Si</button>
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">¡Advertencia!</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  ¿ Esta seguro de que quiere eliminar el registro ?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                  <button type="button" class="btn btn-danger">Si</button>
+                </div>
               </div>
             </div>
           </div>
+          <br>
         </div>
-        <br>
-      </div>
+      </form>
 
 
 

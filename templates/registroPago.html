@@ -28,29 +28,28 @@
             <a href="#clientesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Clientes</a>
             <ul class="collapse list-unstyled" id="clientesSubmenu">
               <li>
-                <a href="#">Registro Cliente</a>
+                <a href="../templates/registroClientes.html">Registro Cliente</a>
               </li>
               <li>
-                <a href="#">Consulta Cliente</a>
+                <a href="../templates/consultaCliente.html">Consulta Cliente</a>
               </li>
               <li>
-                <a href="#">Opciones Cliente</a>
+                <a href="../templates/opcionesCliente.html">Opciones Cliente</a>
               </li>
             </ul>
           </li>
-          <!--Menu de prestamos-->
+          <!--Menu de Crédito-->
           <li>
-            <a href="#prestamosSubmenu" data-toggle="collapse" aria-expanded="false"
-              class="dropdown-toggle">Prestamos</a>
-            <ul class="collapse list-unstyled" id="prestamosSubmenu">
+            <a href="#creditoSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Crédito</a>
+            <ul class="collapse list-unstyled" id="creditoSubmenu">
               <li>
-                <a href="#">Registro prestamo</a>
+                <a href="../templates/registroCredito.html">Registro Crédito</a>
               </li>
               <li>
-                <a href="#">Consulta prestamo</a>
+                <a href="../templates/consultaCredito.html">Consulta Crédito</a>
               </li>
               <li>
-                <a href="#">Opciones prestamo</a>
+                <a href="../templates/opcionesCredito.html">Opciones Crédito</a>
               </li>
             </ul>
           </li>
@@ -59,10 +58,13 @@
             <a href="#pagosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pagos</a>
             <ul class="collapse list-unstyled" id="pagosSubmenu">
               <li>
-                <a href="#">Registrar pago</a>
+                <a href="../templates/registroPago.html">Registrar Pago</a>
               </li>
               <li>
-                <a href="#">Consulta pago</a>
+                <a href="../templates/consultaPago.html">Consulta Pago</a>
+              </li>
+              <li>
+                <a href="..//templates/opcionesPago.html">Opciones Pago</a>
               </li>
             </ul>
           </li>
@@ -114,8 +116,31 @@
       <!--Abajo de esto va tu código-->
 
       <!--Registro Pago-->
+      <h3>Registro Pago<span class="badge badge-secondary">New</span></h3>
       <form>
-        <h3>Registro Pagos <span class="badge badge-secondary">New</span></h3>
+
+        <div class="row">
+
+          <div class="input-group col">
+            <div class="input-group-prepend">
+              <div class="input-group-text" id="btnGroupAddon">ID Cliente</div>
+            </div>
+            <input type="text" class="form-control" maxlength="4" aria-label="Input group example"
+              aria-describedby="btnGroupAddon">
+
+          </div>
+
+          <div class="input-group col">
+            <div class="input-group-prepend">
+              <div class="input-group-text" id="btnGroupAddon">ID Crédito</div>
+            </div>
+            <input type="text" class="form-control" maxlength="4" aria-label="Input group example"
+              aria-describedby="btnGroupAddon">
+
+          </div>
+
+        </div>
+
         <div class="row">
           <div class="form-group col">
             <label for="Monto">Monto</label>
@@ -146,9 +171,6 @@
             </div>
           </div>
 
-
-
-
         </div>
 
         <div class="row">
@@ -170,9 +192,6 @@
 
         </div>
 
-        
-
-        </div>
         <button type="button" class="btn btn-primary" onclick="onFormSubmit()">Registrar Pago</button>
       </form>
       <!--Arriba de esto va tu código-->
