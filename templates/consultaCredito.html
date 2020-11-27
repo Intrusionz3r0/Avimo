@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <title>Avimo Software</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../static/css/style.css">
+
+</head>
+
+<body>
+
+  <div class="wrapper d-flex align-items-stretch">
+    <nav id="sidebar">
+      <div class="p-4 pt-5">
+        <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(../static/images/logo.jpg);"></a>
+        <center>
+          <p id="empleadoName">Elon Reeve Musk</p>
+        </center>
+        <ul class="list-unstyled components mb-5">
+          <!--Menu de Clientes-->
+          <li>
+            <a href="#clientesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Clientes</a>
+            <ul class="collapse list-unstyled" id="clientesSubmenu">
+              <li>
+                <a href="../templates/registroClientes.html">Registro Cliente</a>
+              </li>
+              <li>
+                <a href="../templates/consultaCliente.html">Consulta Cliente</a>
+              </li>
+              <li>
+                <a href="../templates/opcionesCliente.html">Opciones Cliente</a>
+              </li>
+            </ul>
+          </li>
+          <!--Menu de Crédito-->
+          <li>
+            <a href="#creditoSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Crédito</a>
+            <ul class="collapse list-unstyled" id="creditoSubmenu">
+              <li>
+                <a href="../templates/registroCredito.html">Registro Crédito</a>
+              </li>
+              <li>
+                <a href="../templates/consultaCredito.html">Consulta Crédito</a>
+              </li>
+              <li>
+                <a href="../templates/opcionesCredito.html">Opciones Crédito</a>
+              </li>
+            </ul>
+          </li>
+          <!--Menu de Pagos-->
+          <li>
+            <a href="#pagosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pagos</a>
+            <ul class="collapse list-unstyled" id="pagosSubmenu">
+              <li>
+                <a href="../templates/registroPago.html">Registrar Pago</a>
+              </li>
+              <li>
+                <a href="../templates/consultaPago.html">Consulta Pago</a>
+              </li>
+              <li>
+                <a href="..//templates/opcionesPago.html">Opciones Pago</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Cerrar Sesión</a>
+          </li>
+        </ul>
+
+        <div class="footer">
+          <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Avimo Software &copy;
+            <script>document.write(new Date().getFullYear());</script> All rights reserved.</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          </p>
+        </div>
+
+      </div>
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content" class="p-4 p-md-5">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+
+          <button type="button" id="sidebarCollapse" class="btn btn-primary">
+            <i class="fa fa-bars"></i>
+            <span class="sr-only">Toggle Menu</span>
+          </button>
+          <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <i class="fa fa-bars"></i>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Generar reporte</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Consulta historial</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!--Abajo de esto va tu código-->
+      <h3>Consulta Crédito</h3>
+      <form action="" method="GET">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text" id="btnGroupAddon">ID</div>
+
+          </div>
+          <input type="text" class="form-control" maxlength="4" aria-label="Input group example"
+            aria-describedby="btnGroupAddon">
+          <button type="submit" class="btn btn-primary">Buscar</button>
+
+        </div>
+      </form>
+      <br><br>
+
+      <table class="table" id="tbl_Con_Credito">
+        <thead>
+          <tr>
+            <th scope="col">ID Crédito</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">Emplado Responsable</th>
+            <th scope="col">Monto Prestado</th>
+            <th scope="col">Número de Semanas</th>
+            <th scope="col">Estatus</th>
+            <th scope="col">Fecha Inicio</th>
+            <th scope="col">Fecha Final</th>
+            <th scope="col">Foto Entrega del Crédito</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Geovanni Sarmiento Avila</td>
+            <td>Luz Elena Reyes Peréz</td>
+            <td>5000</td>
+            <td>12</td>
+            <td>D</td>
+            <td>20-11-2020</td>
+            <td>20-02-2021</td>
+            <td><button><img src="../static/images/Entr_credito.png" width="40" height="40"></button></td>
+          </tr>
+
+          <tr>
+            <td>1</td>
+            <td>Geovanni Sarmiento Avila</td>
+            <td>Luz Elena Reyes Peréz</td>
+            <td>7500</td>
+            <td>8</td>
+            <td>S</td>
+            <td>20-09-2020</td>
+            <td>20-11-2020</td>
+            <td><button><img src="../static/images/Entr_credito.png" width="40" height="40"></button></td>
+          </tr>
+        </tbody>
+      </table>
+
+
+
+
+      <!--Arriba de esto va tu código-->
+    </div>
+  </div>
+  </div>
+
+  <script src="../static/js/jquery.min.js"></script>
+  <script src="../static/js/popper.js"></script>
+  <script src="../static/js/bootstrap.min.js"></script>
+  <script src="../static/js/main.js"></script>
+  <script src="../static/js/registroCliente.js"></script>
+</body>
+
+</html>
