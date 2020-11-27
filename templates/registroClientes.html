@@ -13,7 +13,7 @@
 
 </head>
 
-<body onload="consultaEstados()">
+<body onload="consultaEstados(); consultaEstadosAval();">
 
   <div class="wrapper d-flex align-items-stretch">
     <nav id="sidebar">
@@ -114,134 +114,243 @@
       <!--Abajo de esto va tu código-->
 
 
+      <div>
+        
+        <form method="POST">
 
-      <!--Registra Cliente-->
-      <div id="divRCliente" >
-        <h3>Registro Clientes <span class="badge badge-secondary">New</span></h3>
-      <form>
-
-        <div class="row">
-          
-          <div class="col">
-            <label for="nombre">Nombre</label>
-            <input type="text" class="form-control" name="nombreCliente" id="nombreCliente" required>
-          </div>
-         
-          <div class="col">
-            <label for="apellido">Apellido</label>
-            <input type="text" class="form-control" name="apellidoCliente" id="apellidoCliente" required>
-          </div>
-         
-          <div class="col">
-            <div class="form-group">
-              <label>Genero</label>
-              <select class="form-control" id="generoCliente" name="generoCliente" required>
-                <option value="" disabled selected>Seleccione una opcion...</option>
-                <option>Masculino</option>
-                <option>Femenino</option>
-                <option>Otro</option>
-              </select>
+        <div id="divRCliente">
+      
+          <h3>Registro Clientes <span class="badge badge-secondary">New</span></h3>
+    
+            <div class="row">
+              
+              <div class="col">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" name="nombreCliente" id="nombreCliente" required>
+              </div>
+             
+              <div class="col">
+                <label for="apellido">Apellido</label>
+                <input type="text" class="form-control" name="apellidoCliente" id="apellidoCliente" required>
+              </div>
+             
+              <div class="col">
+                <div class="form-group">
+                  <label>Genero</label>
+                  <select class="form-control" id="generoCliente" name="generoCliente" required>
+                    <option value="" disabled selected>Seleccione una opcion...</option>
+                    <option>Masculino</option>
+                    <option>Femenino</option>
+                    <option>Otro</option>
+                  </select>
+                </div>
+              </div>
+    
             </div>
-          </div>
-
+           
+    
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="estado">Estado</label>
+                  <select class="form-control" id="estadoCliente" name="estadoCliente" onblur="consultarMunicipio()" required>
+                    <option value="" disabled selected>Seleccione un Estado...</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="municipio">Municipio</label>
+                  <select class="form-control" id="municipioCliente" name="municipioCliente" onblur="consultarColonia()" required>
+                    <option value="" disabled selected>Seleccione un Municipio...</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="colonia">Colonia</label>
+                  <select class="form-control" id="coloniaCliente" name="coloniaCliente" onblur="desactivarColonia()" required>
+                    <option value="" disabled selected>Seleccione una Colonia...</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col">
+                <label for="calle1">Calle</label>
+                <input type="text" class="form-control" id="calleCliente" name="calleCliente" required>
+                
+              </div>
+              <div class="col">
+                <label for="ninterno">Numero interno</label>
+                <input type="text" class="form-control" id="ninternoCliente" name="ninternoCliente" required>
+              </div>
+              <div class="col">
+                <label for="nexterno">Numero externo</label>
+                <input type="text" class="form-control" id="nexternoCliente" name="nexternoCliente" >
+              </div>
+              <div class="col">
+                <label for="calle2">Entre calles</label>
+                <input type="text" class="form-control" id="entrecallesCliente" name="entrecallesCliente" required>
+              </div>
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="telefono">Telefono</label>
+              <input type="text" class="form-control" id="telefonoCliente" name="telefonoCliente" maxlength="13" required >
+              
+            </div>
+            <div class="form-group">
+              <label for="curp">Curp</label>
+              <input type="text" class="form-control" id="curpCliente" name="curpCliente" maxlength="18" required>
+            </div>
+            <br>
+    
+            <div class="form-group row">
+              <label for="fnacimiento" class="col-2 col-form-label">Fecha de Nacimiento</label>
+              <div class="col-10">
+                <input class="form-control" type="date" value="1998-01-13" id="fnacimientoCliente" name="fnacimientoCliente" required>
+              </div>
+            </div>
+    
+            <div class="form-group row">
+              <label for="fregistro" class="col-2 col-form-label">Fecha de registro</label>
+              <div class="col-10">
+                <input class="form-control" type="datetime-local" value="2020-11-22T02:00:00" id="fregistroCliente"
+                  name="fregistroCliente" required>
+              </div>
+            </div>
+    
+    
+            <div class="row">
+              <div class="form-group col">
+                <label>Foto INE 1</label>
+                <input type="file" class="form-control-file" id="file1Cliente" name="file1Cliente" onchange="ValidarArchivo(this);" required>
+              </div>
+              <div class="form-group col">
+                <label>Foto INE 2</label>
+                <input type="file" class="form-control-file" id="file2Cliente" name="file2Cliente" onchange="ValidarArchivo(this);" required>
+              </div>
+              <div class="form-group col">
+                <label>Comprobante de domicilio</label>
+                <input type="file" class="form-control-file" id="file3Cliente" name="file3Cliente" onchange="ValidarArchivo(this);" required>
+              </div>
+            </div>
+    
+            <button type="button" class="btn btn-primary" id="btnSiguiente" onclick="validarDatosClientes()">Siguiente</button>
+  
         </div>
-       
-
-        <div class="row">
-          <div class="col">
-            <div class="form-group">
-              <label for="estado">Estado</label>
-              <select class="form-control" id="estadoCliente" name="estadoCliente" onblur="consultarMunicipio()" required>
-                <option value="" disabled selected>Seleccione un Estado...</option>
-              </select>
-            </div>
-          </div>
-          <div class="col">
-            <div class="form-group">
-              <label for="municipio">Municipio</label>
-              <select class="form-control" id="municipioCliente" name="municipioCliente" onblur="consultarColonia()" required>
-                <option value="" disabled selected>Seleccione un Municipio...</option>
-              </select>
-            </div>
-          </div>
-          <div class="col">
-            <div class="form-group">
-              <label for="colonia">Colonia</label>
-              <select class="form-control" id="coloniaCliente" name="coloniaCliente" onblur="desactivarColonia()" required>
-                <option value="" disabled selected>Seleccione una Colonia...</option>
-              </select>
-            </div>
-          </div>
-        </div>
+      
         <br>
-        <div class="row">
-          <div class="col">
-            <label for="calle1">Calle</label>
-            <input type="text" class="form-control" id="calleCliente" name="calleCliente" required>
+
+        <div id=divRAval style="display: none;">
+
+          <h3>Registro Aval <span class="badge badge-secondary">New</span></h3>
+    
+          <div class="row">
+            
+            <div class="col">
+              <label for="nombre">Nombre</label>
+              <input type="text" class="form-control" name="nombreAval" id="nombreAval" required>
+            </div>
+           
+            <div class="col">
+              <label for="apellido">Apellido</label>
+              <input type="text" class="form-control" name="apellidoAval" id="apellidoAval" required>
+            </div>
+          
+          </div>
+         
+          <br>
+  
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="estado">Estado</label>
+                <select class="form-control" id="estadoAval" name="estadoAval" onblur="consultarMunicipioAval()" required>
+                  <option value="" disabled selected>Seleccione un Estado...</option>
+                </select>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="municipio">Municipio</label>
+                <select class="form-control" id="municipioAval" name="municipioAval" onblur="consultarColoniaAval()" required>
+                  <option value="" disabled selected>Seleccione un Municipio...</option>
+                </select>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="colonia">Colonia</label>
+                <select class="form-control" id="coloniaAval" name="coloniaAval" onblur="desactivarColoniaAval()" required>
+                  <option value="" disabled selected>Seleccione una Colonia...</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col">
+              <label for="calle1">Calle</label>
+              <input type="text" class="form-control" id="calleAval" name="calleAval" required>
+              
+            </div>
+            <div class="col">
+              <label for="ninterno">Numero interno</label>
+              <input type="text" class="form-control" id="ninternoAval" name="ninternoAval" required>
+            </div>
+            <div class="col">
+              <label for="nexterno">Numero externo</label>
+              <input type="text" class="form-control" id="nexternoAval" name="nexternoAval" >
+            </div>
+            <div class="col">
+              <label for="calle2">Entre calles</label>
+              <input type="text" class="form-control" id="entrecallesAval" name="entrecallesAval" required>
+            </div>
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="telefono">Telefono</label>
+            <input type="text" class="form-control" id="telefonoAval" name="telefonoAval" maxlength="13" required >
             
           </div>
-          <div class="col">
-            <label for="ninterno">Numero interno</label>
-            <input type="text" class="form-control" id="ninternoCliente" name="ninternoCliente" required>
-          </div>
-          <div class="col">
-            <label for="nexterno">Numero externo</label>
-            <input type="text" class="form-control" id="nexternoCliente" name="nexternoCliente" >
-          </div>
-          <div class="col">
-            <label for="calle2">Entre calles</label>
-            <input type="text" class="form-control" id="entrecallesCliente" name="entrecallesCliente" required>
-          </div>
-        </div>
-        <br>
-        <div class="form-group">
-          <label for="telefono">Telefono</label>
-          <input type="text" class="form-control" id="telefonoCliente" name="telefonoCliente" maxlength="13" required >
-          
-        </div>
-        <div class="form-group">
-          <label for="curp">Curp</label>
-          <input type="text" class="form-control" id="curpCliente" name="curpCliente" maxlength="18" required>
-        </div>
-        <br>
 
-        <div class="form-group row">
-          <label for="fnacimiento" class="col-2 col-form-label">Fecha de Nacimiento</label>
-          <div class="col-10">
-            <input class="form-control" type="date" value="1998-01-13" id="fnacimientoCliente" name="fnacimientoCliente" required>
+          <br>
+  
+  
+          <div class="row">
+            <div class="form-group col">
+              <label>Foto INE 1</label>
+              <input type="file" class="form-control-file" id="file1Aval" name="file1Aval" onchange="ValidarArchivo(this);" required>
+            </div>
+            <div class="form-group col">
+              <label>Foto INE 2</label>
+              <input type="file" class="form-control-file" id="file2Aval" name="file2aval" onchange="ValidarArchivo(this);" required>
+            </div>
+            <div class="form-group col">
+              <label>Comprobante de domicilio</label>
+              <input type="file" class="form-control-file" id="file3Aval" name="file3Aval" onchange="ValidarArchivo(this);" required>
+            </div>
           </div>
-        </div>
-
-        <div class="form-group row">
-          <label for="fregistro" class="col-2 col-form-label">Fecha de registro</label>
-          <div class="col-10">
-            <input class="form-control" type="datetime-local" value="2020-11-22T02:00:00" id="fregistroCliente"
-              name="fregistroCliente" required>
-          </div>
+          <button type="button" class="btn btn-primary" id="btnComprobar" onclick="validarDatosAval()">Comprobar</button>
         </div>
 
 
-        <div class="row">
-          <div class="form-group col">
-            <label>Foto INE 1</label>
-            <input type="file" class="form-control-file" id="file1Cliente" name="file1Cliente" onchange="ValidarArchivo(this);" required>
-          </div>
-          <div class="form-group col">
-            <label>Foto INE 2</label>
-            <input type="file" class="form-control-file" id="file2Cliente" name="file2Cliente" onchange="ValidarArchivo(this);" required>
-          </div>
-          <div class="form-group col">
-            <label>Comprobante de domicilio</label>
-            <input type="file" class="form-control-file" id="file3Cliente" name="file3Cliente" onchange="ValidarArchivo(this);" required>
-          </div>
-        </div>
-
-        <button type="button" class="btn btn-primary" onclick="onFormSubmit()">Siguiente: </button>
-
-      </form>
-
+       
+        <button type="button" class="btn btn-primary" id="btnRegistrar" onclick="datosListosDB()" style="display: none;" >Registrar</button>
+        </form>
+      
       </div>
-      <!---->
+
+
+
+
+
+
+
+
 
       <!--Aqui va mi modal para cuando hay un error-->
 

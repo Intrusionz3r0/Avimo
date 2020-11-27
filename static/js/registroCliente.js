@@ -27,18 +27,26 @@ function ValidarArchivo(oninput) { //Verifica las extenciones de lo archivos.
 }                                                                                       
 
 
-function onFormSubmit() {
+function datosListosDB() {
 
-    var datoslistos = validarDatos();
-
-    if(datoslistos != undefined){
-        alert("Los datos estan listos para ser enviados a la base de datos.")
-    }
-
+    var cliente = validarDatosClientes();
+    var aval = validarDatosAval();
+    console.log(cliente)
+    console.log(aval)
 
 }
 
-function validarDatos(){
+
+function validarDatosClientes(){
+
+    var datosClientes = leerDatosCliente();
+
+    if(datosClientes != undefined){
+        return datosClientes;
+    }
+}
+
+function leerDatosCliente(){
     var formDatos = {};
     var mensaje = ""
     var aux = true;
@@ -64,23 +72,39 @@ function validarDatos(){
     for (const key in formDatos) { //Recorre todo los campos del formulario.
 
         if(formDatos[key] == ""){ //Verifica si los campos estan vacios y si es así devuelve un error y en la variable aux devuelve un false.
-            mensaje = mensaje + "Alguno de los campos esta vacio.\n\n"
+            mensaje = mensaje + "Alguno de los campos esta vacio. \n\n"
             aux =false;
             break;
         }
     }
+
+    if(!validarNumero(formDatos[8])){
+        mensaje = mensaje + "El numero interno debe ser un dígito.\n\n"
+        aux =false;
+    }
+
+        if(!validarNumero(formDatos[9])){
+        mensaje = mensaje + "El numero externo debe ser un dígito.  \n\n"
+        aux =false;
+    }
  
     if(!validarCURP(formDatos[11])){ // Si la curp es invalida devuelve un false.
-        mensaje = mensaje + "La curp introducida es invalida.\n\n"
+        mensaje = mensaje + "La curp introducida es invalida. \n\n"
         aux =false;
     }
 
     if(!validarTelefono(formDatos[10])){ // si el telefono es invalido devuelve un false.
-        mensaje = mensaje + "El telefono introducido es invalido.\n\n"
+        mensaje = mensaje + "El telefono introducido es invalido. \n\n"
         aux =false;
     }
 
     if(aux){ //Si la variable aux es True entonces envia los datos.
+        $(function(){
+            $('#btnSiguiente').click(function(){
+              $('#divRAval').show();
+              $('#divRCliente').hide();
+            });
+          })
         return formDatos
     }
     else{// si la variable aux es false entonces muestra un error en pantalla.
@@ -93,6 +117,81 @@ function validarDatos(){
 
 }
 
+
+function validarDatosAval(){
+
+    var datosAval = leerDatosAval();
+
+    if(datosAval != undefined){
+
+        $(function(){
+            $('#btnComprobar').click(function(){
+              $('#btnRegistrar').toggle();
+              $('#btnComprobar').hide();
+            });
+          })
+
+        return datosAval;
+    }
+}
+
+function leerDatosAval(){
+    var formDatosAval = {};
+    var mensaje = ""
+    var aux = true;
+    formDatosAval[0] = document.getElementById('nombreAval').value
+    formDatosAval[1] = document.getElementById('apellidoAval').value
+    formDatosAval[2] = document.getElementById('estadoAval').value
+    formDatosAval[3] = document.getElementById('municipioAval').value
+    formDatosAval[4] = document.getElementById('coloniaAval').value
+    formDatosAval[5] = document.getElementById('calleAval').value
+    formDatosAval[6] = document.getElementById('ninternoAval').value
+    formDatosAval[7] = document.getElementById('nexternoAval').value
+    formDatosAval[8] = document.getElementById('entrecallesAval').value
+    formDatosAval[9] = document.getElementById('telefonoAval').value
+    formDatosAval[10] = document.getElementById('file1Aval').value
+    formDatosAval[11] = document.getElementById('file2Aval').value
+    formDatosAval[12] = document.getElementById('file3Aval').value
+
+    for (const key in formDatosAval) { //Recorre todo los campos del formulario.
+
+        if(formDatosAval[key] == ""){ //Verifica si los campos estan vacios y si es así devuelve un error y en la variable aux devuelve un false.
+            mensaje = mensaje + "Alguno de los campos esta vacio. \n\n"
+            aux =false;
+            break;
+        }
+    }
+
+    if(!validarNumero(formDatosAval[6])){
+        mensaje = mensaje + "El numero externo debe ser un dígito.  \n\n"
+        aux =false;
+    }
+
+    if(!validarNumero(formDatosAval[7])){
+        mensaje = mensaje + "El numero externo debe ser un dígito.  \n\n"
+        aux =false;
+    }
+ 
+ 
+    if(!validarTelefono(formDatosAval[9])){ // si el telefono es invalido devuelve un false.
+        mensaje = mensaje + "El telefono introducido es invalido. \n\n"
+        aux =false;
+    }
+
+    if(aux){ //Si la variable aux es True entonces envia los datos.
+        return formDatosAval;
+    }
+    else{// si la variable aux es false entonces muestra un error en pantalla.
+        var modal = $('#errorModal')
+        modal.find('.modal-title').text("Error")
+        modal.find('.modal-body').text(mensaje)
+        modal.modal('show')
+    }
+    
+}
+
+
+//Validaciones
 
 function validarCURP(valor){                                                                
         var regex = /^[A-Z]{4}\d{6}\w{8}/                                                     
@@ -118,7 +217,7 @@ function validarNumero(valor){
         return response;                                                                      
 }    
 
-
+//Campos dinamicos Clientes
 
 function agregarEstados(array){
 
@@ -191,3 +290,77 @@ function desactivarColonia(){
     document.getElementById('coloniaCliente').disabled=true;
 }
 
+
+
+//Campos dinamicos Aval
+
+function agregarEstadosAval(array){
+
+    for (const key in array) {
+        document.getElementById('estadoAval').innerHTML += "<option value='"+array[key]+"'>"+array[key]+"</option>";
+    }
+}
+
+function consultaEstadosAval(){
+    var array = [];
+    let url ='https://api-sepomex.hckdrk.mx/query/get_estados'
+    var r1 = new XMLHttpRequest();
+    r1.open("GET",url,false)
+    r1.send(null)
+    res = JSON.parse(r1.responseText)
+    arr = res.response.estado
+    for (const i in arr) {
+        array.push(arr[i])
+    }
+    agregarEstadosAval(array)
+}
+
+function agregarMunicipioAval(array){
+
+    for (const key in array) {
+        document.getElementById('municipioAval').innerHTML += "<option value='"+array[key]+"'>"+array[key]+"</option>";
+    }
+    document.getElementById('estadoAval').disabled=true;
+}
+
+function consultarMunicipioAval(){
+    var array = [];
+    var estado = document.getElementById('estadoAval').value
+    let url ='https://api-sepomex.hckdrk.mx/query/get_municipio_por_estado/'+estado
+    var r2 = new XMLHttpRequest();
+    r2.open("GET",url,false)
+    r2.send(null)
+    res = JSON.parse(r2.responseText)
+    arr = res.response.municipios
+    for (const i in arr) {
+        array.push(arr[i])
+    }
+    agregarMunicipioAval(array)
+}
+
+function agregarColoniaAval(array){
+    for (const key in array) {
+        document.getElementById('coloniaAval').innerHTML += "<option value='"+array[key]+"'>"+array[key]+"</option>";
+    }
+    document.getElementById('municipioAval').disabled=true;
+}
+
+
+function consultarColoniaAval(){
+    var array = [];
+    var municipio = document.getElementById('municipioAval').value
+    let url ='https://api-sepomex.hckdrk.mx/query/get_colonia_por_municipio/'+municipio
+    var r3 = new XMLHttpRequest();
+    r3.open("GET",url,false)
+    r3.send(null)
+    res = JSON.parse(r3.responseText)
+    arr = res.response.colonia
+    for (const i in arr) {
+        array.push(arr[i])
+    }
+    agregarColoniaAval(array)
+}
+
+function desactivarColoniaAval(){
+    document.getElementById('coloniaAval').disabled=true;
+}
