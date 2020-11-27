@@ -22,24 +22,24 @@ function validarDatosPago(){
 
     for(const key in formDatos){
         if(formDatos[key]==""){
-            mensaje=mensaje + "Alguno de los campos esta vacio.\n\n"
+            mensaje=mensaje + "Alguno de los campos esta vacio.\n"
             aux=false;
             break;
         }
     }
 
     if(!validarCliente(formDatos[0])){
-        mensaje=mensaje+"El ID de Cliente no es valido"
+        mensaje=mensaje+"El ID de Cliente no es valido\n"
         aux=false
     }
 
     if(!validarCredito(formDatos[1])){
-        mensaje=mensaje+"El ID de Crédito no es valido"
+        mensaje=mensaje+"El ID de Crédito no es valido\n"
         aux=false
     }
 
     if(!validarMonto(formDatos[2])){
-        mensaje=mensaje+"El ID Monto ingresado no es valido"
+        mensaje=mensaje+"El ID Monto ingresado no es valido\n"
         aux=false
     }
 
