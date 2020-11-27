@@ -31,6 +31,7 @@ function datosListosDB() {
 
     var cliente = validarDatosClientes();
     var aval = validarDatosAval();
+    alert("Los datos estan listos para enviar a la base de datos.")
     console.log(cliente)
     console.log(aval)
 
