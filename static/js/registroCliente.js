@@ -227,18 +227,22 @@ function agregarEstados(array){
     }
 }
 
+
+//Funcion Ajax.
 function consultaEstados(){
-    var array = [];
-    let url ='https://api-sepomex.hckdrk.mx/query/get_estados'
-    var r1 = new XMLHttpRequest();
-    r1.open("GET",url,false)
-    r1.send(null)
-    res = JSON.parse(r1.responseText)
-    arr = res.response.estado
-    for (const i in arr) {
-        array.push(arr[i])
+    var obj = "";
+    var arr;
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET","https://api-sepomex.hckdrk.mx/query/get_estados");
+    xhr.onload = function (){
+        if (this.status === 200){
+            obj = JSON.parse(this.responseText);
+            arr = obj.response.estado
+            agregarEstados(arr)
+        }
     }
-    agregarEstados(array)
+
+    xhr.send(); 
 }
 
 function agregarMunicipio(array){
@@ -246,7 +250,7 @@ function agregarMunicipio(array){
     for (const key in array) {
         document.getElementById('municipioCliente').innerHTML += "<option value='"+array[key]+"'>"+array[key]+"</option>";
     }
-    document.getElementById('estadoCliente').disabled=true;
+    //document.getElementById('estadoCliente').disabled=true;
 }
 
 function consultarMunicipio(){
@@ -262,13 +266,14 @@ function consultarMunicipio(){
         array.push(arr[i])
     }
     agregarMunicipio(array)
+
 }
 
 function agregarColonia(array){
     for (const key in array) {
         document.getElementById('coloniaCliente').innerHTML += "<option value='"+array[key]+"'>"+array[key]+"</option>";
     }
-    document.getElementById('municipioCliente').disabled=true;
+    //document.getElementById('municipioCliente').disabled=true;
 }
 
 
@@ -288,7 +293,7 @@ function consultarColonia(){
 }
 
 function desactivarColonia(){
-    document.getElementById('coloniaCliente').disabled=true;
+    //document.getElementById('coloniaCliente').disabled=true;
 }
 
 
@@ -302,18 +307,22 @@ function agregarEstadosAval(array){
     }
 }
 
+
+//Funcion AJAX.
 function consultaEstadosAval(){
-    var array = [];
-    let url ='https://api-sepomex.hckdrk.mx/query/get_estados'
-    var r1 = new XMLHttpRequest();
-    r1.open("GET",url,false)
-    r1.send(null)
-    res = JSON.parse(r1.responseText)
-    arr = res.response.estado
-    for (const i in arr) {
-        array.push(arr[i])
+    var obj = "";
+    var arr;
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET","https://api-sepomex.hckdrk.mx/query/get_estados");
+    xhr.onload = function (){
+        if (this.status === 200){
+            obj = JSON.parse(this.responseText);
+            arr = obj.response.estado
+            agregarEstadosAval(arr)
+        }
     }
-    agregarEstadosAval(array)
+
+    xhr.send(); 
 }
 
 function agregarMunicipioAval(array){
@@ -321,7 +330,7 @@ function agregarMunicipioAval(array){
     for (const key in array) {
         document.getElementById('municipioAval').innerHTML += "<option value='"+array[key]+"'>"+array[key]+"</option>";
     }
-    document.getElementById('estadoAval').disabled=true;
+    //document.getElementById('estadoAval').disabled=true;
 }
 
 function consultarMunicipioAval(){
@@ -343,7 +352,7 @@ function agregarColoniaAval(array){
     for (const key in array) {
         document.getElementById('coloniaAval').innerHTML += "<option value='"+array[key]+"'>"+array[key]+"</option>";
     }
-    document.getElementById('municipioAval').disabled=true;
+    //document.getElementById('municipioAval').disabled=true;
 }
 
 
@@ -363,5 +372,5 @@ function consultarColoniaAval(){
 }
 
 function desactivarColoniaAval(){
-    document.getElementById('coloniaAval').disabled=true;
+    //document.getElementById('coloniaAval').disabled=true;
 }
