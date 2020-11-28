@@ -1,0 +1,256 @@
+var app = new function() {
+
+  this.el = document.getElementById('countries');
+
+  this.countries = ['France', 'Germany', 'England', 'Spain', 'Belgium', 'Italy', 'Portugal', 'Irland', 'Luxembourg'];
+
+  this.Count = function(data) {
+    var el   = document.getElementById('counter');
+    var name = 'country';
+
+    if (data) {
+      if (data > 5) {
+        name = 'countries';
+      }
+      el.innerHTML = data + ' ' + name ;
+    } else {
+      el.innerHTML = 'No ' + name;
+    }
+  };
+  
+  this.FetchAll = function() {
+    var data = '';
+
+    if (this.countries.length > 0) {
+      for (i = 0; i < this.countries.length; i++) {
+        data += '<tr>';
+        data += '<td>' + this.countries[i] + '</td>';
+        data += '<td><button onclick="app.Edit(' + i + ')">Edit</button></td>';
+        data += '<td><button onclick="app.Delete(' + i + ')">Delete</button></td>';
+        data += '</tr>';
+      }
+    }
+
+    this.Count(this.countries.length);
+    return this.el.innerHTML = data;
+  };
+
+  this.Add = function () {
+    el = document.getElementById('add-name');
+    // Get the value
+    var country = el.value;
+
+    if (country) {
+      // Add the new value
+      this.countries.push(country.trim());
+      // Reset input value
+      el.value = '';
+      // Dislay the new list
+      this.FetchAll();
+    }
+  };
+
+  this.Edit = function (item) {
+    var el = document.getElementById('edit-name');
+    // Display value in the field
+    el.value = this.countries[item];
+    // Display fields
+    document.getElementById('spoiler').style.display = 'block';
+    self = this;
+
+    document.getElementById('saveEdit').onsubmit = function() {
+      // Get value
+      var country = el.value;
+
+      if (country) {
+        // Edit value
+        self.countries.splice(item, 1, country.trim());
+        // Display the new list
+        self.FetchAll();
+        // Hide fields
+        CloseInput();
+      }
+    }
+  };
+
+  this.Delete = function (item) {
+    // Delete the current row
+    this.countries.splice(item, 1);
+    // Display the new list
+    this.FetchAll();
+  };
+  
+}
+
+app.FetchAll();
+
+function CloseInput() {
+  document.getElementById('spoiler').style.display = 'none';
+}                      
+    
+    
+</tbody> 
+</table>
+<acción del formulario = "javascript: void (0);" method = "POST" onsubmit = "app.Add ()"> 
+<input type = "submit" value = "Agregar"> 
+</acción>
+<div id = "spoiler" role = "aria-hidden"> 
+<form action = "javascript: void (0);" method = "POST" id = "saveEdit"> 
+<input type = "text" id = "edit-name"> 
+<input type = "submit" value = "Edit" /> <a onclick = "CloseInput ()" aria -label = "Cerrar"> &#10006; </a> 
+</form> 
+</div>
+
+
+
+var selectedrow=null;
+
+function onFormSubmit(){
+var formData = readformData();
+
+ if(selectedrow==null){
+     insertar(formData);
+ }
+   else{
+    update(formData)
+}
+resertform();
+
+}
+function readformData(){
+var formData={};
+formData["nombre"]= document.getElementById("nombre").value ;
+formData["montoPrestado"]= document.getElementById("montoPrestado").value;
+formData["semanas"]= document.getElementById("semanas").value;
+formData["fechaInicio"]= document.getElementById("fechaInicio").value;
+formData["fechaLimite"]= document.getElementById("fechaLimite").value;
+alert(formData["nombre"].value);
+return formData;
+}
+
+function insertar(data){
+    var table = document.getElementById=("datos").getElementsByTagName('tbody')[0];
+    var newrow=table.insertRow(table.length);
+    cetll1= newrow.insertCell(0);
+    cetll1.innerHTML=data.nombre;
+
+    cetll2= newrow.insertCell(1);
+    cetll2.innerHTML=data.montoPrestado;
+
+    cetll3= newrow.insertCell(2);
+    cetll3.innerHTML=data.semanas;
+
+    cetll4= newrow.insertCell(3);
+    cetll4.innerHTML=data.fechaInicio;
+
+    cetll5= newrow.insertCell(4);
+    cetll5.innerHTML=data.fechaLimite;
+
+    cetll6=newrow.insertCell(5);
+    cetll6.innerHTML= `<button onClick="editar(this)">editar</button>
+                        <button onClick="ondelete(this)">eliminar</button>`;
+}
+ function resertform(){
+    document.getElementById("nombre").value ="";
+    document.getElementById("montoPrestado").value ="";
+    document.getElementById("semanas").value ="";
+    document.getElementById("fechaLimite").value ="";
+    document.getElementById("fechaInicio").value ="";
+    
+
+ }
+ function editar (td){
+    selectedrow= td.parentElement.parentElement;
+    document.getElementById("nombre").value=selectedrow.cells[0].innerHTML;
+    document.getElementById("montoPrestado").value=selectedrow.cells[1].innerHTML;
+    document.getElementById("semanas").value=selectedrow.cells[2].innerHTML;
+    document.getElementById("fechaInicio").value=selectedrow.cells[3].innerHTML;
+    document.getElementById("fechaLimite").value=selectedrow.cells[4].innerHTML;
+
+
+ }
+
+
+function updateRecord(formdata){
+    selectedrow.cells[0].innerHTML=formData.nombre;
+    selectedrow.cells[1].innerHTML=formData.montoPrestado;
+    selectedrow.cells[2].innerHTML=formData.semanas;
+    selectedrow.cells[3].innerHTML=formData.fechaInicio;
+    selectedrow.cells[4].innerHTML=formData.fechaLimite;
+}
+function ondelete(td){
+    if(confirm("estas seguro de eliminar ?")){
+    row=td.parentElement.parentElement
+    document.getElementById("datos").deleteRow(row.rowIndex);
+    resertform();
+}
+}
+
+
+
+html
+<!DOCTYPE html>
+<html land = "en">
+    <head>
+        <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CRUD de Credito</title>
+        <script src="../JS/creditosGUI.js"></script>
+        
+     </head>
+
+<body>
+    <table>
+         <tr>
+            <td>
+                <div>
+                <h2 align="center">REGISTRO CREDITO</h2>
+                 <form   autocomplete="off" onsubmit="event.preventDefault();onFormSubmit();">
+
+                        <label> Nombre:</label>
+                        <input type="text" name="nombre" id="nombre " required>
+                        <br><br>
+                    
+                        <label>MontoPrestado $:</label>
+                        <input type="text"  name="montoPrestado"   id="montoPrestado" required>
+                        <br><br>
+                    
+                        <label>Semanas:</label>
+                        <input type="text"name="semanas"   id="semanas" required>
+                        <br><br>
+                        <label>FechaInicio:</label>
+                        <input type="date" name="fechaInicio" id= "fechaInicio" required>
+                        <br><br>
+                        <label>FechaLimite:</label>
+                        <input type="date" name="fechaLimite" id= "fechaLimite"  required>
+                        <br><br>
+
+                        <button type="submit"> Agregar </button>
+                    
+            
+            
+                </form>
+            </div>
+            <br><br>
+            
+            <div>
+                <table align="center" border="1" class ="list" id="datos">
+                    <thead>
+                        <tr>
+                            <th> Nombre </th>
+                             <th>MontoPrestado</th>
+                             <th> Semanas </th>
+                             <th> FechaInicio </th>
+                             <th> FechaLimite </th>
+                              <th>Editar</th>
+                              <th>Eliminar</th>
+                        </tr>
+                    </thead>
+                    
+                </table>
+            </div>
+    </table>
+</body>
+
+
+</html>
