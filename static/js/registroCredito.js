@@ -57,15 +57,8 @@ function validarDatos(){
             break;
         }
     }
-    if(!isNaN(formDatos[0])){
-
-
-    }
-    else{
-        aux=false;
-        mensaje=mensaje +", ID es invalido deben ser  numeros"
-    }
     
+        
     if(!isNaN (formDatos[1])){
         
     }
