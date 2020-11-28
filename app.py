@@ -37,7 +37,7 @@ def addClienteAval():
         file3Cliente = request.form['file3Cliente']
 
         cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO clientes (nombre,apellido,genero,estado,municipio,colonia,calle,ninterno,nexterno,entrecalles,telefono,curp,fechanacimiento,fecharegistro,fotoine1,fotoine2,comdomicilio) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,null,null,null)",(nombreCliente,apellidoCliente,generoCliente,estadoCliente,municipioCliente,coloniaCliente,calleCliente,ninternoCliente,nexternoCliente,entrecallesCliente,telefonoCliente,curpCliente,fnacimientoCliente,fregistroCliente,file1Cliente,file2Cliente,file3Cliente))
+        cur.execute("INSERT INTO clientes (nombre,apellido,genero,estado,municipio,colonia,calle,ninterno,nexterno,entrecalles,telefono,curp,fechanacimiento,fecharegistro) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(nombreCliente,apellidoCliente,generoCliente,estadoCliente,municipioCliente,coloniaCliente,calleCliente,ninternoCliente,nexternoCliente,entrecallesCliente,telefonoCliente,curpCliente,fnacimientoCliente,fregistroCliente))
         mysql.connection.commit()
 
         return 'simon'
