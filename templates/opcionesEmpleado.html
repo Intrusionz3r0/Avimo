@@ -28,28 +28,29 @@
             <a href="#clientesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Clientes</a>
             <ul class="collapse list-unstyled" id="clientesSubmenu">
               <li>
-                <a href="../templates/registroClientes.html">Registro Cliente</a>
+                <a href="#">Registro Cliente</a>
               </li>
               <li>
-                <a href="../templates/consultaCliente.html">Consulta Cliente</a>
+                <a href="#">Consulta Cliente</a>
               </li>
               <li>
-                <a href="../templates/opcionesCliente.html">Opciones Cliente</a>
+                <a href="#">Opciones Cliente</a>
               </li>
             </ul>
           </li>
-          <!--Menu de Crédito-->
+          <!--Menu de prestamos-->
           <li>
-            <a href="#creditoSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Crédito</a>
-            <ul class="collapse list-unstyled" id="creditoSubmenu">
+            <a href="#prestamosSubmenu" data-toggle="collapse" aria-expanded="false"
+              class="dropdown-toggle">Prestamos</a>
+            <ul class="collapse list-unstyled" id="prestamosSubmenu">
               <li>
-                <a href="../templates/registroCredito.html">Registro Crédito</a>
+                <a href="#">Registro prestamo</a>
               </li>
               <li>
-                <a href="../templates/consultaCredito.html">Consulta Crédito</a>
+                <a href="#">Consulta prestamo</a>
               </li>
               <li>
-                <a href="../templates/opcionesCredito.html">Opciones Crédito</a>
+                <a href="#">Opciones prestamo</a>
               </li>
             </ul>
           </li>
@@ -58,16 +59,28 @@
             <a href="#pagosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pagos</a>
             <ul class="collapse list-unstyled" id="pagosSubmenu">
               <li>
-                <a href="../templates/registroPago.html">Registrar Pago</a>
+                <a href="#">Registrar pago</a>
               </li>
               <li>
-                <a href="../templates/consultaPago.html">Consulta Pago</a>
-              </li>
-              <li>
-                <a href="..//templates/opcionesPago.html">Opciones Pago</a>
+                <a href="#">Consulta pago</a>
               </li>
             </ul>
           </li>
+          <!--Menu de Empleados-->
+          <li>
+            <a href="#empleadosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Empledos</a>
+            <ul class="collapse list-unstyled" id="empleadosSubmenu">
+                <li>
+                    <a href="#">Registrar Empleado</a>
+                </li>
+                <li>
+                  <a href="#">Consulta Empleado</a>
+              </li>
+              <li>
+                  <a href="#">Opciones Empleado</a>
+              </li>
+            </ul>
+        </li>
           <li>
             <a href="#">Cerrar Sesión</a>
           </li>
@@ -114,20 +127,30 @@
         </div>
       </nav>
       <!--Abajo de esto va tu código-->
-      <h3>Consulta Crédito</h3>
-      <form action="" method="GET">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <div class="input-group-text" id="btnGroupAddon">ID</div>
+        <h3>Opciones Empleado</h3>
+          <form>
+            <div id="divOpcionesEmpleado">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text" id="btnGroupAddon">ID</div>
+                </div>
+                <input type="text" class="form-control" maxlength="4" aria-label="Input group example"
+                  aria-describedby="btnGroupAddon" id="ID_Empleado" >
+                <button type="button" class="btn btn-primary" onclick="onFormSubmit()" >Buscar</button>
+                <button type="button" class="btn btn-warning" id="mostrar">Modificar</button>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"
+                  class="btn btn-danger btn-lg btn-block">Eliminar</button>
+              </div>
+    
+    
+              
+              <br>
+    
+              
+            </div>
+          </form>
 
-          </div>
-          <input type="text" class="form-control" maxlength="4" aria-label="Input group example"
-            aria-describedby="btnGroupAddon">
-          <button type="submit" class="btn btn-primary" onclick="onFormSubmit()"> Buscar</button>
-
-        </div>
-      </form >
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -168,63 +191,17 @@
         </div>
 
       
-      <br><br>
-
-      <table class="table" id="tbl_Con_Credito">
-        <thead>
-          <tr>
-            <th scope="col">ID Crédito</th>
-            <th scope="col">Cliente</th>
-            <th scope="col">Emplado Responsable</th>
-            <th scope="col">Monto Prestado</th>
-            <th scope="col">Número de Semanas</th>
-            <th scope="col">Estatus</th>
-            <th scope="col">Fecha Inicio</th>
-            <th scope="col">Fecha Final</th>
-            <th scope="col">Foto Entrega del Crédito</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Geovanni Sarmiento Avila</td>
-            <td>Luz Elena Reyes Peréz</td>
-            <td>5000</td>
-            <td>12</td>
-            <td>D</td>
-            <td>20-11-2020</td>
-            <td>20-02-2021</td>
-            <td><button><img src="../static/images/Entr_credito.png" width="40" height="40"></button></td>
-          </tr>
-
-          <tr>
-            <td>1</td>
-            <td>Geovanni Sarmiento Avila</td>
-            <td>Luz Elena Reyes Peréz</td>
-            <td>7500</td>
-            <td>8</td>
-            <td>S</td>
-            <td>20-09-2020</td>
-            <td>20-11-2020</td>
-            <td><button><img src="../static/images/Entr_credito.png" width="40" height="40"></button></td>
-          </tr>
-        </tbody>
-      </table>
-
-
-
 
       <!--Arriba de esto va tu código-->
     </div>
   </div>
-  </div>
+  
 
   <script src="../static/js/jquery.min.js"></script>
   <script src="../static/js/popper.js"></script>
   <script src="../static/js/bootstrap.min.js"></script>
   <script src="../static/js/main.js"></script>
-  <script src="../static/js/consultaCredito.js"></script>
+  <script src="../static/js/opcionesEmpleado.js"></script>
 </body>
 
 </html>

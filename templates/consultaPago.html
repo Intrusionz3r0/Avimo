@@ -45,13 +45,13 @@
                   class="dropdown-toggle">Crédito</a>
                 <ul class="collapse list-unstyled" id="creditoSubmenu">
                   <li>
-                    <a href="../templates/registroCredito.html">Registro Crédito</a>
+                    <a href="../templates/registroCredito.html">Registro Credito</a>
                   </li>
                   <li>
-                    <a href="../templates/consultaCredito.html">Consulta Crédito</a>
+                    <a href="../templates/consultaCredito.html">Consulta Credito</a>
                   </li>
                   <li>
-                    <a href="../templates/opcionesCredito.html">Opciones Crédito</a>
+                    <a href="../templates/opcionesCredito.html">Opciones Credito</a>
                   </li>
                 </ul>
               </li>
@@ -70,6 +70,21 @@
                   </li>
                 </ul>
               </li>
+              <!--Menu de Empleados-->
+          <li>
+            <a href="#empleadosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Empledos</a>
+            <ul class="collapse list-unstyled" id="empleadosSubmenu">
+                <li>
+                    <a href="#">Registrar Empleado</a>
+                </li>
+                <li>
+                  <a href="#">Consulta Empleado</a>
+              </li>
+              <li>
+                  <a href="#">Opciones Empleado</a>
+              </li>
+            </ul>
+        </li>
               <li>
                 <a href="#">Cerrar Sesión</a>
               </li>
@@ -128,6 +143,25 @@
           <button type="button" class="btn btn-primary" onclick="onFormSubmit()">Buscar</button>
 
         </div>
+        <br><br>
+        <table class="table" id="tbl_Con_Pagos">
+          <label>Informacion General</label>
+          <thead>
+            <tr>
+              <th scope="col">Cliente</th>
+              <th scope="col">iD Pago</th>
+              <th scope="col">iD Crédito</th>
+              <th scope="col">Número Semana</th>
+              <th scope="col">Monto</th>
+              <th scope="col">Fecha de Pago</th>
+              <th scope="col">Foto Comprobante</th>
+  
+            </tr>
+          </thead>
+  
+          
+  
+        </table>
 
       </form>
 
@@ -171,47 +205,9 @@
           </div>
         </div>
 
-      <br><br>
+      
 
-      <table class="table" id="tbl_Con_Pagos">
-        <thead>
-          <tr>
-            <th scope="col">Cliente</th>
-            <th scope="col">iD Pago</th>
-            <th scope="col">iD Crédito</th>
-            <th scope="col">Número Semana</th>
-            <th scope="col">Monto</th>
-            <th scope="col">Fecha de Pago</th>
-            <th scope="col">Foto Comprobante</th>
-
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-
-            <td>Geovanni Sarmiento Avila</td>
-            <td>10</td>
-            <td>1</td>
-            <td>1</td>
-            <td>2500</td>
-            <td>26-11-2020</td>
-            <td><button><img src="../static/images/comprobantente.png" width="40" height="40"></button></td>
-          </tr>
-
-          <tr>
-
-            <td>Geovanni Sarmiento Avila</td>
-            <td>11</td>
-            <td>1</td>
-            <td>2</td>
-            <td>2500</td>
-            <td>27-11-2020</td>
-            <td><button><img src="../static/images/comprobantente.png" width="40" height="40"></button></td>
-          </tr>
-        </tbody>
-
-      </table>
+      
 
 
 

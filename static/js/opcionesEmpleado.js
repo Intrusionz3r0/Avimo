@@ -1,16 +1,16 @@
 function onFormSubmit() {
-    var datoslistos = validarDatosPago();
+    var datoslistos = validarDatosEmpleado();
     if (datoslistos != undefined) {
       alert("ID valido,Iniciando Consulta");
       Limpiar();
     }
   }
 
-  function validarDatosPago(){
+  function validarDatosEmpleado(){
     var formDatos = {};
     var mensaje = "";
     var aux = true;
-    formDatos[0] = document.getElementById("ID_Cliente").value;
+    formDatos[0] = document.getElementById("ID_Empleado").value;
 
     for (const key in formDatos) {
       if (formDatos[key] == "") {
@@ -20,8 +20,8 @@ function onFormSubmit() {
       }
     }
     
-    if (!validarCliente(formDatos[0])) {
-      mensaje = mensaje + " *El ID de Cliente no es valido"
+    if (!validarEmpleado(formDatos[0])) {
+      mensaje = mensaje + " *El ID de Empleado no es valido"
       aux=false;
     }
     
@@ -35,14 +35,12 @@ function onFormSubmit() {
     }
   }
 
-  function validarCliente(ID_Cli) {
+  function validarEmpleado(ID_Emp) {
     var regex = /^\d{4}/
-    var response = regex.test(ID_Cli)
+    var response = regex.test(ID_Emp)
     return response;
   }
 
   function Limpiar(){
-    document.getElementById("ID_Cliente").value="";
+    document.getElementById("ID_Empleado").value="";
   }
-
-  

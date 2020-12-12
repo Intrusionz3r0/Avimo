@@ -5,6 +5,7 @@ function onFormSubmit(){
     var datoslistos= validarDatosPago();
     if(datoslistos != undefined){
         alert("Los datos estan listos para ser enviados a la base de datos.");
+        Limpiar();
     }
     
 }
@@ -47,6 +48,7 @@ function validarDatosPago(){
 
     if(aux){
         return formDatos;
+        
     }else{
         var modal=$('#errorModal')
         modal.find('.modal-title').text("Error")
@@ -100,4 +102,11 @@ function validarMonto(Monto){
         return response;
 }
 
-
+function Limpiar(){
+    document.getElementById("ID_Cliente").value="";
+    document.getElementById("ID_Credito").value="";
+    document.getElementById("Monto").value="";
+    document.getElementById("Semanas").value="";
+    document.getElementById("Fch_Pago").value="";
+    document.getElementById("F_Comprobante").value="";
+}

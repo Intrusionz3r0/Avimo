@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <title>Avimo Software</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../static/css/style.css">
+
+</head>
+
+<body>
+
+  <div class="wrapper d-flex align-items-stretch">
+    <nav id="sidebar">
+      <div class="p-4 pt-5">
+        <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(../static/images/logo.jpg);"></a>
+        <center>
+          <p id="empleadoName">Elon Reeve Musk</p>
+        </center>
+        <ul class="list-unstyled components mb-5">
+          <!--Menu de Clientes-->
+          <li>
+            <a href="#clientesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Clientes</a>
+            <ul class="collapse list-unstyled" id="clientesSubmenu">
+              <li>
+                <a href="#">Registro Cliente</a>
+              </li>
+              <li>
+                <a href="#">Consulta Cliente</a>
+              </li>
+              <li>
+                <a href="#">Opciones Cliente</a>
+              </li>
+            </ul>
+          </li>
+          <!--Menu de prestamos-->
+          <li>
+            <a href="#prestamosSubmenu" data-toggle="collapse" aria-expanded="false"
+              class="dropdown-toggle">Prestamos</a>
+            <ul class="collapse list-unstyled" id="prestamosSubmenu">
+              <li>
+                <a href="#">Registro Prestamo</a>
+              </li>
+              <li>
+                <a href="#">Consulta Prestamo</a>
+              </li>
+              <li>
+                <a href="#">Opciones Prestamo</a>
+              </li>
+            </ul>
+          </li>
+          <!--Menu de Pagos-->
+          <li>
+            <a href="#pagosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pagos</a>
+            <ul class="collapse list-unstyled" id="pagosSubmenu">
+              <li>
+                <a href="#">Registrar Pago</a>
+              </li>
+              <li>
+                <a href="#">Consulta Pago</a>
+              </li>
+            </ul>
+          </li>
+          <!--Menu de Empleados-->
+          <li>
+              <a href="#empleadosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Empledos</a>
+              <ul class="collapse list-unstyled" id="empleadosSubmenu">
+                  <li>
+                      <a href="#">Registrar Empleado</a>
+                  </li>
+                  <li>
+                    <a href="#">Consulta Empleado</a>
+                </li>
+                <li>
+                    <a href="#">Opciones Empleado</a>
+                </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#">Cerrar Sesión</a>
+          </li>
+        </ul>
+
+        <div class="footer">
+          <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Avimo Software &copy;
+            <script>document.write(new Date().getFullYear());</script> All rights reserved.</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          </p>
+        </div>
+
+      </div>
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content" class="p-4 p-md-5">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+
+          <button type="button" id="sidebarCollapse" class="btn btn-primary">
+            <i class="fa fa-bars"></i>
+            <span class="sr-only">Toggle Menu</span>
+          </button>
+          <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <i class="fa fa-bars"></i>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Generar reporte</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Consulta historial</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!--Abajo de esto va tu código-->
+      <h3>Registro Empleado<span class="badge badge-secondary">New</span></h3>
+      <form method="POST" action="/registraEmpleado" enctype="multipart/form-data">
+          <div class="row">
+            <div class="form-group col">
+                <label for="Nombre">Nombre</label>
+                <input class="form-control" type="text" name="NombreEmp" id="NombreEmp" required>
+            </div>
+
+            <div class="form-group col">
+                <label for="Apellidos">Apellidos</label>
+                <input class="form-control" type="text" name="ApellidosEmp" id="ApellidosEmp" required>
+            </div>
+
+            <div class="form-group col">
+                <label for="Genero">Genero</label>
+                <select class="form-control" id="generoEmp" name="generoEmp" required>
+                    <option value="" disabled selected>Seleccione una opcion...</option>
+                    <option>Masculino</option>
+                    <option>Femenino</option>
+                    <option>Otro</option>
+                </select>
+            </div>
+
+          </div>
+
+          <div class="row"> 
+            <div class="form-group col">
+                <label form="Estado">Estado</label>
+                <select class="form-control" id="estadoEmp" name="estadoEmp" onblur="consultarMunicipio()" ><!-- Poner required -->
+                    <option value="" disabled selected>Seleccione un Estado...</option>
+                  </select>
+            </div>
+
+            <div class="form-group col">
+                <label form="Municipio">Municipio</label>
+                <select class="form-control" id="municipioEmp" name="municipioEmp" onblur="consultarColonia()" ><!-- Poner required -->
+                    <option value="" disabled selected>Seleccione un Municipio...</option>
+                  </select>
+            </div>
+
+            <div class="form-group col">
+                <label form="Colonia">Colonia</label>
+                <select class="form-control" id="coloniaEmp" name="coloniaEmp" onblur="desactivarColonia()" ><!-- Poner required -->
+                    <option value="" disabled selected>Seleccione un Estado...</option>
+                  </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col">
+                <label for="calle1">Calle</label>
+                <input class="form-control" type="text" name="calleEmp" id="calleEmp" required>
+            </div>
+
+            <div class="form-group col">
+                <label form="ninterno">Numero interno</label>
+                <input class="form-control" type="text" name="ninternoEmp" id="ninternoEmp" required>
+            </div>
+
+            <div class="form-group col">
+                <label form="nexterno">Numero externo</label>
+                <input class="form-control" type="text" name="nexternoEmp" id="nexternoEmp" placeholder="Sino aplica poner 0" required>
+            </div>
+
+            <div class="form-group col">
+                <label form="calle2">Entre calles</label>
+                <input class="form-control" type="text" name="entrecallesEmp" id="entrecallesEmp" required>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col">
+                <label form="Telefono">Telefono</label>
+                <input class="form-control" type="text" name="telefonoEmp" id="telefonoEmp"  maxlength="12" placeholder="111-111-1111" required>
+            </div>
+
+            <div class="form-group col">
+                <label form="CURP">CURP</label>
+                <input class="form-control" type="text" name="curpEmp" id="curpEmp" maxlength="18" required>
+            </div>
+          </div>
+
+          
+            <div class="form-group row">
+                <label form="fnacimientoEmp" class="col-2 col-form-label">Fecha de Nacimiento</label>
+                <div class="col-10">
+                    <input class="form-control" type="date" name="fnacimientoEmp" id="fnacimientoEmp" required>
+                </div>
+            </div>
+          
+
+          
+            <div class="form-group row">
+                <label form="fingresoEmp" class="col-2 col-from-label">Fecha de Ingreso</label>
+                <div class="col-10">
+                    <input class="form-control" type="date" name="fingresoEmp" id="fingresoEmp" required>
+                </div>
+            </div>
+          
+            <div class="row">
+                <div class="form-group col">
+                    <label form="fine1">Foto INE 1</label>
+                    <input class="form-control-file" type="file" name="fine1" id="fine1"  onchange="ValidarArchivo(this)" required>
+                </div>
+
+                <div class="form-group col">
+                    <label form="fine2">Foto INE 2</label>
+                    <input class="form-control-file" type="file" name="fine2" id="fine2" onchange="ValidarArchivo(this)" required>
+                </div>
+
+                <div class="form-group col">
+                    <label form="ComproDomi">Comprobante de Domicilio</label>
+                    <input class="form-control-file" type="file" name="ComproDomi" id="ComproDomi" onchange="ValidarArchivo(this)" required>
+                </div>
+            </div>
+
+            <button  class="btn btn-primary"  type="button" id="btnValidarEmpleado" onclick="onFormSubmit()">Registrar Empleado</button>
+      </form>
+
+      <!-- Modal -->
+<div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="modal fade" id="errorfileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+      
+
+      <!--Arriba de esto va tu código-->
+    </div>
+  </div>
+  </div>
+
+  <script src="../static/js/jquery.min.js"></script>
+  <script src="../static/js/popper.js"></script>
+  <script src="../static/js/bootstrap.min.js"></script>
+  <script src="../static/js/main.js"></script>
+  <script src="../static/js/registroEmpleado.js"></script>
+</body>
+
+</html>
