@@ -116,7 +116,7 @@
 
       <div>
         
-        <form method="POST" action="/registraCliente" enctype="multipart/form-data">
+        <form method="POST" action="/clientes/registrocliente/nuevo" enctype="multipart/form-data">
 
         <div id="divRCliente">
       
@@ -225,16 +225,23 @@
     
             <div class="row">
               <div class="form-group col">
-                <label>Foto INE 1</label>
+                <label>INE Delantera</label>
                 <input type="file" class="form-control-file" id="file1Cliente" name="file1Cliente" onchange="ValidarArchivo(this);" required>
               </div>
               <div class="form-group col">
-                <label>Foto INE 2</label>
+                <label>INE Trasera</label>
                 <input type="file" class="form-control-file" id="file2Cliente" name="file2Cliente" onchange="ValidarArchivo(this);" required>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group col">
+                <label>Foto de cliente</label>
+                <input type="file" class="form-control-file" id="file3Cliente" name="file3Cliente" onchange="ValidarArchivo(this);" required>
               </div>
               <div class="form-group col">
                 <label>Comprobante de domicilio</label>
-                <input type="file" class="form-control-file" id="file3Cliente" name="file3Cliente" onchange="ValidarArchivo(this);" required>
+                <input type="file" class="form-control-file" id="file4Cliente" name="file4Cliente" onchange="ValidarArchivo(this);" required>
               </div>
             </div>
     

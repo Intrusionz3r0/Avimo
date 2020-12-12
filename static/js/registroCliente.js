@@ -68,6 +68,7 @@ function leerDatosCliente(){
     formDatos[14] = document.getElementById('file1Cliente').value
     formDatos[15] = document.getElementById('file2Cliente').value
     formDatos[16] = document.getElementById('file3Cliente').value
+    formDatos[17] = document.getElementById('file4Cliente').value
 
 
     for (const key in formDatos) { //Recorre todo los campos del formulario.
