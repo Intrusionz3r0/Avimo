@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <title>Avimo Software</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../static/css/style.css">
+
+</head>
+
+<body>
+
+  <div class="wrapper d-flex align-items-stretch">
+    <nav id="sidebar">
+      <div class="p-4 pt-5">
+        <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(../static/images/logo.jpg);"></a>
+        <center>
+          <p id="empleadoName">Elon Reeve Musk</p>
+        </center>
+        <ul class="list-unstyled components mb-5">
+          <!--Menu de Clientes-->
+          <li>
+            <a href="#clientesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Clientes</a>
+            <ul class="collapse list-unstyled" id="clientesSubmenu">
+              <li>
+                <a href="../templates/registroClientes.html">Registro Cliente</a>
+              </li>
+              <li>
+                <a href="../templates/consultaCliente.html">Consulta Cliente</a>
+              </li>
+              <li>
+                <a href="../templates/opcionesCliente.html">Opciones Cliente</a>
+              </li>
+            </ul>
+          </li>
+          <!--Menu de Crédito-->
+          <li>
+            <a href="#creditoSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Crédito</a>
+            <ul class="collapse list-unstyled" id="creditoSubmenu">
+              <li>
+                <a href="../templates/registroCredito.html">Registro Crédito</a>
+              </li>
+              <li>
+                <a href="../templates/consultaCredito.html">Consulta Crédito</a>
+              </li>
+              <li>
+                <a href="../templates/opcionesCredito.html">Opciones Crédito</a>
+              </li>
+            </ul>
+          </li>
+          <!--Menu de Pagos-->
+          <li>
+            <a href="#pagosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pagos</a>
+            <ul class="collapse list-unstyled" id="pagosSubmenu">
+              <li>
+                <a href="../templates/registroPago.html">Registrar Pago</a>
+              </li>
+              <li>
+                <a href="../templates/consultaPago.html">Consulta Pago</a>
+              </li>
+              <li>
+                <a href="..//templates/opcionesPago.html">Opciones Pago</a>
+              </li>
+            </ul>
+          </li>
+          <!--Menu de Empleados-->
+          <li>
+            <a href="#empleadosSubmenu" data-toggle="collapse" aria-expanded="false"
+              class="dropdown-toggle">Empledos</a>
+            <ul class="collapse list-unstyled" id="empleadosSubmenu">
+              <li>
+                <a href="#">Registrar Empleado</a>
+              </li>
+              <li>
+                <a href="#">Consulta Empleado</a>
+              </li>
+              <li>
+                <a href="#">Opciones Empleado</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Cerrar Sesión</a>
+          </li>
+        </ul>
+
+        <div class="footer">
+          <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Avimo Software &copy;
+            <script>document.write(new Date().getFullYear());</script> All rights reserved.</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          </p>
+        </div>
+
+      </div>
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content" class="p-4 p-md-5">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+
+          <button type="button" id="sidebarCollapse" class="btn btn-primary">
+            <i class="fa fa-bars"></i>
+            <span class="sr-only">Toggle Menu</span>
+          </button>
+          <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <i class="fa fa-bars"></i>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Generar reporte</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Consulta historial</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!--Abajo de esto va tu código-->
+
+
+      <h3>Opciones Credito</h3>
+      <form>
+        <div id="divOpcionesCredito">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text" id="btnGroupAddon">ID</div>
+            </div>
+            <input type="text" class="form-control" maxlength="4" aria-label="Input group example"
+              aria-describedby="btnGroupAddon" id="ID_Credito">
+            <button type="button" class="btn btn-primary" onclick="onFormSubmit()"> Buscar </button>
+            <button type="button" class="btn btn-warning" id="mostrar">Modificar</button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"
+              class="btn btn-danger btn-lg btn-block">Eliminar</button>
+          </div>
+        </div>
+
+      </form>
+
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">¡Advertencia!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ¿ Esta seguro de que quiere eliminar el registro ?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+              <button type="button" class="btn btn-danger">Si</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+      <!--Arriba de esto va tu código-->
+
+    </div>
+  
+
+  <script src="../static/js/jquery.min.js"></script>
+  <script src="../static/js/popper.js"></script>
+  <script src="../static/js/bootstrap.min.js"></script>
+  <script src="../static/js/main.js"></script>
+  <script src="../static/js/opcionesCredito.js"></script>
+</body>
+
+</html>
