@@ -13,7 +13,7 @@
 
 </head>
 
-<body>
+<body onload="MostrarRegEmp();">
 
   <div class="wrapper d-flex align-items-stretch">
     <nav id="sidebar">
@@ -68,18 +68,19 @@
           </li>
           <!--Menu de Empleados-->
           <li>
-              <a href="#empleadosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Empledos</a>
-              <ul class="collapse list-unstyled" id="empleadosSubmenu">
-                  <li>
-                      <a href="#">Registrar Empleado</a>
-                  </li>
-                  <li>
-                    <a href="#">Consulta Empleado</a>
-                </li>
-                <li>
-                    <a href="#">Opciones Empleado</a>
-                </li>
-              </ul>
+            <a href="#empleadosSubmenu" data-toggle="collapse" aria-expanded="false"
+              class="dropdown-toggle">Empledos</a>
+            <ul class="collapse list-unstyled" id="empleadosSubmenu">
+              <li>
+                <a href="#">Registrar Empleado</a>
+              </li>
+              <li>
+                <a href="#">Consulta Empleado</a>
+              </li>
+              <li>
+                <a href="#">Opciones Empleado</a>
+              </li>
+            </ul>
           </li>
           <li>
             <a href="#">Cerrar Sesión</a>
@@ -127,166 +128,219 @@
         </div>
       </nav>
       <!--Abajo de esto va tu código-->
-      <h3>Registro Empleado<span class="badge badge-secondary">New</span></h3>
+      
       <form method="POST" action="/registraEmpleado" enctype="multipart/form-data">
+        <div id="Reg_Empleado">
+          <h3>Registro Empleado<span class="badge badge-secondary">New</span></h3>
           <div class="row">
             <div class="form-group col">
-                <label for="Nombre">Nombre</label>
-                <input class="form-control" type="text" name="NombreEmp" id="NombreEmp" required>
+              <label for="Nombre">Nombre</label>
+              <input class="form-control" type="text" name="NombreEmp" id="NombreEmp" required>
             </div>
 
             <div class="form-group col">
-                <label for="Apellidos">Apellidos</label>
-                <input class="form-control" type="text" name="ApellidosEmp" id="ApellidosEmp" required>
+              <label for="Apellidos">Apellidos</label>
+              <input class="form-control" type="text" name="ApellidosEmp" id="ApellidosEmp" required>
             </div>
 
             <div class="form-group col">
-                <label for="Genero">Genero</label>
-                <select class="form-control" id="generoEmp" name="generoEmp" required>
-                    <option value="" disabled selected>Seleccione una opcion...</option>
-                    <option>Masculino</option>
-                    <option>Femenino</option>
-                    <option>Otro</option>
-                </select>
+              <label for="Genero">Genero</label>
+              <select class="form-control" id="generoEmp" name="generoEmp" required>
+                <option value="" disabled selected>Seleccione una opcion...</option>
+                <option>Masculino</option>
+                <option>Femenino</option>
+                <option>Otro</option>
+              </select>
             </div>
 
           </div>
 
-          <div class="row"> 
-            <div class="form-group col">
-                <label form="Estado">Estado</label>
-                <select class="form-control" id="estadoEmp" name="estadoEmp" onblur="consultarMunicipio()" ><!-- Poner required -->
-                    <option value="" disabled selected>Seleccione un Estado...</option>
-                  </select>
-            </div>
-
-            <div class="form-group col">
-                <label form="Municipio">Municipio</label>
-                <select class="form-control" id="municipioEmp" name="municipioEmp" onblur="consultarColonia()" ><!-- Poner required -->
-                    <option value="" disabled selected>Seleccione un Municipio...</option>
-                  </select>
-            </div>
-
-            <div class="form-group col">
-                <label form="Colonia">Colonia</label>
-                <select class="form-control" id="coloniaEmp" name="coloniaEmp" onblur="desactivarColonia()" ><!-- Poner required -->
-                    <option value="" disabled selected>Seleccione un Estado...</option>
-                  </select>
-            </div>
-          </div>
-
           <div class="row">
             <div class="form-group col">
-                <label for="calle1">Calle</label>
-                <input class="form-control" type="text" name="calleEmp" id="calleEmp" required>
+              <label form="Estado">Estado</label>
+              <select class="form-control" id="estadoEmp" name="estadoEmp" onblur="consultarMunicipio()">
+                <!-- Poner required -->
+                <option value="" disabled selected>Seleccione un Estado...</option>
+              </select>
             </div>
 
             <div class="form-group col">
-                <label form="ninterno">Numero interno</label>
-                <input class="form-control" type="text" name="ninternoEmp" id="ninternoEmp" required>
+              <label form="Municipio">Municipio</label>
+              <select class="form-control" id="municipioEmp" name="municipioEmp" onblur="consultarColonia()">
+                <!-- Poner required -->
+                <option value="" disabled selected>Seleccione un Municipio...</option>
+              </select>
             </div>
 
             <div class="form-group col">
-                <label form="nexterno">Numero externo</label>
-                <input class="form-control" type="text" name="nexternoEmp" id="nexternoEmp" placeholder="Sino aplica poner 0" required>
-            </div>
-
-            <div class="form-group col">
-                <label form="calle2">Entre calles</label>
-                <input class="form-control" type="text" name="entrecallesEmp" id="entrecallesEmp" required>
+              <label form="Colonia">Colonia</label>
+              <select class="form-control" id="coloniaEmp" name="coloniaEmp" onblur="desactivarColonia()">
+                <!-- Poner required -->
+                <option value="" disabled selected>Seleccione un Estado...</option>
+              </select>
             </div>
           </div>
 
           <div class="row">
             <div class="form-group col">
-                <label form="Telefono">Telefono</label>
-                <input class="form-control" type="text" name="telefonoEmp" id="telefonoEmp"  maxlength="12" placeholder="111-111-1111" required>
+              <label for="calle1">Calle</label>
+              <input class="form-control" type="text" name="calleEmp" id="calleEmp" required>
             </div>
 
             <div class="form-group col">
-                <label form="CURP">CURP</label>
-                <input class="form-control" type="text" name="curpEmp" id="curpEmp" maxlength="18" required>
+              <label form="ninterno">Numero interno</label>
+              <input class="form-control" type="text" name="ninternoEmp" id="ninternoEmp" required>
+            </div>
+
+            <div class="form-group col">
+              <label form="nexterno">Numero externo</label>
+              <input class="form-control" type="text" name="nexternoEmp" id="nexternoEmp"
+                placeholder="Sino aplica poner 0" required>
+            </div>
+
+            <div class="form-group col">
+              <label form="calle2">Entre calles</label>
+              <input class="form-control" type="text" name="entrecallesEmp" id="entrecallesEmp" required>
             </div>
           </div>
 
-          
-            <div class="form-group row">
-                <label form="fnacimientoEmp" class="col-2 col-form-label">Fecha de Nacimiento</label>
-                <div class="col-10">
-                    <input class="form-control" type="date" name="fnacimientoEmp" id="fnacimientoEmp" required>
-                </div>
-            </div>
-          
-
-          
-            <div class="form-group row">
-                <label form="fingresoEmp" class="col-2 col-from-label">Fecha de Ingreso</label>
-                <div class="col-10">
-                    <input class="form-control" type="date" name="fingresoEmp" id="fingresoEmp" required>
-                </div>
-            </div>
-          
-            <div class="row">
-                <div class="form-group col">
-                    <label form="fine1">Foto INE 1</label>
-                    <input class="form-control-file" type="file" name="fine1" id="fine1"  onchange="ValidarArchivo(this)" required>
-                </div>
-
-                <div class="form-group col">
-                    <label form="fine2">Foto INE 2</label>
-                    <input class="form-control-file" type="file" name="fine2" id="fine2" onchange="ValidarArchivo(this)" required>
-                </div>
-
-                <div class="form-group col">
-                    <label form="ComproDomi">Comprobante de Domicilio</label>
-                    <input class="form-control-file" type="file" name="ComproDomi" id="ComproDomi" onchange="ValidarArchivo(this)" required>
-                </div>
+          <div class="row">
+            <div class="form-group col">
+              <label form="Telefono">Telefono</label>
+              <input class="form-control" type="text" name="telefonoEmp" id="telefonoEmp" maxlength="12"
+                placeholder="111-111-1111" required>
             </div>
 
-            <button  class="btn btn-primary"  type="button" id="btnValidarEmpleado" onclick="onFormSubmit()">Registrar Empleado</button>
+            <div class="form-group col">
+              <label form="CURP">CURP</label>
+              <input class="form-control" type="text" name="curpEmp" id="curpEmp" maxlength="18" required>
+            </div>
+          </div>
+
+
+          <div class="form-group row">
+            <label form="fnacimientoEmp" class="col-2 col-form-label">Fecha de Nacimiento</label>
+            <div class="col-10">
+              <input class="form-control" type="date" name="fnacimientoEmp" id="fnacimientoEmp" required>
+            </div>
+          </div>
+
+
+
+          <div class="form-group row">
+            <label form="fingresoEmp" class="col-2 col-from-label">Fecha de Ingreso</label>
+            <div class="col-10">
+              <input class="form-control" type="date" name="fingresoEmp" id="fingresoEmp" required>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col">
+              <label form="fine1">Foto INE 1</label>
+              <input class="form-control-file" type="file" name="fine1" id="fine1" onchange="ValidarArchivo(this)"
+                required>
+            </div>
+
+            <div class="form-group col">
+              <label form="fine2">Foto INE 2</label>
+              <input class="form-control-file" type="file" name="fine2" id="fine2" onchange="ValidarArchivo(this)"
+                required>
+            </div>
+
+            <div class="form-group col">
+              <label form="ComproDomi">Comprobante de Domicilio</label>
+              <input class="form-control-file" type="file" name="ComproDomi" id="ComproDomi"
+                onchange="ValidarArchivo(this)" required>
+            </div>
+          </div>
+
+          <button class="btn btn-secondary" type="button" name="btnAsigRol" id="btnAsigRol" onclick="MostrarAsigRol();">Asignar Rol</button>
+        </div>
+
+
+        <div id="Asig_Rol">
+          <h3>Asignación de Rol</h3>
+          <div class="row">
+            <div class="form-group col">
+              <label form="Usuario"> Usuario</label>
+              <div class="col-5">
+                <input class="form-control" type="text" name="Usuario" id="Usuario" maxlength="12" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col">
+              <label form="Contraseña"> Contraseña</label>
+              <div class="col-5">
+                <input class="form-control" type="text" name="Contraseña" id="Contraseña"  maxlength="12" required>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-7">
+              <label form="Rol">Rol Asignado</label>
+              <select class="form-control" name="Rol" id="Rol" required>
+                <option value="" disabled selected>Asigne el Rol</option>
+                <option>Jefe/Subjefe</option>
+                <option>Adminstrador</option>
+                <option>Asesor de Crédito</option>
+              </select>
+            </div>
+          </div>
+          <br><br>
+          <button class="btn btn-secondary" type="button" name="btnRegresarEmp" id="btnRegresarEmp" onclick="MostrarRegEmp();">Regresar</button>
+          <button class="btn btn-primary" type="button" name="btnValidarEmpleado" id="btnValidarEmpleado"
+            onclick="onFormSubmit()">Registrar
+            Empleado</button>
+        </div>
+
+
       </form>
 
       <!-- Modal -->
-<div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  
-  <div class="modal fade" id="errorfileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
 
-      
+
+      <div class="modal fade" id="errorfileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
 
       <!--Arriba de esto va tu código-->
     </div>
