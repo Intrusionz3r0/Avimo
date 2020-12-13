@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <title>Avimo Software</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../../static/css/style.css">
+
+</head>
+
+<body>
+
+  <div class="wrapper d-flex align-items-stretch">
+    <nav id="sidebar">
+      <div class="p-4 pt-5">
+        <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(../../static/images/logo.jpg);"></a>
+        <center>
+          <p id="empleadoName">Elon Reeve Musk</p>
+        </center>
+        <ul class="list-unstyled components mb-5">
+          <!--Menu de Clientes-->
+          <li>
+            <a href="#clientesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Clientes</a>
+            <ul class="collapse list-unstyled" id="clientesSubmenu">
+              <li>
+                <a href="/clientes/registrocliente">Registro Cliente</a>
+              </li>
+              <li>
+                <a href="/clientes/consultaCliente/">Consulta Cliente</a>
+              </li>
+              <li>
+                <a href="/clientes/opcionesCliente/">Opciones Cliente</a>
+              </li>
+            </ul>
+          </li>
+          <!--Menu de prestamos-->
+          <li>
+            <a href="#prestamosSubmenu" data-toggle="collapse" aria-expanded="false"
+              class="dropdown-toggle">Prestamos</a>
+            <ul class="collapse list-unstyled" id="prestamosSubmenu">
+              <li>
+                <a href="#">Registro prestamo</a>
+              </li>
+              <li>
+                <a href="#">Consulta prestamo</a>
+              </li>
+              <li>
+                <a href="#">Opciones prestamo</a>
+              </li>
+            </ul>
+          </li>
+          <!--Menu de Pagos-->
+          <li>
+            <a href="#pagosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pagos</a>
+            <ul class="collapse list-unstyled" id="pagosSubmenu">
+              <li>
+                <a href="#">Registrar pago</a>
+              </li>
+              <li>
+                <a href="#">Consulta pago</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Cerrar Sesión</a>
+          </li>
+        </ul>
+
+        <div class="footer">
+          <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Avimo Software &copy;
+            <script>document.write(new Date().getFullYear());</script> All rights reserved.</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          </p>
+        </div>
+
+      </div>
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content" class="p-4 p-md-5">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+
+          <button type="button" id="sidebarCollapse" class="btn btn-primary">
+            <i class="fa fa-bars"></i>
+            <span class="sr-only">Toggle Menu</span>
+          </button>
+          <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <i class="fa fa-bars"></i>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Generar reporte</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Consulta historial</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!--Abajo de esto va tu código-->
+
+      
+      <div id="divOpcionesCliente">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text" >Clave</div>
+          </div>
+          <input type="text" class="form-control col-xs-3"  aria-label="Input group example"
+            aria-describedby="btnGroupAddon" id="clavesita">
+          <button type="submit" class="btn btn-primary" onclick="getCliente()">Buscar</button>
+        </div>
+        <br><br>
+
+
+      <h2>Cliente</h2>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Clave</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Genero</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Municipio</th>
+            <th scope="col">Colonia</th>
+            <th scope="col">Calle Principal</th>
+            <th scope="col">Numero interior</th>
+            <th scope="col">Numero exterior</th>
+            <th scope="col">Entre calles</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Curp</th>
+            <th scope="col">Fecha de nacimiento</th>
+            <th scope="col">Fecha de registro</th>
+            <th scope="col">Estatus</th>
+            <th scope="col">Foto INE1</th>
+            <th scope="col">Foto INE2</th>
+            <th scope="col">Foto Cliente</th>
+            <th scope="col">Comprobante de domicilio</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for c in cliente %}
+            <tr>
+              <td>{{c.ID_Cliente}}</td>
+              <td>{{c.Clave}}</td>
+              <td>{{c.Nombre}}</td>
+              <td>{{c.Apellidos}}</td>
+              <td>{{c.Genero}}</td>
+              <td>{{c.Estado}}</td>
+              <td>{{c.Municipio}}</td>
+              <td>{{c.Colonia}}</td>
+              <td>{{c.CallePrincipal}}</td>
+              <td>{{c.NumInterior}}</td>
+              <td>{{c.NumExterior}}</td>
+              <td>{{c.EntreCalles}}</td>
+              <td>{{c.Telefono}}</td>
+              <td>{{c.CURP}}</td>
+              <td>{{c.Fecha_Nacimiento}}</td>
+              <td>{{c.Fecha_Registro}}</td>
+              <td>{{c.Estatus}}</td>
+              <td>NULL</td>
+              <td>NULL</td>
+              <td>NULL</td>
+              <td>NULL</td>
+            </tr>
+          {% endfor %}
+
+        </tbody>
+      </table>
+
+      <h2>Aval</h2>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Clave</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Municipio</th>
+            <th scope="col">Colonia</th>
+            <th scope="col">Calle Principal</th>
+            <th scope="col">Numero interior</th>
+            <th scope="col">Numero exterior</th>
+            <th scope="col">Entre calles</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Foto INE1</th>
+            <th scope="col">Foto INE2</th>
+            <th scope="col">Comprobante de domicilio</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for a in aval %}
+            <tr>
+              <td>{{a.ID_Aval}}</td>
+              <td>{{a.Clave}}</td>
+              <td>{{a.Nombre}}</td>
+              <td>{{a.Apellidos}}</td>
+              <td>{{a.Estado}}</td>
+              <td>{{a.Municipio}}</td>
+              <td>{{a.Colonia}}</td>
+              <td>{{a.CallePrincipal}}</td>
+              <td>{{a.NumInterior}}</td>
+              <td>{{a.NumExterior}}</td>
+              <td>{{a.EntreCalles}}</td>
+              <td>{{a.Telefono}}</td>
+              <td>NULL</td>
+              <td>NULL</td>
+              <td>NULL</td>
+
+            </tr>
+          {% endfor %}
+
+        </tbody>
+      </table>
+
+
+
+
+
+
+
+      
+
+      <!--Arriba de esto va tu código-->
+    </div>
+  </div>
+  </div>
+
+  <script src="../../static/js/jquery.min.js"></script>
+  <script src="../../static/js/popper.js"></script>
+  <script src="../../static/js/bootstrap.min.js"></script>
+  <script src="../../static/js/main.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="../../static/js/Clientes/ConsultaCliente.js"></script>
+  
+</body>
+
+</html>

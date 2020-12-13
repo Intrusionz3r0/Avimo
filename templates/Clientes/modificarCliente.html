@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <title>Avimo Software</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../../static/css/style.css">
+  
+
+</head>
+
+<body onload="consultaEstados(); consultaEstadosAval();">
+
+  <div class="wrapper d-flex align-items-stretch">
+    <nav id="sidebar">
+      <div class="p-4 pt-5">
+        <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(../../static/images/logo.jpg);"></a>
+        <center>
+          <p id="empleadoName">Elon Reeve Musk</p>
+        </center>
+        <ul class="list-unstyled components mb-5">
+          <!--Menu de Clientes-->
+          <li>
+            <a href="#clientesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Clientes</a>
+            <ul class="collapse list-unstyled" id="clientesSubmenu">
+              <li>
+                <a href="/clientes/registrocliente">Registro Cliente</a>
+              </li>
+              <li>
+                <a href="/clientes/consultaCliente/">Consulta Cliente</a>
+              </li>
+              <li>
+                <a href="/clientes/opcionesCliente/">Opciones Cliente</a>
+              </li>
+            </ul>
+          </li>
+          <!--Menu de prestamos-->
+          <li>
+            <a href="#prestamosSubmenu" data-toggle="collapse" aria-expanded="false"
+              class="dropdown-toggle">Credito</a>
+            <ul class="collapse list-unstyled" id="prestamosSubmenu">
+              <li>
+                <a href="../templates/registroCredito.html">Registro Credito</a>
+              </li>
+              <li>
+                <a href="../templates/consultaCredito.html">Consulta Credito</a>
+              </li>
+              <li>
+                <a href="../templates/opcionesCredito.html">Opciones Credito</a>
+              </li>
+            </ul>
+          </li>
+          <!--Menu de Pagos-->
+          <li>
+            <a href="#pagosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pagos</a>
+            <ul class="collapse list-unstyled" id="pagosSubmenu">
+              <li>
+                <a href="../templates/registroPago.html">Registrar pago</a>
+              </li>
+              <li>
+                <a href="../templates/consultaPago.html">Consulta pago</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Cerrar Sesión</a>
+          </li>
+        </ul>
+
+        <div class="footer">
+          <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Avimo Software &copy;
+            <script>document.write(new Date().getFullYear());</script> All rights reserved.</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          </p>
+        </div>
+
+      </div>
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content" class="p-4 p-md-5">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+
+          <button type="button" id="sidebarCollapse" class="btn btn-primary">
+            <i class="fa fa-bars"></i>
+            <span class="sr-only">Toggle Menu</span>
+          </button>
+          <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <i class="fa fa-bars"></i>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Generar reporte</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Consulta historial</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!--Abajo de esto va tu código-->
+
+
+      <div>
+        
+        <form method="POST" action="/clientes/actualizarcliente" enctype="multipart/form-data">
+
+        <div id="divRCliente">
+      
+          <h3>Modificar Clientes <span class="badge badge-secondary">New</span></h3>
+          {% for c in cliente %}
+
+          <label for="nombre">Clave</label>
+          <input type="text" class="form-control" value="{{c.Clave}}" name="nombreCliente" id="nombreCliente" >
+            <div class="row">
+              
+              <div class="col">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" value="{{c.Nombre}}" name="nombreCliente" id="nombreCliente" required>
+              </div>
+             
+              <div class="col">
+                <label for="apellido">Apellido</label>
+                <input type="text" class="form-control" value="{{c.Apellidos}}" name="apellidoCliente" id="apellidoCliente" required>
+              </div>
+             
+              <div class="col">
+                <div class="form-group">
+                  <label>Genero</label>
+                  <select class="form-control" id="generoCliente" name="generoCliente" required>
+                    <option value="" disabled selected>Seleccione una opcion...</option>
+                    <option>Masculino</option>
+                    <option>Femenino</option>
+                    <option>Otro</option>
+                  </select>
+                </div>
+              </div>
+    
+            </div>
+           
+    
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="estado">Estado</label>
+                  <select class="form-control" id="estadoCliente" name="estadoCliente" onblur="consultarMunicipio()" required>
+                    <option value="{{c.Estado}}" selected>{{c.Estado}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="municipio">Municipio</label>
+                  <select class="form-control" id="municipioCliente" name="municipioCliente" onblur="consultarColonia()" required>
+                    <option value="{{c.Municipio}}" selected>{{c.Municipio}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="colonia">Colonia</label>
+                  <select class="form-control" id="coloniaCliente" name="coloniaCliente" onblur="desactivarColonia()" required>
+                    <option value="{{c.Colonia}}" selected>{{c.Colonia}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col">
+                <label for="calle1">Calle</label>
+                <input type="text" class="form-control" value="{{c.CallePrincipal}}" id="calleCliente" name="calleCliente" required>
+                
+              </div>
+              <div class="col">
+                <label for="ninterno">Numero interno</label>
+                <input type="text" class="form-control" id="ninternoCliente" value="{{c.NumInterior}}" name="ninternoCliente" required>
+              </div>
+              <div class="col">
+                <label for="nexterno">Numero externo</label>
+                <input type="text" class="form-control" id="nexternoCliente" value="{{c.NumExterior}}" name="nexternoCliente" >
+              </div>
+              <div class="col">
+                <label for="calle2">Entre calles</label>
+                <input type="text" class="form-control" id="entrecallesCliente" value="{{c.EntreCalles}}" name="entrecallesCliente" required>
+              </div>
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="telefono">Telefono</label>
+              <input type="text" class="form-control" value="{{c.Telefono}}" id="telefonoCliente" name="telefonoCliente" maxlength="13" required >
+              
+            </div>
+            <div class="form-group">
+              <label for="curp">Curp</label>
+              <input type="text" class="form-control" value="{{c.CURP}}" id="curpCliente" name="curpCliente" maxlength="18" required >
+            </div>
+            <br>
+    
+            <div class="form-group row">
+              <label for="fnacimiento" class="col-2 col-form-label">Fecha de Nacimiento</label>
+              <div class="col-10">
+                <input class="form-control" type="date" value="1998-01-13" id="fnacimientoCliente" name="fnacimientoCliente" required>
+              </div>
+            </div>
+    
+            <div class="form-group row">
+              <label for="fregistro" class="col-2 col-form-label">Fecha de registro</label>
+              <div class="col-10">
+                <input class="form-control" type="datetime-local" value="2020-11-22T02:00:00" id="fregistroCliente"
+                  name="fregistroCliente" required>
+              </div>
+            </div>
+    
+    
+            <div class="row">
+              <div class="form-group col">
+                <label>INE Delantera</label>
+                <input type="file" class="form-control-file" id="file1Cliente" name="file1Cliente" onchange="ValidarArchivo(this);" required>
+              </div>
+              <div class="form-group col">
+                <label>INE Trasera</label>
+                <input type="file" class="form-control-file" id="file2Cliente" name="file2Cliente" onchange="ValidarArchivo(this);" required>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group col">
+                <label>Foto de cliente</label>
+                <input type="file" class="form-control-file" id="file3Cliente" name="file3Cliente" onchange="ValidarArchivo(this);" required>
+              </div>
+              <div class="form-group col">
+                <label>Comprobante de domicilio</label>
+                <input type="file" class="form-control-file" id="file4Cliente" name="file4Cliente" onchange="ValidarArchivo(this);" required>
+              </div>
+            </div>
+            {% endfor %}
+            <button type="button" class="btn btn-primary" id="btnSiguiente" onclick="validarDatosClientes()">Siguiente</button>
+       
+        
+        </div>
+      
+        <br>
+
+        <div id=divRAval style="display: none;">
+
+          <h3>Modificar Aval <span class="badge badge-secondary">New</span></h3>
+    
+          <div class="row">
+            {% for a in aval %}
+            <div class="col">
+              <label for="nombre">Nombre</label>
+              <input type="text" class="form-control" value="{{a.Nombre}}" name="nombreAval" id="nombreAval" required>
+            </div>
+           
+            <div class="col">
+              <label for="apellido">Apellido</label>
+              <input type="text" class="form-control" value="{{a.Apellidos}}" name="apellidoAval" id="apellidoAval" required>
+            </div>
+          
+          </div>
+         
+          <br>
+  
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="estado">Estado</label>
+                <select class="form-control" id="estadoAval" name="estadoAval" onblur="consultarMunicipioAval()" required>
+                  <option value="{{a.Estado}}" selected>{{a.Estado}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="municipio">Municipio</label>
+                <select class="form-control" id="municipioAval" name="municipioAval" onblur="consultarColoniaAval()" required>
+                  <option value="{{a.Municipio}}" selected>{{a.Municipio}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="colonia">Colonia</label>
+                <select class="form-control" id="coloniaAval" name="coloniaAval" onblur="desactivarColoniaAval()" required>
+                  <option value="{{a.Colonia}}" selected>{{a.Colonia}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col">
+              <label for="calle1">Calle</label>
+              <input type="text" class="form-control" value="{{a.CallePrincipal}}" id="calleAval" name="calleAval" required>
+              
+            </div>
+            <div class="col">
+              <label for="ninterno">Numero interno</label>
+              <input type="text" class="form-control" id="ninternoAval" value="{{a.NumInterior}}" name="ninternoAval" required>
+            </div>
+            <div class="col">
+              <label for="nexterno">Numero externo</label>
+              <input type="text" class="form-control" id="nexternoAval" value="{{a.NumExterior}}" name="nexternoAval" >
+            </div>
+            <div class="col">
+              <label for="calle2">Entre calles</label>
+              <input type="text" class="form-control" id="entrecallesAval" value="{{a.EntreCalles}}" name="entrecallesAval" required>
+            </div>
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="telefono">Telefono</label>
+            <input type="text" class="form-control" id="telefonoAval" value="{{a.Telefono}}" name="telefonoAval" maxlength="13" required >
+            
+          </div>
+
+          <br>
+  
+  
+          <div class="row">
+            <div class="form-group col">
+              <label>Foto INE 1</label>
+              <input type="file" class="form-control-file" id="file1Aval" name="file1Aval" onchange="ValidarArchivo(this);" required>
+            </div>
+            <div class="form-group col">
+              <label>Foto INE 2</label>
+              <input type="file" class="form-control-file" id="file2Aval" name="file2aval" onchange="ValidarArchivo(this);" required>
+            </div>
+            <div class="form-group col">
+              <label>Comprobante de domicilio</label>
+              <input type="file" class="form-control-file" id="file3Aval" name="file3Aval" onchange="ValidarArchivo(this);" required>
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary" id="btnComprobar" onclick="validarDatosAval()">Comprobar</button>
+        </div>
+
+
+        {% endfor %}
+        <button type="submit" class="btn btn-primary" id="btnRegistrar" onclick="datosListosDB()" style="display: none;" >Registrar</button>
+        </form>
+      
+      </div>
+
+
+
+
+
+
+
+
+
+      <!--Aqui va mi modal para cuando hay un error-->
+
+<!-- Modal -->
+<div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="errorfileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+      <!--Arriba de esto va tu código-->
+    </div>
+  </div>
+  </div>
+
+  
+  <script src="../../static/js/jquery.min.js"></script>
+  <script src="../../static/js/popper.js"></script>
+  <script src="../../static/js/bootstrap.min.js"></script>
+  <script src="../../static/js/main.js"></script>
+  <script src="../../static/js/Clientes/registroCliente.js"></script>
+</body>
+
+</html>

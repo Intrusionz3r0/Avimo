@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/css/style.css">
+  <link rel="stylesheet" href="../../static/css/style.css">
 
 </head>
 
@@ -18,7 +18,7 @@
   <div class="wrapper d-flex align-items-stretch">
     <nav id="sidebar">
       <div class="p-4 pt-5">
-        <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(../static/images/logo.jpg);"></a>
+        <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(../../static/images/logo.jpg);"></a>
         <center>
           <p id="empleadoName">Elon Reeve Musk</p>
         </center>
@@ -28,13 +28,13 @@
             <a href="#clientesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Clientes</a>
             <ul class="collapse list-unstyled" id="clientesSubmenu">
               <li>
-                <a href="../templates/registroClientes.html">Registro Cliente</a>
+                <a href="/clientes/registrocliente">Registro Cliente</a>
               </li>
               <li>
-                <a href="../templates/consultaCliente.html">Consulta Cliente</a>
+                <a href="/clientes/consultaCliente/">Consulta Cliente</a>
               </li>
               <li>
-                <a href="../templates/opcionesCliente.html">Opciones Cliente</a>
+                <a href="/clientes/opcionesCliente/">Opciones Cliente</a>
               </li>
             </ul>
           </li>
@@ -121,10 +121,9 @@
           <div class="input-group-prepend">
             <div class="input-group-text" id="btnGroupAddon">Clave</div>
           </div>
-          <input type="text" class="form-control" maxlength="4" aria-label="Input group example"
+          <input type="text" class="form-control" id="clavesita" aria-label="Input group example"
             aria-describedby="btnGroupAddon">
-          <button type="submit" class="btn btn-primary">Buscar</button>
-          <button type="submit" class="btn btn-warning" id="mostrar">Modificar</button>
+          <button type="button" class="btn btn-warning" id="mostrar" onclick="modificarCliente()">Modificar</button>
           <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" class="btn btn-danger btn-lg btn-block">Eliminar</button>
         </div>
   
@@ -143,7 +142,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                <button type="button" class="btn btn-danger">Si</button>
+                <button type="button" class="btn btn-danger" onclick="deleteCliente()">Si</button>
               </div>
             </div>
           </div>
@@ -164,12 +163,13 @@
   </div>
   </div>
 
-  <script src="../static/js/jquery.min.js"></script>
-  <script src="../static/js/popper.js"></script>
-  <script src="../static/js/bootstrap.min.js"></script>
-  <script src="../static/js/main.js"></script>
-  <script src="../static/js/opcionesCliente.js"></script>
+
+  <script src="../../static/js/jquery.min.js"></script>
+  <script src="../../static/js/popper.js"></script>
+  <script src="../../static/js/bootstrap.min.js"></script>
+  <script src="../../static/js/main.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="../../static/js/Clientes/opcionesCliente.js"></script>
 </body>
 
 </html>

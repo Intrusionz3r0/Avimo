@@ -21,9 +21,9 @@ db = SQLAlchemy(app)
 
 @app.route('/clientes/registrocliente')
 def ventanaCliente():
-    return render_template('registroClientes.html')
+    return render_template('Clientes/registroClientes.html')
 
-@app.route('/clientes/registrocliente/nuevo',methods=['POST','GET'])
+@app.route('/clientes/registrocliente/nuevo',methods=['POST'])
 def agregarCliente():
     cliente=Clientes()
     cliente.Nombre = request.form['nombreCliente']
@@ -44,6 +44,7 @@ def agregarCliente():
     cliente.EntreCalles = request.form['entrecallesCliente']
     cliente.Telefono = request.form['telefonoCliente']
     cliente.CURP = request.form['curpCliente']
+    cliente.Clave = cliente.CURP[:10]+cliente.CURP[-3:]
     cliente.Fecha_Nacimiento = request.form['fnacimientoCliente']
     cliente.Fecha_Registro = request.form['fregistroCliente']
     cliente.Estatus = "A"
@@ -51,16 +52,9 @@ def agregarCliente():
     #cliente.FotoINE_Trasera =request.files['file1Cliente']
     #cliente.FotoCliente =request.files['file1Cliente']
     #cliente.Comprobante_Domicilio =request.files['file1Cliente']
-    cliente.insertar()
-
-
-
-    if(reque)
-   
-
-   
+    
     aval=Avales()
-    aval.Cliente = cli.ID_Cliente
+    aval.Clave = cliente.CURP[:10]+cliente.CURP[-3:]
     aval.Nombre = request.form['nombreAval']
     aval.Apellidos = request.form['apellidoAval']
     aval.Estado = request.form['estadoAval']
@@ -75,15 +69,64 @@ def agregarCliente():
     #aval.FotoINE_Trasera = request.form['file2aval']
     #aval.Comprobante_Domicilio = request.form['file3Aval']
 
-
-
-    
+    cliente.insertar()
     aval.insertar()
     return redirect(url_for('ventanaCliente'))
 
 
 
+@app.route("/clientes/consultaCliente/")
+def consultaCliente():
+    return render_template('Clientes/consultaCliente.html')
+
+@app.route("/clientes/consultaCliente/<string:clave>")
+def obtenerDatosCliente(clave):
+
+    aval=Avales()
+    aval.Clave=clave
+    aval=aval.consultaIndividual()
+
+    cliente=Clientes()
+    cliente.Clave=clave
+    cliente=cliente.consultaIndividual()
+
+    return render_template('Clientes/consultaCliente.html',cliente=cliente,aval=aval)
+
+
+
+@app.route("/clientes/opcionesCliente/")
+def opcionesCliente():
+    return render_template('Clientes/opcionesCliente.html')
+
+
+@app.route('/clientes/opcionesCliente/eliminar/<string:clave>')
+def eliminarCliente(clave):
+
+    aval=Avales()
+    aval.Clave=clave
+    aval=aval.eliminar()
+
+    cliente=Clientes()
+    cliente.Clave=clave
+    cliente.eliminar()
+    return redirect(url_for('consultaCliente'))
+    
+@app.route('/clientes/opcionesCliente/<string:clave>')
+def obtenerDatosClienteAval(clave):
+    aval=Avales()
+    aval.Clave=clave
+    aval=aval.consultaIndividual()
+
+    cliente=Clientes()
+    cliente.Clave=clave
+    cliente=cliente.consultaIndividual()
+
+    return render_template('Clientes/modificarCliente.html',cliente=cliente,aval=aval)
+
+@app.route('/clientes/actualizarcliente',methods=['POST'])
+def actualizarClienteAval():    
+    return redirect(url_for('ventanaCliente'))
 
 if __name__ == "__main__":
-    db.create_all()
+    
     app.run(port = 3000, debug = True)
