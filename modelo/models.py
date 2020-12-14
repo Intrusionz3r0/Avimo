@@ -33,19 +33,18 @@ class Clientes(db.Model):
         db.session.add(self)                                                                                                                                                                     
         db.session.commit()                                                                                                                                                                      
     def consultaGeneral(self):                                                                                                                                                                   
-        Clientes=self.query.all()                                                                                                                                                                   
-        return Clientes
+        cliente=self.query.all()                                                                                                                                                                   
+        return cliente
     def actualizar(self):
         db.session.merge(self)
         db.session.commit()
     def eliminar(self):
-        #Clientes=self.consultaIndividual()
-        Clientes=self.query.filter_by(Clave=self.Clave).first()
-        db.session.delete(Clientes)
+        cli=self.consultaIndividual()
+        db.session.delete(cli)
         db.session.commit()
     def consultaIndividual(self):
-        Clientes=self.query.filter_by(Clave=self.Clave)
-        return Clientes
+        cliente=self.query.get(self.ID_Cliente)
+        return cliente
 
 
 
@@ -77,9 +76,9 @@ class Avales(db.Model):
         db.session.merge(self)
         db.session.commit()
     def eliminar(self):
-        aval=self.query.filter_by(Clave=self.Clave).first()
-        db.session.delete(aval)
+        cli=self.consultaIndividual()
+        db.session.delete(cli)
         db.session.commit()
     def consultaIndividual(self):
-        aval=self.query.filter_by(Clave=self.Clave)
+        aval=self.query.get(self.ID_Aval)
         return aval

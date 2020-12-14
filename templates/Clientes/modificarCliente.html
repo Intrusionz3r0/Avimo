@@ -32,9 +32,6 @@
                 <a href="/clientes/registrocliente">Registro Cliente</a>
               </li>
               <li>
-                <a href="/clientes/consultaCliente/">Consulta Cliente</a>
-              </li>
-              <li>
                 <a href="/clientes/opcionesCliente/">Opciones Cliente</a>
               </li>
             </ul>
@@ -117,25 +114,29 @@
 
       <div>
         
-        <form method="POST" action="/clientes/actualizarcliente" enctype="multipart/form-data">
+        <form method="POST" action="/opcionesCliente/actualizar/" enctype="multipart/form-data">
 
         <div id="divRCliente">
       
           <h3>Modificar Clientes <span class="badge badge-secondary">New</span></h3>
-          {% for c in cliente %}
-
-          <label for="nombre">Clave</label>
-          <input type="text" class="form-control" value="{{c.Clave}}" name="nombreCliente" id="nombreCliente" >
+          
+          
             <div class="row">
+
+              <div class="col">
+                <label for="nombre">ID</label>
+                <input type="text" class="form-control"  value="{{cliente.ID_Cliente}}" readonly name="idCliente" id="idCliente" required>
+
+              </div>
               
               <div class="col">
                 <label for="nombre">Nombre</label>
-                <input type="text" class="form-control" value="{{c.Nombre}}" name="nombreCliente" id="nombreCliente" required>
+                <input type="text" class="form-control" value="{{cliente.Nombre}}" name="nombreCliente" id="nombreCliente" required>
               </div>
              
               <div class="col">
                 <label for="apellido">Apellido</label>
-                <input type="text" class="form-control" value="{{c.Apellidos}}" name="apellidoCliente" id="apellidoCliente" required>
+                <input type="text" class="form-control" value="{{cliente.Apellidos}}" name="apellidoCliente" id="apellidoCliente" required>
               </div>
              
               <div class="col">
@@ -158,7 +159,7 @@
                 <div class="form-group">
                   <label for="estado">Estado</label>
                   <select class="form-control" id="estadoCliente" name="estadoCliente" onblur="consultarMunicipio()" required>
-                    <option value="{{c.Estado}}" selected>{{c.Estado}}</option>
+                    <option value="{{cliente.Estado}}" selected>{{cliente.Estado}}</option>
                   </select>
                 </div>
               </div>
@@ -166,7 +167,7 @@
                 <div class="form-group">
                   <label for="municipio">Municipio</label>
                   <select class="form-control" id="municipioCliente" name="municipioCliente" onblur="consultarColonia()" required>
-                    <option value="{{c.Municipio}}" selected>{{c.Municipio}}</option>
+                    <option value="{{cliente.Municipio}}" selected>{{cliente.Municipio}}</option>
                   </select>
                 </div>
               </div>
@@ -174,7 +175,7 @@
                 <div class="form-group">
                   <label for="colonia">Colonia</label>
                   <select class="form-control" id="coloniaCliente" name="coloniaCliente" onblur="desactivarColonia()" required>
-                    <option value="{{c.Colonia}}" selected>{{c.Colonia}}</option>
+                    <option value="{{cliente.Colonia}}" selected>{{cliente.Colonia}}</option>
                   </select>
                 </div>
               </div>
@@ -183,31 +184,31 @@
             <div class="row">
               <div class="col">
                 <label for="calle1">Calle</label>
-                <input type="text" class="form-control" value="{{c.CallePrincipal}}" id="calleCliente" name="calleCliente" required>
+                <input type="text" class="form-control" value="{{cliente.CallePrincipal}}" id="calleCliente" name="calleCliente" required>
                 
               </div>
               <div class="col">
                 <label for="ninterno">Numero interno</label>
-                <input type="text" class="form-control" id="ninternoCliente" value="{{c.NumInterior}}" name="ninternoCliente" required>
+                <input type="text" class="form-control" id="ninternoCliente" value="{{cliente.NumInterior}}" name="ninternoCliente" required>
               </div>
               <div class="col">
                 <label for="nexterno">Numero externo</label>
-                <input type="text" class="form-control" id="nexternoCliente" value="{{c.NumExterior}}" name="nexternoCliente" >
+                <input type="text" class="form-control" id="nexternoCliente" value="{{cliente.NumExterior}}" name="nexternoCliente" >
               </div>
               <div class="col">
                 <label for="calle2">Entre calles</label>
-                <input type="text" class="form-control" id="entrecallesCliente" value="{{c.EntreCalles}}" name="entrecallesCliente" required>
+                <input type="text" class="form-control" id="entrecallesCliente" value="{{cliente.EntreCalles}}" name="entrecallesCliente" required>
               </div>
             </div>
             <br>
             <div class="form-group">
               <label for="telefono">Telefono</label>
-              <input type="text" class="form-control" value="{{c.Telefono}}" id="telefonoCliente" name="telefonoCliente" maxlength="13" required >
+              <input type="text" class="form-control" value="{{cliente.Telefono}}" id="telefonoCliente" name="telefonoCliente" maxlength="13" required >
               
             </div>
             <div class="form-group">
               <label for="curp">Curp</label>
-              <input type="text" class="form-control" value="{{c.CURP}}" id="curpCliente" name="curpCliente" maxlength="18" required >
+              <input type="text" class="form-control" value="{{cliente.CURP}}" id="curpCliente" name="curpCliente" maxlength="18" required >
             </div>
             <br>
     
@@ -248,7 +249,7 @@
                 <input type="file" class="form-control-file" id="file4Cliente" name="file4Cliente" onchange="ValidarArchivo(this);" required>
               </div>
             </div>
-            {% endfor %}
+            
             <button type="button" class="btn btn-primary" id="btnSiguiente" onclick="validarDatosClientes()">Siguiente</button>
        
         
@@ -261,15 +262,20 @@
           <h3>Modificar Aval <span class="badge badge-secondary">New</span></h3>
     
           <div class="row">
-            {% for a in aval %}
+
+            <div class="col">
+              <label for="nombre">ID</label>
+              <input type="text" class="form-control" value="{{aval.ID_Aval}}" readonly name="idAval" id="idAval" required>
+            </div>
+            
             <div class="col">
               <label for="nombre">Nombre</label>
-              <input type="text" class="form-control" value="{{a.Nombre}}" name="nombreAval" id="nombreAval" required>
+              <input type="text" class="form-control" value="{{aval.Nombre}}" name="nombreAval" id="nombreAval" required>
             </div>
            
             <div class="col">
               <label for="apellido">Apellido</label>
-              <input type="text" class="form-control" value="{{a.Apellidos}}" name="apellidoAval" id="apellidoAval" required>
+              <input type="text" class="form-control" value="{{aval.Apellidos}}" name="apellidoAval" id="apellidoAval" required>
             </div>
           
           </div>
@@ -281,7 +287,7 @@
               <div class="form-group">
                 <label for="estado">Estado</label>
                 <select class="form-control" id="estadoAval" name="estadoAval" onblur="consultarMunicipioAval()" required>
-                  <option value="{{a.Estado}}" selected>{{a.Estado}}</option>
+                  <option value="{{aval.Estado}}" selected>{{aval.Estado}}</option>
                 </select>
               </div>
             </div>
@@ -289,7 +295,7 @@
               <div class="form-group">
                 <label for="municipio">Municipio</label>
                 <select class="form-control" id="municipioAval" name="municipioAval" onblur="consultarColoniaAval()" required>
-                  <option value="{{a.Municipio}}" selected>{{a.Municipio}}</option>
+                  <option value="{{aval.Municipio}}" selected>{{aval.Municipio}}</option>
                 </select>
               </div>
             </div>
@@ -297,7 +303,7 @@
               <div class="form-group">
                 <label for="colonia">Colonia</label>
                 <select class="form-control" id="coloniaAval" name="coloniaAval" onblur="desactivarColoniaAval()" required>
-                  <option value="{{a.Colonia}}" selected>{{a.Colonia}}</option>
+                  <option value="{{aval.Colonia}}" selected>{{aval.Colonia}}</option>
                 </select>
               </div>
             </div>
@@ -306,26 +312,26 @@
           <div class="row">
             <div class="col">
               <label for="calle1">Calle</label>
-              <input type="text" class="form-control" value="{{a.CallePrincipal}}" id="calleAval" name="calleAval" required>
+              <input type="text" class="form-control" value="{{aval.CallePrincipal}}" id="calleAval" name="calleAval" required>
               
             </div>
             <div class="col">
               <label for="ninterno">Numero interno</label>
-              <input type="text" class="form-control" id="ninternoAval" value="{{a.NumInterior}}" name="ninternoAval" required>
+              <input type="text" class="form-control" id="ninternoAval" value="{{aval.NumInterior}}" name="ninternoAval" required>
             </div>
             <div class="col">
               <label for="nexterno">Numero externo</label>
-              <input type="text" class="form-control" id="nexternoAval" value="{{a.NumExterior}}" name="nexternoAval" >
+              <input type="text" class="form-control" id="nexternoAval" value="{{aval.NumExterior}}" name="nexternoAval" >
             </div>
             <div class="col">
               <label for="calle2">Entre calles</label>
-              <input type="text" class="form-control" id="entrecallesAval" value="{{a.EntreCalles}}" name="entrecallesAval" required>
+              <input type="text" class="form-control" id="entrecallesAval" value="{{aval.EntreCalles}}" name="entrecallesAval" required>
             </div>
           </div>
           <br>
           <div class="form-group">
             <label for="telefono">Telefono</label>
-            <input type="text" class="form-control" id="telefonoAval" value="{{a.Telefono}}" name="telefonoAval" maxlength="13" required >
+            <input type="text" class="form-control" id="telefonoAval" value="{{aval.Telefono}}" name="telefonoAval" maxlength="13" required >
             
           </div>
 
@@ -350,7 +356,7 @@
         </div>
 
 
-        {% endfor %}
+        
         <button type="submit" class="btn btn-primary" id="btnRegistrar" onclick="datosListosDB()" style="display: none;" >Registrar</button>
         </form>
       

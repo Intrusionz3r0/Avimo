@@ -10,6 +10,11 @@ function modificarCliente(){
 }
 
 
+function getCliente(){
+  var id = document.getElementById("clavesita").value
+  location.href="/clientes/opcionesCliente/"+id
+}
+
 
 
 

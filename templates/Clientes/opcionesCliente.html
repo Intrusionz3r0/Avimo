@@ -31,9 +31,6 @@
                 <a href="/clientes/registrocliente">Registro Cliente</a>
               </li>
               <li>
-                <a href="/clientes/consultaCliente/">Consulta Cliente</a>
-              </li>
-              <li>
                 <a href="/clientes/opcionesCliente/">Opciones Cliente</a>
               </li>
             </ul>
@@ -119,44 +116,46 @@
       <div id="divOpcionesCliente">
         <div class="input-group">
           <div class="input-group-prepend">
-            <div class="input-group-text" id="btnGroupAddon">Clave</div>
+            <div class="input-group-text" id="btnGroupAddon">ID</div>
           </div>
           <input type="text" class="form-control" id="clavesita" aria-label="Input group example"
             aria-describedby="btnGroupAddon">
-          <button type="button" class="btn btn-warning" id="mostrar" onclick="modificarCliente()">Modificar</button>
-          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" class="btn btn-danger btn-lg btn-block">Eliminar</button>
+          <button type="button" class="btn btn-primary" onclick="getCliente()">Consultar</button>
         </div>
-  
-  
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">¡Advertencia!</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                ¿ Esta seguro de que quiere eliminar el registro ?
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                <button type="button" class="btn btn-danger" onclick="deleteCliente()">Si</button>
-              </div>
-            </div>
-          </div>
-        </div>
+
         <br>
-      </div>
+
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Nombre Completo</th>
+              <th scope="col">Telefono</th>
+              <th scope="col">Dirección</th>
+              <th scope="col">Estado</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+              
+            </tr>
+          </thead>
+          {% for c in cliente %}
+          <tbody>
+            <tr>
+              <th scope="row">{{c.ID_Cliente}}</th>
+              <td>{{c.Nombre}} {{c.Apellidos}}</td>
+              <td>{{c.Telefono}}</td>
+              <td>{{c.CallePrincipal}} #{{c.NumInterior}} {{c.Colonia}}, {{c.Municipio}} {{c.Estado}}</td>
+              <td>{{c.Estatus}}</td>
+              <td><a href="/opcionesCliente/modificar/{{c.ID_Cliente}}"><button type="button" class="btn btn-warning">Modificar</button></a></td>
+              <td><a href="/clientes/opcionesCliente/eliminar/{{c.ID_Cliente}}"><button type="button" class="btn btn-danger">Eliminar</button></a></td>
+            </tr>
+          </tbody>
+          {% endfor %}
+        </table>
+  
+  
 
 
-
-<div id="divmuestra" style="display:none">
-
-  Formulario para Modificar
-
-</div>
 
       <!--Arriba de esto va tu código-->
     </div>
