@@ -15,9 +15,9 @@ function validarDatosEmpleado(){
     formDatos[0]=document.getElementById("NombreEmp").value;
     formDatos[1]=document.getElementById("ApellidosEmp").value;
     formDatos[2]=document.getElementById("generoEmp").value;
-    //formDatos[3]=document.getElementById("estadoEmp").value;
-    //formDatos[4]=document.getElementById("municipioEmp").value;
-    //formDatos[5]=document.getElementById("coloniaEmp").value;
+    formDatos[3]=document.getElementById("estadoEmp").value;
+    formDatos[4]=document.getElementById("municipioEmp").value;
+    formDatos[5]=document.getElementById("coloniaEmp").value;
     formDatos[6]=document.getElementById("calleEmp").value;
     formDatos[7]=document.getElementById("ninternoEmp").value;
     formDatos[8]=document.getElementById("nexternoEmp").value;
@@ -29,6 +29,9 @@ function validarDatosEmpleado(){
     formDatos[14]=document.getElementById("fine1").value;
     formDatos[15]=document.getElementById("fine2").value;
     formDatos[16]=document.getElementById("ComproDomi").value;
+    formDatos[17]=document.getElementById("Usuario").value;
+    formDatos[18]=document.getElementById("Contraseña").value;
+    formDatos[19]=document.getElementById("Rol").value;
    
     for(const key in formDatos){
         if(formDatos[key]==""){
@@ -36,6 +39,15 @@ function validarDatosEmpleado(){
             aux=false;
             break;
         }
+    }
+
+    if(!validarNombre(formDatos[0])){
+        mensaje=mensaje+" *Nombre no valido"
+    }
+
+    if(!validarApellidos(formDatos[1])){
+        mensaje=mensaje+" *Apellidos no validos"
+        aux=false;
     }
 
     if(!validarNumero(formDatos[7])){//Numero Interno
@@ -55,6 +67,26 @@ function validarDatosEmpleado(){
 
     if(!validarCURP(formDatos[11])){//CURP
         mensaje=mensaje+" *Formato de CURP no valido"
+        aux=false;
+    }
+    
+    if(!validarCalle(formDatos[6])){
+        mensaje=mensaje+" *Calle no valida"
+        aux=false;
+    }
+
+    if(!validarEntreCalles(formDatos[9])){
+        mensaje=mensaje+" *Entre calles no valido"
+        aux=false;
+    }
+
+    if(!validarUsuario(formDatos[17])){
+        mensaje=mensaje+" *Nombre de Usuario no valido"
+        aux=false;
+    }
+
+    if(!validarContraseña(formDatos[18])){
+        mensaje=mensaje+" *Contraseña de Usuario no valida"
         aux=false;
     }
 
@@ -95,13 +127,28 @@ function ValidarArchivo(oninput) { //Verifica las extenciones de lo archivos.
     return true;                                                        
 }
 
-
 function validarNombre(nombre){
-
+    var regex = /^[A-Z]{1}\w+/                                                                
+    var response = regex.test(nombre)                                                           
+    return response;    
 }
 
 function validarApellidos(apellidos){
+    var regex = /^\w{8}/                                                                
+    var response = regex.test(apellidos)                                                           
+    return response;
+}
 
+function validarUsuario(Usuario){
+    var regex = /^\w{5}/                                                                
+    var response = regex.test(Usuario)                                                           
+    return response;
+}
+
+function validarContraseña(contraseña){
+    var regex = /^\w{5}/                                                                
+    var response = regex.test(contraseña)                                                           
+    return response;
 }
 
 function validarNumero(Numero){
@@ -120,7 +167,19 @@ function validarCURP(valor){
     var regex = /^[A-Z]{4}\d{6}\w{8}/                                                     
     var reponse = regex.test(valor)                                 
     return reponse;                                                                        
-} 
+}
+
+function validarCalle(calle){
+    var regex = /^\w{3}/                                                                
+    var response = regex.test(calle)                                                           
+    return response;
+}
+
+function validarEntreCalles(Entre_Calles){
+    var regex = /^\w{7}/                                                                
+    var response = regex.test(Entre_Calles)                                                           
+    return response;
+}
 
 //DOMICILIO
 
@@ -214,4 +273,25 @@ function Limpiar(){
     document.getElementById("fine1").value="";
     document.getElementById("fine2").value="";
     document.getElementById("ComproDomi").value="";
+    document.getElementById("Usuario").value="";
+    document.getElementById("Contraseña").value="";
+    document.getElementById("Rol").value="";
+}
+
+function MostrarDiv(div){
+    document.getElementById(div).style.display="block";
+}
+
+function OcultarDiv(div){
+    document.getElementById(div).style.display="none";
+}
+
+function MostrarRegEmp(){
+    MostrarDiv("Reg_Empleado");
+    OcultarDiv("Asig_Rol");
+}
+
+function MostrarAsigRol(){
+    MostrarDiv("Asig_Rol");
+    OcultarDiv("Reg_Empleado");
 }

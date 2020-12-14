@@ -9,16 +9,16 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/css/style.css">
+  <link rel="stylesheet" href="../../static/css/style.css">
 
 </head>
 
-<body onload="MostrarRegEmp();">
+<body onload="MostrarRegEmp(); consultaEstados();">
 
   <div class="wrapper d-flex align-items-stretch">
     <nav id="sidebar">
       <div class="p-4 pt-5">
-        <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(../static/images/logo.jpg);"></a>
+        <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(../../static/images/logo.jpg);"></a>
         <center>
           <p id="empleadoName">Elon Reeve Musk</p>
         </center>
@@ -158,7 +158,7 @@
           <div class="row">
             <div class="form-group col">
               <label form="Estado">Estado</label>
-              <select class="form-control" id="estadoEmp" name="estadoEmp" onblur="consultarMunicipio()">
+              <select class="form-control" id="estadoEmp" name="estadoEmp" onblur="consultarMunicipio()" required>
                 <!-- Poner required -->
                 <option value="" disabled selected>Seleccione un Estado...</option>
               </select>
@@ -166,7 +166,7 @@
 
             <div class="form-group col">
               <label form="Municipio">Municipio</label>
-              <select class="form-control" id="municipioEmp" name="municipioEmp" onblur="consultarColonia()">
+              <select class="form-control" id="municipioEmp" name="municipioEmp" onblur="consultarColonia()" required>
                 <!-- Poner required -->
                 <option value="" disabled selected>Seleccione un Municipio...</option>
               </select>
@@ -174,7 +174,7 @@
 
             <div class="form-group col">
               <label form="Colonia">Colonia</label>
-              <select class="form-control" id="coloniaEmp" name="coloniaEmp" onblur="desactivarColonia()">
+              <select class="form-control" id="coloniaEmp" name="coloniaEmp" onblur="desactivarColonia()" required>
                 <!-- Poner required -->
                 <option value="" disabled selected>Seleccione un Estado...</option>
               </select>
@@ -347,11 +347,11 @@
   </div>
   </div>
 
-  <script src="../static/js/jquery.min.js"></script>
-  <script src="../static/js/popper.js"></script>
-  <script src="../static/js/bootstrap.min.js"></script>
-  <script src="../static/js/main.js"></script>
-  <script src="../static/js/registroEmpleado.js"></script>
+  <script src="../../static/js/jquery.min.js"></script>
+  <script src="../../static/js/popper.js"></script>
+  <script src="../../static/js/bootstrap.min.js"></script>
+  <script src="../../static/js/main.js"></script>
+  <script src="../../static/js/Empleados/registroEmpleado.js"></script>
 </body>
 
 </html>

@@ -8291,3 +8291,7 @@ a[data-toggle="collapse"] {
 #empleadoName{
   font-size: 100;   
 }
+
+.sinBorde{
+  border: 0;
+}

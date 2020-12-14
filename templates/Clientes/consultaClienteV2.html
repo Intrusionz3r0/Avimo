@@ -9,16 +9,16 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/css/style.css">
+  <link rel="stylesheet" href="../../static/css/style.css">
 
 </head>
 
-<body onload="AsigDatos();">
+<body onload="OcultarTodo();">
 
   <div class="wrapper d-flex align-items-stretch">
     <nav id="sidebar">
       <div class="p-4 pt-5">
-        <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(../static/images/logo.jpg);"></a>
+        <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(../../static/images/logo.jpg);"></a>
         <center>
           <p id="empleadoName">Elon Reeve Musk</p>
         </center>
@@ -132,72 +132,107 @@
       <h3>Consulta Cliente</h3>
 
       <form action="" method="get">
-        
+
         <div class="input-group">
           <div class="input-group-prepend">
             <div class="input-group-text" id="btnGroupAddon">Clave</div>
           </div>
           <input type="text" class="form-control" aria-label="Input group example" aria-describedby="btnGroupAddon">
-          <button type="button" class="btn btn-primary">Buscar</button>
+          <button type="button" class="btn btn-primary" onclick="MostrarTodo();">Buscar</button>
         </div>
         <br><br>
-        <fieldset>
-          
-          <div id="DatosPrincipales" class="fluid">
+
+        <div id="DatosTotales">
+          <div id="DatosCliente" class="fluid">
+            <h3><span class="badge badge-info" style="text-align: center">Datos Cliente</span></h3>
             <div class="row">
-            <div class="col-form-label">
-              <img src="../static/images/fotoEmpleado.jpg" width="200" height="200" class="img-thumbnail">
-            </div>
+              <div class="col-form-label">
+                <img src="../../static/images/fotoEmpleado.jpg" width="200" height="200" class="img-thumbnail">
+              </div>
 
-            <div class="col-form-label">
-              <legend style="color: red;">Datos Principales</legend>
-              <label><strong>ID:</strong></label><br>
-              <label>Nombre Completo:</label><br>
-              <label>Sexo</label><br>
-              <label>Domicilio</label><br>
-              <label>Telefono</label><br>
-              <label>Fecha de Ingreso:</label><br>
-              <label>Estatus</label><br>
-            </div>
+              <div class="col-form-label">
+                <tr><strong>ID:</strong></tr><br>
+                <tr><strong>Nombre Completo:</strong></tr><br>
+                <label><strong>Sexo :</strong></label><br>
+                <label><strong>Domicilio :</strong></label><br>
+                <label><strong>Telefono :</strong></label><br>
+                <label><strong>Fecha de Ingreso:</strong></label><br>
+                <label><strong>Estatus :</strong></label><br>
+              </div>
+              &nbsp; &nbsp;
+              <div class="col-form-label">
+                <input type="text" id="ID" class="sinBorde"  value="AJHSJDHSJHDJ" disabled><br>
+                <input type="text" id="NCompleto" class="sinBorde" value="Sarmiento Avila Geovanni" disabled><br>
+                <input type="text" id="Sexo" class="sinBorde" disabled><br>
+                <input type="text" id="Domicilio" class="sinBorde" disabled><br>
+                <input type="text" id="Telefono" class="sinBorde" disabled><br>
+                <input type="text" id="Fch_Ingreso" class="sinBorde" disabled><br>
+                <input type="text" id="Estatus" class="sinBorde" disabled><br>
+              </div>
+              &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
+              <div class="col-form-label">
 
-            <div class="col-form-label">
-              <br><br>
-              <input class="form-check-label" type="text"   border:0 disabled value= <p>algo<br/>asi</p><br>
-              <input type="text" id="Dat_Principales"  border:0 disabled><br>
-              <input type="text" id="Dat_Principales"  border:0 disabled><br>
-              <input type="text" id="Dat_Principales"  border:0 disabled><br>
-              <input type="text" id="Dat_Principales"  border:0 disabled><br>
-              <input type="text" id="Dat_Principales"  border:0 disabled><br>
-              <input type="text" id="Dat_Principales"  border:0 disabled><br>
-            </div>
-            &nbsp; &nbsp; &nbsp; &nbsp; 
-            <div class="col-form-label">
-              <legend style="color: red;">Datos Secundarios</legend>
-              <label>CURP</label><br>
-              <label>Fecha de Nacimiento</label><br>
-              <label>Foto INE Delantera</label><br>
-              <label>Foto INE Trasera</label><br>
-              <label>Comprobante de Domicilio</label><br>
-            </div>
+                <label><strong>CURP :</strong></label><br>
+                <label><strong>Fecha de Nacimiento :</strong></label><br>
+                <label><strong>Foto INE Delantera :</strong></label><br>
+                <label><strong>Foto INE Trasera :</strong></label><br>
+                <label><strong>Comprobante de Domicilio :</strong></label><br>
+              </div>
+              &nbsp; &nbsp;
+              <div class="col-form-label">
 
-            <div class="col-form-label">
-              <br><br>
-              <input class="form-ckeck-input" disabled><br>
-              <input disabled><br>
-              <input disabled><br>
-              <input disabled><br>
-              <input disabled><br>
-              
-            </div>
+                <input type="text" id="CURP" class="sinBorde" disabled><br>
+                <input type="text" id="Fch_Nacimiento" class="sinBorde" disabled><br>
+                <input type="text" id="Fine_Dela" class="sinBorde" disabled><br>
+                <input type="text" id="Fine_Tras" class="sinBorde" disabled><br>
+                <input type="text" id="Compro_Domicilio" class="sinBorde" disabled><br>
 
+
+              </div>
+
+            </div>
           </div>
+          <br><br>
+          <div id="Datos_Aval_Cliente" class="fluid">
+            <h3><span class="badge badge-info" style="text-align: center">Datos Aval</span></h3>
+            <div class="row">
+
+              <div class="col-form-label">
+                <img src="../../static/images/Cliente_Aval.png" width="200" height="200" class="img-thumbnail">
+              </div>
+              <div class="col-form-label">
+                <label><strong>Nombre :</strong></label><br>
+                <label><strong>Domicilio :</strong></label><br>
+                <label><strong>Telefono :</strong></label><br>
+              </div>
+              &nbsp; &nbsp;
+              <div class="col-form-label">
+                <input class="sinBorde" disabled><br>
+                <input class="sinBorde" disabled><br>
+                <input class="sinBorde" disabled><br>
+              </div>
+              &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
+              <div class="col-form-label">
+                <label><strong>Foto INE Delantera :</strong></label><br>
+                <label><strong>Foto INE Trasera :</strong></label><br>
+                <label><strong>Comprobante de Domicilio :</strong></label><br>
+              </div>
+              &nbsp; &nbsp;
+              <div class="col-form-label">
+                <input class="sinBorde" disabled><br>
+                <input class="sinBorde" disabled><br>
+                <input class="sinBorde" disabled><br>
+              </div>
+
+            </div>
+          </div>
+
         </div>
 
-          
-        </fieldset>
+
       </form>
-      
-      
+
+
 
 
 
@@ -206,13 +241,18 @@
     </div>
   </div>
   </div>
-  <script> function AsigDatos(){
-    document.getElementById("Dat_Principales").value="000000000000000000000000000000000000000000000000000000000000000001111111111111";
-  } </script>
-  <script src="../static/js/jquery.min.js"></script>
-  <script src="../static/js/popper.js"></script>
-  <script src="../static/js/bootstrap.min.js"></script>
-  <script src="../static/js/main.js"></script>
+  <script> 
+  function MostrarTodo() {
+      document.getElementById("DatosTotales").style.display="block"
+    } 
+  function OcultarTodo(){
+      document.getElementById("DatosTotales").style.display="none"
+  }
+  </script>
+  <script src="../../static/js/jquery.min.js"></script>
+  <script src="../../static/js/popper.js"></script>
+  <script src="../../static/js/bootstrap.min.js"></script>
+  <script src="../../static/js/main.js"></script>
 </body>
 
 </html>
