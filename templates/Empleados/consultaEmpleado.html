@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css' ) }}">
 
 </head>
 
@@ -26,69 +26,60 @@
                 <ul class="list-unstyled components mb-5">
                     <!--Menu de Clientes-->
                     <li>
-                        <a href="#clientesSubmenu" data-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle">Clientes</a>
-                        <ul class="collapse list-unstyled" id="clientesSubmenu">
-                            <li>
-                                <a href="#">Registro Cliente</a>
-                            </li>
-                            <li>
-                                <a href="#">Consulta Cliente</a>
-                            </li>
-                            <li>
-                                <a href="#">Opciones Cliente</a>
-                            </li>
-                        </ul>
+                      <a href="#clientesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Clientes</a>
+                      <ul class="collapse list-unstyled" id="clientesSubmenu">
+                        <li>
+                          <a href="/clientes/registrocliente">Registro Cliente</a>
+                        </li>
+                        <li>
+                          <a href="/clientes/opcionesCliente/">Opciones Cliente</a>
+                        </li>
+                      </ul>
                     </li>
                     <!--Menu de prestamos-->
                     <li>
-                        <a href="#prestamosSubmenu" data-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle">Prestamos</a>
-                        <ul class="collapse list-unstyled" id="prestamosSubmenu">
-                            <li>
-                                <a href="#">Registro prestamo</a>
-                            </li>
-                            <li>
-                                <a href="#">Consulta prestamo</a>
-                            </li>
-                            <li>
-                                <a href="#">Opciones prestamo</a>
-                            </li>
-                        </ul>
+                      <a href="#prestamosSubmenu" data-toggle="collapse" aria-expanded="false"
+                        class="dropdown-toggle">Credito</a>
+                      <ul class="collapse list-unstyled" id="prestamosSubmenu">
+                        <li>
+                          <a href="../templates/registroCredito.html">Registro Credito</a>
+                        </li>
+                        <li>
+                          <a href="../templates/consultaCredito.html">Consulta Credito</a>
+                        </li>
+                        <li>
+                          <a href="../templates/opcionesCredito.html">Opciones Credito</a>
+                        </li>
+                      </ul>
                     </li>
                     <!--Menu de Pagos-->
                     <li>
-                        <a href="#pagosSubmenu" data-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle">Pagos</a>
-                        <ul class="collapse list-unstyled" id="pagosSubmenu">
-                            <li>
-                                <a href="#">Registrar pago</a>
-                            </li>
-                            <li>
-                                <a href="#">Consulta pago</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!--Menu de Empleados-->
-                    <li>
-                        <a href="#empleadosSubmenu" data-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle">Empledos</a>
-                        <ul class="collapse list-unstyled" id="empleadosSubmenu">
-                            <li>
-                                <a href="#">Registrar Empleado</a>
-                            </li>
-                            <li>
-                                <a href="#">Consulta Empleado</a>
-                            </li>
-                            <li>
-                                <a href="#">Opciones Empleado</a>
-                            </li>
-                        </ul>
+                      <a href="#pagosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pagos</a>
+                      <ul class="collapse list-unstyled" id="pagosSubmenu">
+                        <li>
+                          <a href="../templates/registroPago.html">Registrar pago</a>
+                        </li>
+                        <li>
+                          <a href="../templates/consultaPago.html">Consulta pago</a>
+                        </li>
+                      </ul>
                     </li>
                     <li>
-                        <a href="#">Cerrar Sesión</a>
+                      <a href="#empleadosSubmenu" data-toggle="collapse" aria-expanded="false"
+                        class="dropdown-toggle">Empledos</a>
+                      <ul class="collapse list-unstyled" id="empleadosSubmenu">
+                        <li>
+                          <a href="/empleados/registroempleado/">Registrar Empleado</a>
+                        </li>
+                        <li>
+                          <a href="/opcionesEmpleado/">Opciones Empleado</a>
+                        </li>
+                      </ul>
                     </li>
-                </ul>
+                    <li>
+                      <a href="#">Cerrar Sesión</a>
+                    </li>
+                  </ul>
 
                 <div class="footer">
                     <p>
@@ -132,80 +123,66 @@
             </nav>
 
             <!--Abajo de esto va tu código-->
-            <h3>Consulta Empleado</h3>
-            <form action="" method="GET">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text" id="btnGroupAddon">ID</div>
-
-                    </div>
-                    <input type="text" class="form-control" maxlength="4" aria-label="Input group example"
-                        aria-describedby="btnGroupAddon" id="ID_Empleado">
-                    <button type="button" class="btn btn-primary" onclick="onFormSubmit()">Buscar</button>
-
-                </div>
-                <br><br>
-                <div id="InfoG_Empleados">
-                <table class="table" id="tbl_con_Empleados">
-                    <label>Informacion General</label>
-                    <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Apellidos</th>
-                            <th scope="col">Sexo</th>
-                            <th scope="col">Telefono</th>
-                            <th scope="col">Estatus</th>
-                            <th scope="col">Fecha de Ingreso</th>
-                            
-                            
-                        </tr>
-                    </thead>
-
-                </table>
-                </div>
-            </form>
-
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">¡Advertencia!</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            ¿ Esta seguro de que quiere eliminar el registro ?
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                            <button type="button" class="btn btn-danger">Si</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            ...
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <h2>Empleado</h2>
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Usuario</th>
+                  <th scope="col">Contraseña</th>
+                  <th scope="col">Rol</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Apellidos</th>
+                  <th scope="col">Genero</th>
+                  <th scope="col">Telefono</th>
+                  <th scope="col">Estado</th>
+                  <th scope="col">Municipio</th>
+                  <th scope="col">Colonia</th>
+                  <th scope="col">Calle Principal</th>
+                  <th scope="col">Entre calles</th>
+                  <th scope="col">Numero exterior</th>
+                  <th scope="col">Numero interior</th>
+                  <th scope="col">Curp</th>
+                  <th scope="col">Fecha de nacimiento</th>
+                  <th scope="col">Fecha de contratación</th>
+                  <th scope="col">Estatus</th>
+                  <th scope="col">Foto Empleado</th>
+                  <th scope="col">Foto INE1</th>
+                  <th scope="col">Foto INE2</th>
+                  <th scope="col">Comprobante de domicilio</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>{{empleado.ID_Empleado}}</td>
+                    <td>{{empleado.Usuario}}</td>
+                    <td>{{empleado.Contraseña}}</td>
+                    <td>{{empleado.Rol}}</td>
+                    <td>{{empleado.Nombre}}</td>
+                    <td>{{empleado.Apellidos}}</td>
+                    <td>{{empleado.Sexo}}</td>
+                    <td>{{empleado.Telefono}}</td>
+                    <td>{{empleado.Estado}}</td>
+                    <td>{{empleado.Municipio}}</td>
+                    <td>{{empleado.Colonia}}</td>
+                    <td>{{empleado.CallePrincipal}}</td>
+                    <td>{{empleado.EntreCalles}}</td>
+                    <td>{{empleado.NumExterior}}</td>
+                    <td>{{empleado.NumInterior}}</td>
+                    <td>{{empleado.CURP}}</td>
+                    <td>{{empleado.Fecha_Nacimiento}}</td>
+                    <td>{{empleado.Fecha_Contratacion}}</td>
+                    <td>{{empleado.Estatus}}</td>
+                    <td>null</td>
+                    <td>null</td>
+                    <td>null</td>
+                    <td>null</td>
+                  </tr>
+                
+      
+              </tbody>
+            </table>
 
 
 
@@ -214,11 +191,11 @@
     </div>
     </div>
 
-    <script src="../static/js/jquery.min.js"></script>
-    <script src="../static/js/popper.js"></script>
-    <script src="../static/js/bootstrap.min.js"></script>
-    <script src="../static/js/main.js"></script>
-    <script src="../static/js/consultaEmpleado.js"></script>
+    <script src="../../static/js/jquery.min.js"></script>
+    <script src="../../static/js/popper.js"></script>
+    <script src="../../static/js/bootstrap.min.js"></script>
+    <script src="../../static/js/main.js"></script>
+    <script src="../../static/js/Empleados/consultaEmpleado.js"></script>
 </body>
 
 </html>

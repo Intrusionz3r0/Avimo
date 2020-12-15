@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../../static/css/style.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css' ) }}">
 
 </head>
 
@@ -29,9 +29,6 @@
             <ul class="collapse list-unstyled" id="clientesSubmenu">
               <li>
                 <a href="/clientes/registrocliente">Registro Cliente</a>
-              </li>
-              <li>
-                <a href="/clientes/consultaCliente/">Consulta Cliente</a>
               </li>
               <li>
                 <a href="/clientes/opcionesCliente/">Opciones Cliente</a>
@@ -66,6 +63,20 @@
               </li>
             </ul>
           </li>
+
+          <li>
+            <a href="#empleadosSubmenu" data-toggle="collapse" aria-expanded="false"
+              class="dropdown-toggle">Empledos</a>
+            <ul class="collapse list-unstyled" id="empleadosSubmenu">
+              <li>
+                <a href="/empleados/registroempleado/">Registrar Empleado</a>
+              </li>
+              <li>
+                <a href="/opcionesEmpleado/">Opciones Empleado</a>
+              </li>
+            </ul>
+          </li>
+
           <li>
             <a href="#">Cerrar Sesión</a>
           </li>

@@ -2,7 +2,7 @@ import os
 from flask import Flask,render_template,request,redirect,url_for,abort
 from flask_mysqldb import MySQL
 from flask_sqlalchemy import SQLAlchemy
-from modelo.models import Clientes,Avales
+from modelo.models import Clientes,Avales,Empleados
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
@@ -11,13 +11,16 @@ app.secret_key = "4V1M0S3CR3TKEY"
 
 
  
-#SqlAlchemy Database Configuration With Mysql
+#Configuración SqlAlchemy Mysql
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:password@localhost/AVIMO'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOADED_PHOTOS_DEST'] = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'uploads')
 print(app.config['UPLOADED_PHOTOS_DEST'])
  
 db = SQLAlchemy(app)
+
+
+#Comienzo del CRUD de Clientes y Avales.
 
 @app.route('/clientes/registrocliente')
 def ventanaCliente():
@@ -129,11 +132,11 @@ def actualizarDatos():
     cliente.Nombre = request.form['nombreCliente']
     cliente.Apellidos = request.form['apellidoCliente']
     cliente.Genero = request.form['generoCliente']
-    if(cliente.Genero == "Masculino"):
+    if(cliente.Genero == "Masculino" or cliente.Genero == "M"):
         cliente.Genero="M"
-    elif(cliente.Genero == "Femenino"):
+    elif(cliente.Genero == "Femenino" or cliente.Genero == "F"):
         cliente.Genero="F"
-    elif(cliente.Genero == "Otro"):
+    elif(cliente.Genero == "Otro" or cliente.Genero == "O"):
         cliente.Genero="O"
     cliente.Estado = request.form['estadoCliente']
     cliente.Municipio = request.form['municipioCliente']
@@ -147,7 +150,11 @@ def actualizarDatos():
     cliente.Clave = cliente.CURP[:10]+cliente.CURP[-3:]
     cliente.Fecha_Nacimiento = request.form['fnacimientoCliente']
     cliente.Fecha_Registro = request.form['fregistroCliente']
-    cliente.Estatus = "A"
+    cliente.Estatus = request.form['estatusCliente']
+    if(cliente.Estatus == "Activo" or cliente.Estatus == "A"):
+        cliente.Estatus="A"
+    elif(cliente.Estatus == "Inactivo" or cliente.Estatus == "I"):
+        cliente.Estatus="I"
     cliente.actualizar()
 
     aval=Avales()
@@ -170,8 +177,138 @@ def actualizarDatos():
 
     aval=Avales()
     return redirect(url_for("ventanaConsultaCliente"))
-    
 
+
+#Comienzo de CRUD de Empleados.
+@app.route("/empleados/registroempleado/")
+def ventanaRegistroEmpleados():    
+    return render_template("Empleados/registroEmpleado.html")
+
+@app.route('/empleados/registroempleado/nuevo',methods=['POST'])
+def registrarEmpleado():
+    empleado=Empleados()
+    empleado.Nombre=request.form['NombreEmp']
+    empleado.Apellidos=request.form['ApellidosEmp']
+    empleado.Sexo=request.form['generoEmp']
+    if(empleado.Sexo == "Masculino"):
+        empleado.Sexo="M"
+    elif(empleado.Sexo == "Femenino"):
+        empleado.Sexo="F"
+    elif(empleado.Sexo == "Otro"):
+        empleado.Sexo="O"
+    empleado.Estado=request.form['estadoEmp']
+    empleado.Municipio=request.form['municipioEmp']
+    empleado.Colonia=request.form['coloniaEmp']
+    empleado.CallePrincipal=request.form['calleEmp']
+    empleado.NumInterior=request.form['ninternoEmp']
+    empleado.NumExterior=request.form['nexternoEmp']
+    empleado.EntreCalles=request.form['entrecallesEmp']
+    empleado.Telefono=request.form['telefonoEmp']
+    empleado.CURP=request.form['curpEmp']
+    empleado.Fecha_Nacimiento=request.form['fnacimientoEmp']
+    empleado.Fecha_Contratacion=request.form['fingresoEmp']
+    empleado.Estatus="A"
+    #empleado.Foto_Empleado=request.files['fotoempe']
+    #empleado.FotoINE_Delantera=request.files['file1']
+    #empleado.FotoINE_Trasera=request.files['file1']
+    #empleado.Comprobante_Domicilio=request.files['ComproDomi']
+    empleado.Usuario=request.form['Usuario']
+    empleado.Contraseña=request.form['Contraseña2']
+    empleado.Rol=request.form['Rol']
+    
+    if(empleado.Rol == "Jefe/Subjefe"):
+        empleado.Rol="J"
+    
+    elif(empleado.Rol == "Administrador"):
+        empleado.Rol="A"
+    
+    elif(empleado.Rol == "Asesor de Crédito"):
+        empleado.Rol="C"
+    
+    empleado.insertar()
+
+    return redirect(url_for('ventanaRegistroEmpleados'))
+
+@app.route("/opcionesEmpleado/")
+def ventanaConsultaEmpleado():
+    empleado=Empleados()
+    empleado=empleado.consultaGeneral()
+
+    return render_template("Empleados/opcionesEmpleado.html",empleado=empleado)
+
+@app.route("/opcionesEmpleado/<int:id>")
+def consultarEmpleadoIn(id):
+    empleado=Empleados()
+    empleado.ID_Empleado=id
+    empleado=empleado.consultaIndividual()
+    
+    return render_template("Empleados/consultaEmpleado.html",empleado=empleado)
+
+@app.route("/opcionesEmpleado/eliminar/<int:id>")
+def eliminarEmpleado(id):
+    empleado=Empleados()
+    empleado.ID_Empleado=id
+    empleado=empleado.eliminar()
+
+    return redirect(url_for('ventanaConsultaEmpleado'))
+
+@app.route("/opcionesEmpleado/modificar/<int:id>")
+def modificarDatosEmpleado(id):
+    empleado=Empleados()
+    empleado.ID_Empleado=id
+    empleado=empleado.consultaIndividual()
+    
+    return render_template("Empleados/modificarEmpleado.html",empleado=empleado)
+
+@app.route("/opcionesEmpleado/actualizar/",methods=['POST'])
+def actualizarDatosEmpleado():
+    empleado=Empleados()
+    empleado.ID_Empleado=request.form['idEmpleado']
+    empleado.Nombre=request.form['NombreEmp']
+    empleado.Apellidos=request.form['ApellidosEmp']
+    empleado.Sexo=request.form['generoEmp']
+    if(empleado.Sexo == "Masculino" or empleado.Sexo == "M"):
+        empleado.Sexo="M"
+    elif(empleado.Sexo == "Femenino" or empleado.Sexo == "F"):
+        empleado.Sexo="F"
+    elif(empleado.Sexo == "Otro" or empleado.Sexo == "O"):
+        empleado.Sexo="O"
+    empleado.Estado=request.form['estadoEmp']
+    empleado.Municipio=request.form['municipioEmp']
+    empleado.Colonia=request.form['coloniaEmp']
+    empleado.CallePrincipal=request.form['calleEmp']
+    empleado.NumInterior=request.form['ninternoEmp']
+    empleado.NumExterior=request.form['nexternoEmp']
+    empleado.EntreCalles=request.form['entrecallesEmp']
+    empleado.Telefono=request.form['telefonoEmp']
+    empleado.CURP=request.form['curpEmp']
+    empleado.Fecha_Nacimiento=request.form['fnacimientoEmp']
+    empleado.Fecha_Contratacion=request.form['fingresoEmp']
+    empleado.Estatus=request.form['estatusAval']
+    if(empleado.Estatus=="Activo" or empleado.Estatus=="A"):
+        empleado.Estatus="A"
+    elif(empleado.Estatus=="Inactivo" or empleado.Estatus=="I"):
+        empleado.Estatus="I"
+    #empleado.Foto_Empleado=request.files['fotoempe']
+    #empleado.FotoINE_Delantera=request.files['file1']
+    #empleado.FotoINE_Trasera=request.files['file1']
+    #empleado.Comprobante_Domicilio=request.files['ComproDomi']
+    empleado.Usuario=request.form['Usuario']
+    empleado.Contraseña=request.form['Contraseña2']
+    empleado.Rol=request.form['Rol']
+    
+    if(empleado.Rol == "Jefe/Subjefe" or empleado.Rol == "J"):
+        empleado.Rol="J"
+    
+    elif(empleado.Rol == "Administrador" or empleado.Rol == "A"):
+        empleado.Rol="A"
+    
+    elif(empleado.Rol == "Asesor de Crédito" or empleado.Rol == "C"):
+        empleado.Rol="C"
+    
+    empleado.actualizar()
+
+    return redirect(url_for('ventanaRegistroEmpleados'))
 
 if __name__ == "__main__":
     

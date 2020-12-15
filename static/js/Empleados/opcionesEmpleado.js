@@ -44,3 +44,14 @@ function onFormSubmit() {
   function Limpiar(){
     document.getElementById("ID_Empleado").value="";
   }
+
+
+
+
+
+
+  function getEmpleado(){
+
+    var id=document.getElementById("clavesita").value
+    location.href="/opcionesEmpleado/"+id
+  }

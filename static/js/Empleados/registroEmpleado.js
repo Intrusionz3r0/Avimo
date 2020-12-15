@@ -4,7 +4,7 @@ function onFormSubmit(){
     var datoslistos=validarDatosEmpleado();
     if(datoslistos !=undefined){
         alert("Los datos del Nuevo Empleado estan listos para ser enviados a la base de datos.");
-        Limpiar();
+        
     }
 }
 
@@ -30,35 +30,19 @@ function validarDatosEmpleado(){
     formDatos[15]=document.getElementById("fine2").value;
     formDatos[16]=document.getElementById("ComproDomi").value;
     formDatos[17]=document.getElementById("Usuario").value;
-    formDatos[18]=document.getElementById("Contraseña").value;
-    formDatos[19]=document.getElementById("Rol").value;
+    formDatos[18]=document.getElementById("Contraseña1").value;
+    formDatos[19]=document.getElementById("Contraseña2").value;
+    formDatos[20]=document.getElementById("Rol").value;
+    formDatos[21]=document.getElementById("fotoempe").value;
    
     for(const key in formDatos){
         if(formDatos[key]==""){
-            mensaje=mensaje+"Varios campos estan vacios.Favor de ingresar los datos:"
+            mensaje=mensaje+"Varios campos estan vacios."
             aux=false;
             break;
         }
     }
 
-    if(!validarNombre(formDatos[0])){
-        mensaje=mensaje+" *Nombre no valido"
-    }
-
-    if(!validarApellidos(formDatos[1])){
-        mensaje=mensaje+" *Apellidos no validos"
-        aux=false;
-    }
-
-    if(!validarNumero(formDatos[7])){//Numero Interno
-        mensaje=mensaje+" *Numero interno no valido"
-        aux=false;
-    }
-
-    if(!validarNumero(formDatos[8])){//Numero Externo
-        mensaje=mensaje+" *Numero externo no valido"
-       aux=false;
-    }
 
     if(!validarTelefono(formDatos[10])){//telefono
         mensaje=mensaje+" *Formato de telefono no valido"
@@ -70,23 +54,9 @@ function validarDatosEmpleado(){
         aux=false;
     }
     
-    if(!validarCalle(formDatos[6])){
-        mensaje=mensaje+" *Calle no valida"
-        aux=false;
-    }
 
-    if(!validarEntreCalles(formDatos[9])){
-        mensaje=mensaje+" *Entre calles no valido"
-        aux=false;
-    }
-
-    if(!validarUsuario(formDatos[17])){
-        mensaje=mensaje+" *Nombre de Usuario no valido"
-        aux=false;
-    }
-
-    if(!validarContraseña(formDatos[18])){
-        mensaje=mensaje+" *Contraseña de Usuario no valida"
+    if(!validarContraseña(formDatos[18],formDatos[19])){
+        mensaje=mensaje+" La contraseña no coincide"
         aux=false;
     }
 
@@ -145,10 +115,13 @@ function validarUsuario(Usuario){
     return response;
 }
 
-function validarContraseña(contraseña){
-    var regex = /^\w{5}/                                                                
-    var response = regex.test(contraseña)                                                           
-    return response;
+function validarContraseña(dato1,dato2){
+    if(dato1==dato2){
+        return true;
+    }
+    else{
+        return false;
+    }
 }
 
 function validarNumero(Numero){

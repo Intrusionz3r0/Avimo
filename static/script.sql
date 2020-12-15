@@ -19,7 +19,7 @@ EntreCalles VARCHAR(60) not null,
 Telefono VARCHAR(12) not null,
 CURP VARCHAR(18) not null,
 Fecha_Nacimiento date not null,
-Fecha_Registro date not null,
+Fecha_Registro datetime not null,
 Estatus char(1) not null,
 FotoINE_Delantera blob,
 FotoINE_Trasera blob,
@@ -28,6 +28,7 @@ Comprobante_Domicilio blob,
 
 Primary key (ID_Cliente)
 );
+ALTER TABLE Clientes AUTO_INCREMENT=1000;
 
 /* Creacion tabla Avales*/
 create table Avales(
@@ -49,9 +50,11 @@ Comprobante_Domicilio blob,
 
 primary key(ID_Aval)
 );
+ALTER TABLE Avales AUTO_INCREMENT=1000;
 
 /*Creacion tabla Empleados*/
 create table Empleados(
+    
 ID_Empleado int auto_increment,
 Nombre VARCHAR(30) not null,
 Apellidos VARCHAR(60) not null,
@@ -77,6 +80,7 @@ Contraseña varchar(25) not null,
 Rol char(1) not null,
 primary key(ID_Empleado)
 );
+ALTER TABLE Empleados AUTO_INCREMENT=1000;
 
 /*Creacion tabla Credito*/
 create table Credito(

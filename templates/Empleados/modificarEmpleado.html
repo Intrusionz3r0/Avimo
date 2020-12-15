@@ -122,24 +122,41 @@
       </nav>
       <!--Abajo de esto va tu código-->
       
-      <form method="POST" action="/empleados/registroempleado/nuevo" enctype="multipart/form-data">
+      <form method="POST" action="/opcionesEmpleado/actualizar/" enctype="multipart/form-data">
+        
+
+
         <div id="Reg_Empleado">
           <h3>Registro Empleado<span class="badge badge-secondary">New</span></h3>
           <div class="row">
+
+            <div class="col">
+              <label>ID</label>
+              <input class="form-control" value="{{empleado.ID_Empleado}}" readonly type="text" name="idEmpleado" id="idEmpleado" required>
+            </div>
             <div class="form-group col">
               <label for="Nombre">Nombre</label>
-              <input class="form-control" type="text" name="NombreEmp" id="NombreEmp" required>
+              <input class="form-control" type="text" value="{{empleado.Nombre}}" name="NombreEmp" id="NombreEmp" required>
             </div>
 
             <div class="form-group col">
               <label for="Apellidos">Apellidos</label>
-              <input class="form-control" type="text" name="ApellidosEmp" id="ApellidosEmp" required>
+              <input class="form-control" type="text" value="{{empleado.Apellidos}}" name="ApellidosEmp" id="ApellidosEmp" required>
+            </div>
+
+            <div class="form-group col">
+              <label for="Genero">Estatus</label>
+              <select class="form-control" id="estatusAval" name="estatusAval" required>
+                <option value="{{empleado.Sexo}}" selected>{{empleado.Sexo}}</option>
+                <option>Activo</option>
+                <option>Inactivo</option>
+              </select>
             </div>
 
             <div class="form-group col">
               <label for="Genero">Genero</label>
               <select class="form-control" id="generoEmp" name="generoEmp" required>
-                <option value="" disabled selected>Seleccione una opcion...</option>
+                <option value="{{empleado.Sexo}}" selected>{{empleado.Sexo}}</option>
                 <option>Masculino</option>
                 <option>Femenino</option>
                 <option>Otro</option>
@@ -153,7 +170,7 @@
               <label form="Estado">Estado</label>
               <select class="form-control" id="estadoEmp" name="estadoEmp" onblur="consultarMunicipio()" required>
                 <!-- Poner required -->
-                <option value="" disabled selected>Seleccione un Estado...</option>
+                <option value="{{empleado.Estado}}" selected>{{empleado.Estado}}</option>
               </select>
             </div>
 
@@ -161,7 +178,7 @@
               <label form="Municipio">Municipio</label>
               <select class="form-control" id="municipioEmp" name="municipioEmp" onblur="consultarColonia()" required>
                 <!-- Poner required -->
-                <option value="" disabled selected>Seleccione un Municipio...</option>
+                <option value="{{empleado.Municipio}}" selected>{{empleado.Municipio}}</option>
               </select>
             </div>
 
@@ -169,7 +186,7 @@
               <label form="Colonia">Colonia</label>
               <select class="form-control" id="coloniaEmp" name="coloniaEmp" onblur="desactivarColonia()" required>
                 <!-- Poner required -->
-                <option value="" disabled selected>Seleccione un Estado...</option>
+                <option value="{{empleado.Colonia}}" selected>{{empleado.Colonia}}</option>
               </select>
             </div>
           </div>
@@ -177,36 +194,36 @@
           <div class="row">
             <div class="form-group col">
               <label for="calle1">Calle</label>
-              <input class="form-control" type="text" name="calleEmp" id="calleEmp" required>
+              <input class="form-control" value="{{empleado.CallePrincipal}}" type="text" name="calleEmp" id="calleEmp" required>
             </div>
 
             <div class="form-group col">
               <label form="ninterno">Numero interno</label>
-              <input class="form-control" type="text" name="ninternoEmp" id="ninternoEmp" required>
+              <input class="form-control" type="text" value="{{empleado.NumInterior}}" name="ninternoEmp" id="ninternoEmp" required>
             </div>
 
             <div class="form-group col">
               <label form="nexterno">Numero externo</label>
-              <input class="form-control" type="text" name="nexternoEmp" id="nexternoEmp"
+              <input class="form-control" type="text" value="{{empleado.NumExterior}}" name="nexternoEmp" id="nexternoEmp"
                  required>
             </div>
 
             <div class="form-group col">
               <label form="calle2">Entre calles</label>
-              <input class="form-control" type="text" name="entrecallesEmp" id="entrecallesEmp" required>
+              <input class="form-control" type="text" value="{{empleado.EntreCalles}}" name="entrecallesEmp" id="entrecallesEmp" required>
             </div>
           </div>
 
           <div class="row">
             <div class="form-group col">
               <label form="Telefono">Telefono</label>
-              <input class="form-control" type="text" name="telefonoEmp" id="telefonoEmp" maxlength="12"
+              <input class="form-control" type="text" value="{{empleado.Telefono}}" name="telefonoEmp" id="telefonoEmp" maxlength="12"
                  required>
             </div>
 
             <div class="form-group col">
               <label form="CURP">CURP</label>
-              <input class="form-control" type="text" name="curpEmp" id="curpEmp" maxlength="18" required>
+              <input class="form-control" type="text" value="{{empleado.CURP}}" name="curpEmp" id="curpEmp" maxlength="18" required>
             </div>
           </div>
 
@@ -214,7 +231,7 @@
           <div class="form-group row">
             <label form="fnacimientoEmp" class="col-2 col-form-label">Fecha de Nacimiento</label>
             <div class="col-10">
-              <input class="form-control" type="date" name="fnacimientoEmp" id="fnacimientoEmp" required>
+              <input class="form-control" type="date" value="{{empleado.Fecha_Nacimiento}}" name="fnacimientoEmp" id="fnacimientoEmp" required>
             </div>
           </div>
 
@@ -223,7 +240,7 @@
           <div class="form-group row">
             <label form="fingresoEmp" class="col-2 col-from-label">Fecha de Ingreso</label>
             <div class="col-10">
-              <input class="form-control" type="date" name="fingresoEmp" id="fingresoEmp" required>
+              <input class="form-control" type="date" value="{{empleado.Fecha_Contratacion}}" name="fingresoEmp" id="fingresoEmp" required>
             </div>
           </div>
 
@@ -264,7 +281,7 @@
             <div class="form-group col">
               <label form="Usuario"> Usuario</label>
               <div class="col-5">
-                <input class="form-control" type="text" name="Usuario" id="Usuario" required>
+                <input class="form-control" type="text" value="{{empleado.Usuario}}" name="Usuario" id="Usuario" required>
               </div>
             </div>
           </div>
@@ -273,7 +290,7 @@
             <div class="form-group col">
               <label form="Contraseña"> Contraseña</label>
               <div class="col-5">
-                <input class="form-control" type="password" name="Contraseña" id="Contraseña1"   required>
+                <input class="form-control" type="password" value="{{empleado.Contraseña}}" name="Contraseña" id="Contraseña1"   required>
               </div>
             </div>
           </div>
@@ -282,7 +299,7 @@
             <div class="form-group col">
               <label form="Contraseña">Repetir Contraseña</label>
               <div class="col-5">
-                <input class="form-control" type="password" name="Contraseña2" id="Contraseña2"   required>
+                <input class="form-control" type="password" name="Contraseña2" value="{{empleado.Contraseña}}" id="Contraseña2"   required>
               </div>
             </div>
           </div>
@@ -291,7 +308,7 @@
             <div class="col-7">
               <label form="Rol">Rol Asignado</label>
               <select class="form-control" name="Rol" id="Rol" required>
-                <option value="" disabled selected>Asigne el Rol</option>
+                <option value="{{empleado.Rol}}" selected>{{empleado.Rol}}</option>
                 <option>Jefe/Subjefe</option>
                 <option>Administrador</option>
                 <option>Asesor de Crédito</option>

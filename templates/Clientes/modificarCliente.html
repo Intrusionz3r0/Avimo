@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../../static/css/style.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css' ) }}">
   
 
 </head>
@@ -64,6 +64,19 @@
               </li>
             </ul>
           </li>
+          <li>
+            <a href="#empleadosSubmenu" data-toggle="collapse" aria-expanded="false"
+              class="dropdown-toggle">Empledos</a>
+            <ul class="collapse list-unstyled" id="empleadosSubmenu">
+              <li>
+                <a href="/empleados/registroempleado/">Registrar Empleado</a>
+              </li>
+              <li>
+                <a href="/opcionesEmpleado/">Opciones Empleado</a>
+              </li>
+            </ul>
+          </li>
+          
           <li>
             <a href="#">Cerrar Sesión</a>
           </li>
@@ -143,10 +156,21 @@
                 <div class="form-group">
                   <label>Genero</label>
                   <select class="form-control" id="generoCliente" name="generoCliente" required>
-                    <option value="" disabled selected>Seleccione una opcion...</option>
+                    <option value="{{cliente.Genero}}" selected>{{cliente.Genero}}</option>
                     <option>Masculino</option>
                     <option>Femenino</option>
                     <option>Otro</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="form-group">
+                  <label>Estatus</label>
+                  <select class="form-control" id="estatusCliente" name="estatusCliente" required>
+                    <option value="{{cliente.Estatus}}" selected>{{cliente.Estatus}}</option>
+                    <option>Activo</option>
+                    <option>Inactivo</option>
                   </select>
                 </div>
               </div>
@@ -215,14 +239,14 @@
             <div class="form-group row">
               <label for="fnacimiento" class="col-2 col-form-label">Fecha de Nacimiento</label>
               <div class="col-10">
-                <input class="form-control" type="date" value="1998-01-13" id="fnacimientoCliente" name="fnacimientoCliente" required>
+                <input class="form-control" type="date"  value="{{cliente.Fecha_Nacimiento}}" id="fnacimientoCliente" name="fnacimientoCliente" required>
               </div>
             </div>
     
             <div class="form-group row">
               <label for="fregistro" class="col-2 col-form-label">Fecha de registro</label>
               <div class="col-10">
-                <input class="form-control" type="datetime-local" value="2020-11-22T02:00:00" id="fregistroCliente"
+                <input class="form-control" type="datetime-local"  value="{{cliente.Fecha_Registro}}" id="fregistroCliente"
                   name="fregistroCliente" required>
               </div>
             </div>

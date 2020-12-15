@@ -82,3 +82,47 @@ class Avales(db.Model):
     def consultaIndividual(self):
         aval=self.query.get(self.ID_Aval)
         return aval
+
+
+class Empleados(db.Model):
+    __tablename__='Empleados'
+    ID_Empleado=Column(Integer,primary_key=True)
+    Nombre=Column(String,nullable=False)
+    Apellidos=Column(String,nullable=False)
+    Sexo=Column(String,nullable=False)
+    Telefono=Column(String,nullable=False)
+    Estado=Column(String,nullable=False)
+    Municipio=Column(String,nullable=False)
+    Colonia=Column(String,nullable=False)
+    CallePrincipal=Column(String,nullable=False)
+    EntreCalles=Column(Integer,nullable=False)
+    NumExterior=Column(Integer,nullable=False)
+    NumInterior=Column(String,nullable=False)
+    CURP=Column(String,nullable=False)
+    Fecha_Nacimiento=Column(Date,nullable=False)
+    Fecha_Contratacion=Column(Date,nullable=False)
+    Estatus=Column(String,nullable=False)
+    Foto_Empleado=Column(BLOB,nullable=False)
+    FotoINE_Delantera=Column(BLOB,nullable=False)
+    FotoINE_Trasera=Column(BLOB,nullable=False)
+    Comprobante_Domicilio=Column(BLOB,nullable=False)
+    Usuario=Column(String,nullable=False)
+    Contraseña=Column(String,nullable=False)
+    Rol=Column(String,nullable=False)
+
+    def insertar(self):                                                                                                                                                                          
+        db.session.add(self)                                                                                                                                                                     
+        db.session.commit()                                                                                                                                                                      
+    def consultaGeneral(self):                                                                                                                                                                   
+        aval=self.query.all()                                                                                                                                                                   
+        return aval
+    def actualizar(self):
+        db.session.merge(self)
+        db.session.commit()
+    def eliminar(self):
+        emp=self.consultaIndividual()
+        db.session.delete(emp)
+        db.session.commit()
+    def consultaIndividual(self):
+        emp=self.query.get(self.ID_Empleado)
+        return emp

@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/css/style.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css' ) }}">
 
 </head>
 
@@ -28,29 +28,26 @@
             <a href="#clientesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Clientes</a>
             <ul class="collapse list-unstyled" id="clientesSubmenu">
               <li>
-                <a href="#">Registro Cliente</a>
+                <a href="/clientes/registrocliente">Registro Cliente</a>
               </li>
               <li>
-                <a href="#">Consulta Cliente</a>
-              </li>
-              <li>
-                <a href="#">Opciones Cliente</a>
+                <a href="/clientes/opcionesCliente/">Opciones Cliente</a>
               </li>
             </ul>
           </li>
           <!--Menu de prestamos-->
           <li>
             <a href="#prestamosSubmenu" data-toggle="collapse" aria-expanded="false"
-              class="dropdown-toggle">Prestamos</a>
+              class="dropdown-toggle">Credito</a>
             <ul class="collapse list-unstyled" id="prestamosSubmenu">
               <li>
-                <a href="#">Registro prestamo</a>
+                <a href="../templates/registroCredito.html">Registro Credito</a>
               </li>
               <li>
-                <a href="#">Consulta prestamo</a>
+                <a href="../templates/consultaCredito.html">Consulta Credito</a>
               </li>
               <li>
-                <a href="#">Opciones prestamo</a>
+                <a href="../templates/opcionesCredito.html">Opciones Credito</a>
               </li>
             </ul>
           </li>
@@ -59,28 +56,25 @@
             <a href="#pagosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pagos</a>
             <ul class="collapse list-unstyled" id="pagosSubmenu">
               <li>
-                <a href="#">Registrar pago</a>
+                <a href="../templates/registroPago.html">Registrar pago</a>
               </li>
               <li>
-                <a href="#">Consulta pago</a>
+                <a href="../templates/consultaPago.html">Consulta pago</a>
               </li>
             </ul>
           </li>
-          <!--Menu de Empleados-->
           <li>
-            <a href="#empleadosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Empledos</a>
+            <a href="#empleadosSubmenu" data-toggle="collapse" aria-expanded="false"
+              class="dropdown-toggle">Empledos</a>
             <ul class="collapse list-unstyled" id="empleadosSubmenu">
-                <li>
-                    <a href="#">Registrar Empleado</a>
-                </li>
-                <li>
-                  <a href="#">Consulta Empleado</a>
+              <li>
+                <a href="/empleados/registroempleado/">Registrar Empleado</a>
               </li>
               <li>
-                  <a href="#">Opciones Empleado</a>
+                <a href="/opcionesEmpleado/">Opciones Empleado</a>
               </li>
             </ul>
-        </li>
+          </li>
           <li>
             <a href="#">Cerrar Sesión</a>
           </li>
@@ -127,68 +121,48 @@
         </div>
       </nav>
       <!--Abajo de esto va tu código-->
-        <h3>Opciones Empleado</h3>
-          <form>
-            <div id="divOpcionesEmpleado">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <div class="input-group-text" id="btnGroupAddon">ID</div>
-                </div>
-                <input type="text" class="form-control" maxlength="4" aria-label="Input group example"
-                  aria-describedby="btnGroupAddon" id="ID_Empleado" >
-                <button type="button" class="btn btn-primary" onclick="onFormSubmit()" >Buscar</button>
-                <button type="button" class="btn btn-warning" id="mostrar">Modificar</button>
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"
-                  class="btn btn-danger btn-lg btn-block">Eliminar</button>
-              </div>
-    
-    
-              
-              <br>
-    
-              
-            </div>
-          </form>
 
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">¡Advertencia!</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  ¿ Esta seguro de que quiere eliminar el registro ?
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                  <button type="button" class="btn btn-danger">Si</button>
-                </div>
-              </div>
-            </div>
-          </div>
+      <h3>Opciones Empleado</h3>
 
-        <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                ...
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              </div>
-            </div>
+      <div id="divOpcionesCliente">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text" id="btnGroupAddon">ID</div>
           </div>
+          <input type="text" class="form-control" id="clavesita" aria-label="Input group example"
+            aria-describedby="btnGroupAddon">
+          <button type="button" class="btn btn-primary" onclick="getEmpleado()">Consultar</button>
         </div>
+
+        <br>
+
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Nombre Completo</th>
+              <th scope="col">Telefono</th>
+              <th scope="col">Dirección</th>
+              <th scope="col">Estado</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+              
+            </tr>
+          </thead>
+          {% for e in empleado %}
+          <tbody>
+            <tr>
+              <th scope="row">{{e.ID_Empleado}}</th>
+              <td>{{e.Nombre}} {{e.Apellidos}}</td>
+              <td>{{e.Telefono}}</td>
+              <td>{{e.CallePrincipal}} #{{e.NumInterior}} {{e.Colonia}}, {{e.Municipio}} {{e.Estado}}</td>
+              <td>{{e.Estatus}}</td>
+              <td><a href="/opcionesEmpleado/modificar/{{e.ID_Empleado}}"><button type="button" class="btn btn-warning">Modificar</button></a></td>
+              <td><a href="/opcionesEmpleado/eliminar/{{e.ID_Empleado}}"><button type="button" class="btn btn-danger">Eliminar</button></a></td>
+            </tr>
+          </tbody>
+          {% endfor %}
+        </table>
 
       
 
@@ -197,11 +171,11 @@
   </div>
   
 
-  <script src="../static/js/jquery.min.js"></script>
-  <script src="../static/js/popper.js"></script>
-  <script src="../static/js/bootstrap.min.js"></script>
-  <script src="../static/js/main.js"></script>
-  <script src="../static/js/opcionesEmpleado.js"></script>
+  <script src="../../static/js/jquery.min.js"></script>
+  <script src="../../static/js/popper.js"></script>
+  <script src="../../static/js/bootstrap.min.js"></script>
+  <script src="../../static/js/main.js"></script>
+  <script src="../../static/js/Empleados/opcionesEmpleado.js"></script>
 </body>
 
 </html>
