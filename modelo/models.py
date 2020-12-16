@@ -126,3 +126,32 @@ class Empleados(db.Model):
     def consultaIndividual(self):
         emp=self.query.get(self.ID_Empleado)
         return emp
+
+class Credito(db.Model):
+    __tablename__='Credito'
+    ID_Credito=Column(Integer,primary_key=True)
+    Cliente=Column(Integer,nullable=False)
+    Empleado_Responsable=Column(Integer,nullable=False)
+    MontoPrestado=Column(Integer,nullable=False)
+    Semanas=Column(Integer,nullable=False)
+    Estatus=Column(String,nullable=False)
+    Fecha_Inicio=Column(Date,nullable=False)
+    Fecha_Limite=Column(Date,nullable=False)
+    Foto_EntregaCredito=Column(Date,nullable=False)
+
+    def insertar(self):                                                                                                                                                                          
+        db.session.add(self)                                                                                                                                                                     
+        db.session.commit()                                                                                                                                                                      
+    def consultaGeneral(self):                                                                                                                                                                   
+        credito=self.query.all()                                                                                                                                                                   
+        return credito
+    def actualizar(self):
+        db.session.merge(self)
+        db.session.commit()
+    def eliminar(self):
+        credito=self.consultaIndividual()
+        db.session.delete(credito)
+        db.session.commit()
+    def consultaIndividual(self):
+        credito=self.query.get(self.ID_Credito)
+        return credito
