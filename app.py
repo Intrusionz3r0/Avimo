@@ -12,13 +12,20 @@ app.secret_key = "4V1M0S3CR3TKEY"
 
  
 #Configuración SqlAlchemy Mysql
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:password@localhost/AVIMO'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@Avila.01@localhost/AVIMO'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOADED_PHOTOS_DEST'] = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'uploads')
 print(app.config['UPLOADED_PHOTOS_DEST'])
  
 db = SQLAlchemy(app)
 
+@app.route('/Login')
+def Login():
+    return render_template('Login.html')
+
+@app.route('/CerrarSesion')
+def CerrarSesion():
+    return redirect(url_for("Login"))
 
 #Comienzo del CRUD de Clientes y Avales.
 
