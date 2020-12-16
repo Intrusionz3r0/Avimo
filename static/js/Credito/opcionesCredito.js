@@ -57,3 +57,9 @@ function validarDatos(){
 function Limpiar(){
     document.getElementById("ID_Credito").value="";
 }
+
+
+function getCredito(){
+    id=document.getElementById("clavesita").value;
+    location.href="/consultaindividual/"+id;
+}

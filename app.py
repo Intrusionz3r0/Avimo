@@ -2,7 +2,7 @@ import os
 from flask import Flask,render_template,request,redirect,url_for,abort
 from flask_mysqldb import MySQL
 from flask_sqlalchemy import SQLAlchemy
-from modelo.models import Clientes,Avales,Empleados
+from modelo.models import Clientes,Avales,Empleados,Credito,Pagos
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
@@ -310,8 +310,138 @@ def actualizarDatosEmpleado():
     if(empleado.Contraseña==pass2):
         empleado.actualizar()
     
-
     return redirect(url_for('ventanaRegistroEmpleados'))
+
+#CRUD de Creditos.
+
+@app.route("/credito/registraCredito")
+def ventanaCredito():
+    return render_template("Credito/registroCredito.html")
+
+@app.route("/credito/registrarCredito/new",methods=['POST'])
+def registrarCredito():
+    credito=Credito()
+    credito.Cliente=request.form['idempleado']
+    credito.Empleado_Responsable=request.form['idempleado']
+    credito.MontoPrestado=request.form['monto']
+    credito.Semanas=request.form['SemanasPlazo']
+    credito.Fecha_Inicio=request.form['Fch_Inicio']
+    credito.Fecha_Limite=request.form['Fch_Limite']
+    credito.Estatus="A"
+    #credito.Foto_EntregaCredito=request.files['file']
+    credito.insertar()
+    return redirect(url_for("consultaCreditoGeneral"))
+
+@app.route("/consultaindividual/<int:id>")
+def consultaindividualCredito(id):
+
+    credito=Credito()
+    credito.ID_Credito=id
+    credito=credito.consultaIndividual()
+
+    cliente=Clientes()
+    cliente.ID_Cliente=id
+    cliente=cliente.consultaIndividual()
+    
+    return render_template("Credito/consultaCredito.html",credito=credito,cliente=cliente)
+
+
+@app.route("/credito/opcionesCredito")
+def consultaCreditoGeneral():
+    credito=Credito()
+    credito=credito.consultaGeneral()
+    
+    return render_template("Credito/opcionesCredito.html",credito=credito)
+
+@app.route("/credito/eliminarCredito/<int:id>")
+def eliminarCredito(id):
+
+    credito=Credito()
+    credito.ID_Credito=id
+    credito.eliminar()
+
+    return redirect(url_for('consultaCreditoGeneral'))
+
+@app.route("/modificarCredito/<int:id>")
+def modificarCredito(id):
+
+    credito=Credito()
+    credito.ID_Credito=id
+    credito=credito.consultaIndividual()
+
+    return render_template("Credito/modificarCredito.html",credito=credito)
+
+@app.route("/actualizarCredito/nuevo",methods=['POST'])
+def actualizar():
+
+    credito=Credito()
+    
+    credito.ID_Credito=request.form['idcredito']
+    credito.Cliente=request.form['idempleado']
+    credito.Empleado_Responsable=request.form['idempleado']
+    credito.MontoPrestado=request.form['monto']
+    credito.Semanas=request.form['SemanasPlazo']
+    credito.Fecha_Inicio=request.form['Fch_Inicio']
+    credito.Fecha_Limite=request.form['Fch_Limite']
+    credito.Estatus="A"
+    #credito.Foto_EntregaCredito=request.files['file']
+    credito.actualizar()
+    return redirect(url_for("consultaCreditoGeneral"))
+
+
+#Crud de Pagos.
+
+
+@app.route("/Pago/registraPago/<int:id>")
+def ventanaRegistraPago(id):
+    credito=Credito()
+    credito.ID_Credito=id
+    credito=credito.consultaIndividual()
+
+    return render_template("Pagos/registroPago.html",credito=credito)
+
+
+@app.route("/Pago/RegistraPago/nuevo",methods=['POST'])
+def registrarPago():
+    pago=Pagos()
+    pago.Credito=request.form['ID_Cliente']
+    pago.Cliente=request.form['ID_Credito']
+    pago.Monto=request.form['Monto']
+    pago.Semana=request.form['Semanas']
+    pago.Fecha_Pago=request.form['Fch_Pago']
+    #pago.Foto_Comprobante=request.files['F_Comprobante']
+    pago.insertar()
+
+    credito=Credito()
+    credito.ID_Credito=request.form['ID_Credito']
+    credito.MontoPrestado=request.form['Total']
+    credito.MontoPrestado=int(credito.MontoPrestado)-int(pago.Monto)
+
+    if(credito.MontoPrestado<0):
+        credito.Estatus="I"
+        credito.MontoPrestado=0
+    credito.actualizar()
+
+
+    return redirect(url_for('consultaPagos'))
+
+
+@app.route("/Pago/ConsultaPagos")
+def consultaPagos():
+    return render_template("Pagos/opcionesPago.html")
+
+
+@app.route("/Pago/consultarmispagos/<int:id>")
+def consultaPagosIn(id):
+
+    pagos=Pagos()
+    pagos.ID_pagos=id
+    pagos=pagos.consultaGeneral()
+
+    return render_template("Pagos/consultaPago.html",pagos=pagos)
+
+
+
 
 if __name__ == "__main__":
     

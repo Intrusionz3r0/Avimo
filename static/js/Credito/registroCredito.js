@@ -5,8 +5,7 @@ function onFormSubmit() {
     var datoslistos = validarDatos();
 
     if (datoslistos != undefined) {
-        alert("Los datos estan listos para ser enviados a la base de datos.")
-        Limpiar();
+        alert("Datos listos")
     }
 
 
@@ -16,34 +15,39 @@ function validarDatos() {
     var formDatos = {};
     var mensaje = ""
     var aux = true;
-    formDatos[0] = document.getElementById('ID_Credito').value;
-    formDatos[1] = document.getElementById('Monto_pres').value;
-    formDatos[2] = document.getElementById('SemanasPlazo').value;
-    formDatos[3] = document.getElementById('Fch_Inicio').value;
-    formDatos[4] = document.getElementById('Fch_Limite').value;
+    formDatos[0] = document.getElementById('idcliente').value;
+    formDatos[1]= document.getElementById('idempleado').value;
+    formDatos[2] = document.getElementById('monto').value;
+    formDatos[3] = document.getElementById('SemanasPlazo').value;
+    formDatos[5] = document.getElementById('Fch_Inicio').value;
+    formDatos[6] = document.getElementById('Fch_Limite').value;
+    formDatos[7] = document.getElementById('file').value;
 
 
 
     for (const key in formDatos) { //Recorre todo los campos del formulario.
 
         if (formDatos[key] == "") { //Verifica si los campos estan vacios y si es así devuelve un error y en la variable aux devuelve un false.
-            mensaje = mensaje + "Varios campos estan vacios. Favor de ingresar los datos:"
+            mensaje = mensaje + "Varios campos estan vacios."
             aux = false;
             break;
         }
     }
 
-    if(!validarCredito(formDatos[0])){
-        mensaje=mensaje+" *El ID de Crédito no es valido"
+    if(formDatos[2]<=9999){
+        mensaje=mensaje+" El monto debe ser mayor a 10000"
         aux=false;
     }
 
-    if(!validarMonto(formDatos[1])){
-        mensaje=mensaje+" *El monto ingresado no es valido"
+    if(!validarMonto(formDatos[2])){
+        mensaje=mensaje+" El monto ingresado no es valido"
+        aux=false;
     }
 
 
     if (aux) {
+        document.getElementById("enviar").style.display="block";
+        document.getElementById("comprobar").style.display="none";
         return formDatos;
 
     }
@@ -95,7 +99,7 @@ function validarCredito(ID_Credito) {
 }
 
 function validarMonto(Monto) {
-    var regex = /^\d+/
+    var regex = /^\d[0-9]+/
     var response = regex.test(Monto)
     return response;
 }

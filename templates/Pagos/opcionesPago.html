@@ -28,28 +28,23 @@
             <a href="#clientesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Clientes</a>
             <ul class="collapse list-unstyled" id="clientesSubmenu">
               <li>
-                <a href="../templates/registroClientes.html">Registro Cliente</a>
+                <a href="/clientes/registrocliente">Registro Cliente</a>
               </li>
               <li>
-                <a href="../templates/consultaCliente.html">Consulta Cliente</a>
-              </li>
-              <li>
-                <a href="../templates/opcionesCliente.html">Opciones Cliente</a>
+                <a href="/clientes/opcionesCliente/">Opciones Cliente</a>
               </li>
             </ul>
           </li>
-          <!--Menu de Crédito-->
+          <!--Menu de prestamos-->
           <li>
-            <a href="#creditoSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Crédito</a>
-            <ul class="collapse list-unstyled" id="creditoSubmenu">
+            <a href="#prestamosSubmenu" data-toggle="collapse" aria-expanded="false"
+              class="dropdown-toggle">Credito</a>
+            <ul class="collapse list-unstyled" id="prestamosSubmenu">
               <li>
-                <a href="../templates/registroCredito.html">Registro Credito</a>
+                <a href="/credito/registraCredito">Registro credito</a>
               </li>
               <li>
-                <a href="../templates/consultaCredito.html">Consulta Credito</a>
-              </li>
-              <li>
-                <a href="../templates/opcionesCredito.html">Opciones Credito</a>
+                <a href="/credito/opcionesCredito">Consulta credito</a>
               </li>
             </ul>
           </li>
@@ -58,31 +53,22 @@
             <a href="#pagosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pagos</a>
             <ul class="collapse list-unstyled" id="pagosSubmenu">
               <li>
-                <a href="../templates/registroPago.html">Registrar Pago</a>
-              </li>
-              <li>
-                <a href="../templates/consultaPago.html">Consulta Pago</a>
-              </li>
-              <li>
-                <a href="..//templates/opcionesPago.html">Opciones Pago</a>
+                <a href="/Pago/ConsultaPagos">Opciones pagos</a>
               </li>
             </ul>
           </li>
-          <!--Menu de Empleados-->
           <li>
-            <a href="#empleadosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Empledos</a>
+            <a href="#empleadosSubmenu" data-toggle="collapse" aria-expanded="false"
+              class="dropdown-toggle">Empledos</a>
             <ul class="collapse list-unstyled" id="empleadosSubmenu">
-                <li>
-                    <a href="#">Registrar Empleado</a>
-                </li>
-                <li>
-                  <a href="#">Consulta Empleado</a>
+              <li>
+                <a href="/empleados/registroempleado/">Registrar Empleado</a>
               </li>
               <li>
-                  <a href="#">Opciones Empleado</a>
+                <a href="/opcionesEmpleado/">Opciones Empleado</a>
               </li>
             </ul>
-        </li>
+          </li>
           <li>
             <a href="#">Cerrar Sesión</a>
           </li>
@@ -131,91 +117,32 @@
       <!--Abajo de esto va tu código-->
 
 
-      <h3>Opciones Pago</h3>
-      <form>
-        <div id="divOpcionesPago">
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text" id="btnGroupAddon">ID</div>
-            </div>
-            <input type="text" class="form-control" maxlength="4" aria-label="Input group example"
-              aria-describedby="btnGroupAddon" id="ID_Cliente" >
-            <button type="button" class="btn btn-primary" onclick="onFormSubmit()" >Buscar</button>
-            <button type="button" class="btn btn-warning" id="mostrar">Modificar</button>
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"
-              class="btn btn-danger btn-lg btn-block">Eliminar</button>
+      <h3>Opciones Pagos</h3>
+
+      <div id="divOpcionesCliente">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text" id="btnGroupAddon">ID</div>
           </div>
-
-
-          
-          <br>
-
-          
+          <input type="text" class="form-control" id="clavesita" aria-label="Input group example"
+            aria-describedby="btnGroupAddon">
+          <button type="button" class="btn btn-warning" onclick="getValue()">Realizar Pago</button>
+          <button type="button" class="btn btn-primary" onclick="getModi()">Consultar</button>
         </div>
 
-        
-      </form>
-
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">¡Advertencia!</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  ¿ Esta seguro de que quiere eliminar el registro ?
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                  <button type="button" class="btn btn-danger">Si</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                ...
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      
-
-      <!-- Modal -->
-     
 
 
-
-      
 
       <!--Arriba de esto va tu código-->
-    </div>
-  </div>
 
+    </div>
   
 
-  <script src="../static/js/jquery.min.js"></script>
-  <script src="../static/js/popper.js"></script>
-  <script src="../static/js/bootstrap.min.js"></script>
-  <script src="../static/js/main.js"></script>
-  <script src="..//static/js/opcionesPago.js"></script>
-
+  <script src="../../static/js/jquery.min.js"></script>
+  <script src="../../static/js/popper.js"></script>
+  <script src="../../static/js/bootstrap.min.js"></script>
+  <script src="../../static/js/main.js"></script>
+  <script src="../../static/js/Pagos/opcionesPago.js"></script>
 </body>
 
 </html>

@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/css/style.css">
+  <link rel="stylesheet" href="../../static/css/style.css">
 
 </head>
 
@@ -115,29 +115,50 @@
         </div>
       </nav>
       <!--Abajo de esto va tu código-->
-      <h3>Registro Crédito <span class="badge badge-secondary">New</span></h3>
-      <form method="POST" action="/credito/registrarCredito/new">
+      <h3>Modificar Crédito</h3>
+      <form method="POST" action="/actualizarCredito/nuevo">
 
 
         <div class="row">
+
+            <div class="col">
+                <div class="form-group">
+                  <label for="cliente">ID credito</label>
+                  <input type="text" class="form-control" readonly value="{{credito.ID_Credito}}" id="idcredito" name="idcredito" required>
+                </div>
+              </div>
+            
           <div class="col">
             <div class="form-group">
               <label for="cliente">ID Cliente</label>
-              <input type="text" class="form-control" id="idcliente" name="idcliente" required>
+              <input type="text" class="form-control" value="{{credito.Cliente}}" id="idcliente" name="idcliente" required>
             </div>
           </div>
 
           <div class="col">
             <div class="form-group">
-              <label for="cliente">ID Empleado</label>
-              <input type="text" class="form-control" id="idempleado" name="idempleado" required>
+              <label for="cliente">ID Nombre</label>
+              <input type="text" class="form-control" value="{{credito.Empleado_Responsable}}" id="idempleado" name="idempleado" required>
             </div>
           </div>
         </div>
 
-        <div class="form-group">
-          <label for="Monto">Monto</label>
-          <input type="text" class="form-control" id="monto" name="monto" maxlength="18" required>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="Monto">Monto</label>
+                    <input type="text" class="form-control" value="{{credito.MontoPrestado}}" id="monto" name="monto" maxlength="18" required>
+                  </div>
+            </div>
+
+            <div class="col"> 
+                <label for="estatus">Estatus</label>
+                <select class="form-control" id="estatusC" name="estatusC">
+                  <option value="{{credito.Estatus}}" selected>{{credito.Estatus}}</option>
+                  <option value="D">Deuda</option>
+                  <option value="S">Saldado</option>
+                </select>
+            </div>
         </div>
 
 
@@ -145,7 +166,7 @@
           <div class="form-group col">
             <label for="SemanasPlazo">Semanas</label>
             <select class="form-control" id="SemanasPlazo" name="SemanasPlazo">
-              <option value="" disabled selected>Seleccionar total de Semanas</option>
+              <option value="{{credito.Semanas}}" selected>{{credito.Semanas}}</option>
               <option value="4">4 Semanas</option>
               <option value="8">8 Semanas</option>
               <option value="12">12 Semanas</option>
@@ -154,7 +175,7 @@
 
           <div class="form-group col">
             <label for="Fch_Inicio">Fecha de Inicio</label>
-            <input class="form-control" type="date" id="Fch_Inicio"
+            <input class="form-control" value="{{credito.Fecha_Inicio}}" type="date" id="Fch_Inicio"
               name="Fch_Inicio">
           </div>
 
@@ -164,7 +185,7 @@
         <div class="row">
           <div class="form-group col">
             <label for="Fch_Limite">Fecha Limite de Credito</label>
-            <input class="form-control" type="date" id="Fch_Limite" name="Fch_Limite">
+            <input class="form-control" value="{{credito.Fecha_Limite}}" type="date" id="Fch_Limite" name="Fch_Limite">
           </div>
 
 

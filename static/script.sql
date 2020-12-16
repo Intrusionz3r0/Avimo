@@ -98,6 +98,7 @@ primary key(ID_Credito),
 foreign key(Cliente) references Clientes(ID_Cliente),
 foreign key(Empleado_Responsable) references Empleados(ID_Empleado)
 );
+ALTER TABLE Credito AUTO_INCREMENT=1000;
 
 /*Creacion de tabla Pagos*/
 Create table Pagos(
@@ -113,4 +114,5 @@ primary key(ID_Pagos),
 foreign key(Credito) references Credito(ID_Credito),
 foreign key(Cliente) references Clientes(ID_Cliente)
 );
+ALTER TABLE Pagos AUTO_INCREMENT=1;
 

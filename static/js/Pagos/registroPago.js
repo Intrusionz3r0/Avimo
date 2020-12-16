@@ -23,30 +23,35 @@ function validarDatosPago(){
 
     for(const key in formDatos){
         if(formDatos[key]==""){
-            mensaje=mensaje + "Varios campos estan vacios. Favor de ingresar los datos :\n"
+            mensaje=mensaje + "Varios campos estan vacios.\n"
             aux=false;
             break;
         }
     }
 
-    if(!validarCliente(formDatos[0])){
-        mensaje=mensaje+" *El ID de Cliente no es valido\n"
+    
+    
+    if(isNaN(formDatos[0])){
+        mensaje=mensaje+" Ingresaste datos incorrectos"
+        aux=false
+    }
+    if(isNaN(formDatos[1])){
+        mensaje=mensaje+" Ingresaste datos incorrectos"
+        aux=false
+    }
+    if(isNaN(formDatos[2])){
+        mensaje=mensaje+" Ingresaste datos incorrectos"
         aux=false
     }
 
-    if(!validarCredito(formDatos[1])){
-        mensaje=mensaje+" *El ID de Crédito no es valido\n"
-        aux=false
-    }
 
-    if(!validarMonto(formDatos[2])){
-        mensaje=mensaje+" *El Monto ingresado no es valido\n"
-        aux=false
-    }
+
 
     
 
     if(aux){
+        document.getElementById("comprobar").style.display="none"
+        document.getElementById("enviar").style.display="block"
         return formDatos;
         
     }else{
@@ -84,29 +89,9 @@ function ValidarArchivo(oninput) { //Verifica las extenciones de lo archivos.
     return true;                                                        
 }
 
-function validarCliente(ID_Cli){
-    var regex= /^\d{4}/
-    var response=regex.test(ID_Cli)
+function validarNumero(val){
+    var regex= /^\d[0-9]+/
+    var response=regex.test(val)
     return response;
 }
 
-function validarCredito(ID_Cre){
-    var regex= /^\d{4}/
-    var response=regex.test(ID_Cre)
-    return response;
-}
-
-function validarMonto(Monto){
-    var regex = /^\d+/                                                                
-        var response = regex.test(Monto)                                                           
-        return response;
-}
-
-function Limpiar(){
-    document.getElementById("ID_Cliente").value="";
-    document.getElementById("ID_Credito").value="";
-    document.getElementById("Monto").value="";
-    document.getElementById("Semanas").value="";
-    document.getElementById("Fch_Pago").value="";
-    document.getElementById("F_Comprobante").value="";
-}

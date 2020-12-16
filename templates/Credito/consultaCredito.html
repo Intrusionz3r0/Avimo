@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/css/style.css">
+  <link rel="stylesheet" href="../../static/css/style.css">
 
 </head>
 
@@ -23,33 +23,27 @@
           <p id="empleadoName">Elon Reeve Musk</p>
         </center>
         <ul class="list-unstyled components mb-5">
-          <!--Menu de Clientes-->
           <li>
             <a href="#clientesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Clientes</a>
             <ul class="collapse list-unstyled" id="clientesSubmenu">
               <li>
-                <a href="../templates/registroClientes.html">Registro Cliente</a>
+                <a href="/clientes/registrocliente">Registro Cliente</a>
               </li>
               <li>
-                <a href="../templates/consultaCliente.html">Consulta Cliente</a>
-              </li>
-              <li>
-                <a href="../templates/opcionesCliente.html">Opciones Cliente</a>
+                <a href="/clientes/opcionesCliente/">Opciones Cliente</a>
               </li>
             </ul>
           </li>
-          <!--Menu de Crédito-->
+          <!--Menu de prestamos-->
           <li>
-            <a href="#creditoSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Crédito</a>
-            <ul class="collapse list-unstyled" id="creditoSubmenu">
+            <a href="#prestamosSubmenu" data-toggle="collapse" aria-expanded="false"
+              class="dropdown-toggle">Credito</a>
+            <ul class="collapse list-unstyled" id="prestamosSubmenu">
               <li>
-                <a href="../templates/registroCredito.html">Registro Crédito</a>
+                <a href="/credito/registraCredito">Registro credito</a>
               </li>
               <li>
-                <a href="../templates/consultaCredito.html">Consulta Crédito</a>
-              </li>
-              <li>
-                <a href="../templates/opcionesCredito.html">Opciones Crédito</a>
+                <a href="/credito/opcionesCredito">Consulta credito</a>
               </li>
             </ul>
           </li>
@@ -58,31 +52,22 @@
             <a href="#pagosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pagos</a>
             <ul class="collapse list-unstyled" id="pagosSubmenu">
               <li>
-                <a href="../templates/registroPago.html">Registrar Pago</a>
-              </li>
-              <li>
-                <a href="../templates/consultaPago.html">Consulta Pago</a>
-              </li>
-              <li>
-                <a href="..//templates/opcionesPago.html">Opciones Pago</a>
+                <a href="/Pago/ConsultaPagos">Opciones pagos</a>
               </li>
             </ul>
           </li>
-          <!--Menu de Empleados-->
           <li>
-            <a href="#empleadosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Empledos</a>
+            <a href="#empleadosSubmenu" data-toggle="collapse" aria-expanded="false"
+              class="dropdown-toggle">Empledos</a>
             <ul class="collapse list-unstyled" id="empleadosSubmenu">
-                <li>
-                    <a href="#">Registrar Empleado</a>
-                </li>
-                <li>
-                  <a href="#">Consulta Empleado</a>
+              <li>
+                <a href="/empleados/registroempleado/">Registrar Empleado</a>
               </li>
               <li>
-                  <a href="#">Opciones Empleado</a>
+                <a href="/opcionesEmpleado/">Opciones Empleado</a>
               </li>
             </ul>
-        </li>
+          </li>
           <li>
             <a href="#">Cerrar Sesión</a>
           </li>
@@ -133,12 +118,7 @@
       <form action="" method="GET">
         <div class="input-group">
           <div class="input-group-prepend">
-            <div class="input-group-text" id="btnGroupAddon">ID</div>
 
-          </div>
-          <input type="text" class="form-control" maxlength="4" aria-label="Input group example"
-            aria-describedby="btnGroupAddon" id="ID_Credito">
-          <button type="button" class="btn btn-primary" onclick="onFormSubmit()"> Buscar</button>
 
         </div>
         <br><br>
@@ -156,6 +136,16 @@
               <th scope="col">Foto Entrega del Crédito</th>
             </tr>
           </thead>
+          
+          <td>{{credito.ID_Credito}}</td>
+          <td>{{credito.Cliente}}</td>
+          <td>{{credito.Empleado_Responsable}}</td>
+          <td>{{credito.MontoPrestado}}</td>
+          <td>{{credito.Semanas}}</td>
+          <td>{{credito.Estatus}}</td>
+          <td>{{credito.Fecha_Inicio}}</td>
+          <td>{{credito.Fecha_Limite}}</td>
+          <td>{{credito.Foto_EntregaCredito}}</td>
   
         </table>
       </form >
@@ -212,11 +202,11 @@
   </div>
   </div>
 
-  <script src="../static/js/jquery.min.js"></script>
-  <script src="../static/js/popper.js"></script>
-  <script src="../static/js/bootstrap.min.js"></script>
-  <script src="../static/js/main.js"></script>
-  <script src="../static/js/consultaCredito.js"></script>
+  <script src="../../static/js/jquery.min.js"></script>
+  <script src="../../static/js/popper.js"></script>
+  <script src="../../static/js/bootstrap.min.js"></script>
+  <script src="../../static/js/main.js"></script>
+  <script src="../../static/js/Credito/consultaCredito.js"></script>
 </body>
 
 </html>

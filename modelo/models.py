@@ -137,7 +137,7 @@ class Credito(db.Model):
     Estatus=Column(String,nullable=False)
     Fecha_Inicio=Column(Date,nullable=False)
     Fecha_Limite=Column(Date,nullable=False)
-    Foto_EntregaCredito=Column(Date,nullable=False)
+    Foto_EntregaCredito=Column(BLOB,nullable=False)
 
     def insertar(self):                                                                                                                                                                          
         db.session.add(self)                                                                                                                                                                     
@@ -155,3 +155,31 @@ class Credito(db.Model):
     def consultaIndividual(self):
         credito=self.query.get(self.ID_Credito)
         return credito
+
+class Pagos(db.Model):
+    __tablename__ = "Pagos"
+    ID_pagos=Column(Integer,primary_key=True)
+    Credito=Column(Integer,nullable=False)
+    Cliente=Column(Integer,nullable=False)
+    Monto=Column(Integer,nullable=False)
+    Semana=Column(Integer,nullable=False)
+    Fecha_Pago=Column(Date,nullable=False)
+    Foto_Comprobante=Column(BLOB,nullable=False)
+
+    def insertar(self):                                                                                                                                                                          
+        db.session.add(self)                                                                                                                                                                     
+        db.session.commit()                                                                                                                                                                      
+    def consultaGeneral(self):                                                                                                                                                                   
+        pago=self.query.all()                                                                                                                                                                   
+        return pago
+    def actualizar(self):
+        db.session.merge(self)
+        db.session.commit()
+    def eliminar(self):
+        pago=self.consultaIndividual()
+        db.session.delete(pago)
+        db.session.commit()
+    def consultaIndividual(self):
+        pago=self.query.get(self.ID_pagos)
+        return pago
+
