@@ -137,6 +137,7 @@
               <th scope="col">Nombre Completo</th>
               <th scope="col">Telefono</th>
               <th scope="col">Dirección</th>
+              <th scope="col">Tipo de Empleado</th>
               <th scope="col">Estatus</th>
               <th scope="col"></th>
               <th scope="col"></th>
@@ -150,6 +151,7 @@
               <td>{{e.Nombre}} {{e.Apellidos}}</td>
               <td>{{e.Telefono}}</td>
               <td>{{e.CallePrincipal}} #{{e.NumInterior}} {{e.Colonia}}, {{e.Municipio}} {{e.Estado}}</td>
+              <td>{{e.Rol}}</td>
               <td>{{e.Estatus}}</td>
               <td><a href="/opcionesEmpleado/modificar/{{e.ID_Empleado}}"><button type="button" class="btn btn-warning">Modificar</button></a></td>
               <td><a href="/opcionesEmpleado/eliminar/{{e.ID_Empleado}}"><button type="button" class="btn btn-danger">Eliminar</button></a></td>

@@ -12,7 +12,7 @@ app.secret_key = "4V1M0S3CR3TKEY"
 
  
 #Configuración SqlAlchemy Mysql
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@Avila.01@localhost/AVIMO'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:password@localhost/AVIMO'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOADED_PHOTOS_DEST'] = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'uploads')
 print(app.config['UPLOADED_PHOTOS_DEST'])
@@ -39,12 +39,6 @@ def agregarCliente():
     cliente.Nombre = request.form['nombreCliente']
     cliente.Apellidos = request.form['apellidoCliente']
     cliente.Genero = request.form['generoCliente']
-    if(cliente.Genero == "Masculino"):
-        cliente.Genero="M"
-    elif(cliente.Genero == "Femenino"):
-        cliente.Genero="F"
-    elif(cliente.Genero == "Otro"):
-        cliente.Genero="O"
     cliente.Estado = request.form['estadoCliente']
     cliente.Municipio = request.form['municipioCliente']
     cliente.Colonia = request.form['coloniaCliente']
@@ -57,7 +51,7 @@ def agregarCliente():
     cliente.Clave = cliente.CURP[:10]+cliente.CURP[-3:]
     cliente.Fecha_Nacimiento = request.form['fnacimientoCliente']
     cliente.Fecha_Registro = request.form['fregistroCliente']
-    cliente.Estatus = "A"
+    cliente.Estatus = "Activo"
     cliente.insertar()
     #cliente.FotoINE_Delantera =request.files['file1Cliente']
     #cliente.FotoINE_Trasera =request.files['file1Cliente']
@@ -139,12 +133,6 @@ def actualizarDatos():
     cliente.Nombre = request.form['nombreCliente']
     cliente.Apellidos = request.form['apellidoCliente']
     cliente.Genero = request.form['generoCliente']
-    if(cliente.Genero == "Masculino" or cliente.Genero == "M"):
-        cliente.Genero="M"
-    elif(cliente.Genero == "Femenino" or cliente.Genero == "F"):
-        cliente.Genero="F"
-    elif(cliente.Genero == "Otro" or cliente.Genero == "O"):
-        cliente.Genero="O"
     cliente.Estado = request.form['estadoCliente']
     cliente.Municipio = request.form['municipioCliente']
     cliente.Colonia = request.form['coloniaCliente']
@@ -158,10 +146,6 @@ def actualizarDatos():
     cliente.Fecha_Nacimiento = request.form['fnacimientoCliente']
     cliente.Fecha_Registro = request.form['fregistroCliente']
     cliente.Estatus = request.form['estatusCliente']
-    if(cliente.Estatus == "Activo" or cliente.Estatus == "A"):
-        cliente.Estatus="A"
-    elif(cliente.Estatus == "Inactivo" or cliente.Estatus == "I"):
-        cliente.Estatus="I"
     cliente.actualizar()
 
     aval=Avales()
@@ -197,12 +181,6 @@ def registrarEmpleado():
     empleado.Nombre=request.form['NombreEmp']
     empleado.Apellidos=request.form['ApellidosEmp']
     empleado.Sexo=request.form['generoEmp']
-    if(empleado.Sexo == "Masculino"):
-        empleado.Sexo="M"
-    elif(empleado.Sexo == "Femenino"):
-        empleado.Sexo="F"
-    elif(empleado.Sexo == "Otro"):
-        empleado.Sexo="O"
     empleado.Estado=request.form['estadoEmp']
     empleado.Municipio=request.form['municipioEmp']
     empleado.Colonia=request.form['coloniaEmp']
@@ -214,7 +192,7 @@ def registrarEmpleado():
     empleado.CURP=request.form['curpEmp']
     empleado.Fecha_Nacimiento=request.form['fnacimientoEmp']
     empleado.Fecha_Contratacion=request.form['fingresoEmp']
-    empleado.Estatus="A"
+    empleado.Estatus="Activo"
     #empleado.Foto_Empleado=request.files['fotoempe']
     #empleado.FotoINE_Delantera=request.files['file1']
     #empleado.FotoINE_Trasera=request.files['file1']
@@ -222,15 +200,6 @@ def registrarEmpleado():
     empleado.Usuario=request.form['Usuario']
     empleado.Contraseña=request.form['Contraseña2']
     empleado.Rol=request.form['Rol']
-    
-    if(empleado.Rol == "Jefe/Subjefe"):
-        empleado.Rol="J"
-    
-    elif(empleado.Rol == "Administrador"):
-        empleado.Rol="A"
-    
-    elif(empleado.Rol == "Asesor de Crédito"):
-        empleado.Rol="C"
     
     empleado.insertar()
 
@@ -274,12 +243,6 @@ def actualizarDatosEmpleado():
     empleado.Nombre=request.form['NombreEmp']
     empleado.Apellidos=request.form['ApellidosEmp']
     empleado.Sexo=request.form['generoEmp']
-    if(empleado.Sexo == "Masculino" or empleado.Sexo == "M"):
-        empleado.Sexo="M"
-    elif(empleado.Sexo == "Femenino" or empleado.Sexo == "F"):
-        empleado.Sexo="F"
-    elif(empleado.Sexo == "Otro" or empleado.Sexo == "O"):
-        empleado.Sexo="O"
     empleado.Estado=request.form['estadoEmp']
     empleado.Municipio=request.form['municipioEmp']
     empleado.Colonia=request.form['coloniaEmp']
@@ -292,10 +255,6 @@ def actualizarDatosEmpleado():
     empleado.Fecha_Nacimiento=request.form['fnacimientoEmp']
     empleado.Fecha_Contratacion=request.form['fingresoEmp']
     empleado.Estatus=request.form['estatusAval']
-    if(empleado.Estatus=="Activo" or empleado.Estatus=="A"):
-        empleado.Estatus="A"
-    elif(empleado.Estatus=="Inactivo" or empleado.Estatus=="I"):
-        empleado.Estatus="I"
     #empleado.Foto_Empleado=request.files['fotoempe']
     #empleado.FotoINE_Delantera=request.files['file1']
     #empleado.FotoINE_Trasera=request.files['file1']
@@ -304,15 +263,6 @@ def actualizarDatosEmpleado():
     empleado.Contraseña=request.form['Contraseña2']
     pass2=request.form['Contraseña']
     empleado.Rol=request.form['Rol']
-    
-    if(empleado.Rol == "Jefe/Subjefe" or empleado.Rol == "J"):
-        empleado.Rol="J"
-    
-    elif(empleado.Rol == "Administrador" or empleado.Rol == "A"):
-        empleado.Rol="A"
-    
-    elif(empleado.Rol == "Asesor de Crédito" or empleado.Rol == "C"):
-        empleado.Rol="C"
     
     if(empleado.Contraseña==pass2):
         empleado.actualizar()
@@ -331,10 +281,11 @@ def registrarCredito():
     credito.Cliente=request.form['idempleado']
     credito.Empleado_Responsable=request.form['idempleado']
     credito.MontoPrestado=request.form['monto']
+    credito.MontoPagar=request.form['monto']
     credito.Semanas=request.form['SemanasPlazo']
     credito.Fecha_Inicio=request.form['Fch_Inicio']
     credito.Fecha_Limite=request.form['Fch_Limite']
-    credito.Estatus="A"
+    credito.Estatus="Activo"
     #credito.Foto_EntregaCredito=request.files['file']
     credito.insertar()
     return redirect(url_for("consultaCreditoGeneral"))
@@ -390,7 +341,7 @@ def actualizar():
     credito.Semanas=request.form['SemanasPlazo']
     credito.Fecha_Inicio=request.form['Fch_Inicio']
     credito.Fecha_Limite=request.form['Fch_Limite']
-    credito.Estatus="A"
+    credito.Estatus="Deuda"
     #credito.Foto_EntregaCredito=request.files['file']
     credito.actualizar()
     return redirect(url_for("consultaCreditoGeneral"))
@@ -421,12 +372,12 @@ def registrarPago():
 
     credito=Credito()
     credito.ID_Credito=request.form['ID_Credito']
-    credito.MontoPrestado=request.form['Total']
-    credito.MontoPrestado=int(credito.MontoPrestado)-int(pago.Monto)
+    credito.MontoPagar=request.form['Total']
+    credito.MontoPagar=int(credito.MontoPagar)-int(pago.Monto)
 
-    if(credito.MontoPrestado<0):
-        credito.Estatus="I"
-        credito.MontoPrestado=0
+    if(credito.MontoPagar<=0):
+        credito.Estatus="Saldado"
+        credito.MontoPagar=0
     credito.actualizar()
 
 

@@ -133,6 +133,7 @@ class Credito(db.Model):
     Cliente=Column(Integer,nullable=False)
     Empleado_Responsable=Column(Integer,nullable=False)
     MontoPrestado=Column(Integer,nullable=False)
+    MontoPagar=Column(Integer,nullable=False)
     Semanas=Column(Integer,nullable=False)
     Estatus=Column(String,nullable=False)
     Fecha_Inicio=Column(Date,nullable=False)

@@ -122,7 +122,7 @@
       <div id="divOpcionesCliente">
         <div class="input-group">
           <div class="input-group-prepend">
-            <div class="input-group-text" id="btnGroupAddon">ID</div>
+            <div class="input-group-text" id="btnGroupAddon">ID Credito</div>
           </div>
           <input type="text" class="form-control" id="clavesita" aria-label="Input group example"
             aria-describedby="btnGroupAddon">
@@ -138,6 +138,7 @@
               <th scope="col">Cliente</th>
               <th scope="col">Empleado_Responsable</th>
               <th scope="col">Monto en deuda</th>
+              <th scope="col">Monto a Pagar</th>
               <th scope="col">Semanas</th>
               <th scope="col">Estatus</th>
               <th scope="col">Fecha_Inicio</th>
@@ -155,6 +156,7 @@
               <td>{{c.Cliente}}</td>
               <td>{{c.Empleado_Responsable}}</td>
               <td>{{c.MontoPrestado}}</td>
+              <td>{{c.MontoPagar}}</td>
               <td>{{c.Semanas}}</td>
               <td>{{c.Estatus}}</td>
               <td>{{c.Fecha_Inicio}}</td>

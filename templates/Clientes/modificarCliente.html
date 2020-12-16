@@ -152,7 +152,6 @@
                     <option value="{{cliente.Genero}}" selected>{{cliente.Genero}}</option>
                     <option>Masculino</option>
                     <option>Femenino</option>
-                    <option>Otro</option>
                   </select>
                 </div>
               </div>
@@ -239,11 +238,10 @@
             <div class="form-group row">
               <label for="fregistro" class="col-2 col-form-label">Fecha de registro</label>
               <div class="col-10">
-                <input class="form-control" type="datetime-local"  value="{{cliente.Fecha_Registro}}" id="fregistroCliente"
+                <input class="form-control" type="date"  value="{{cliente.Fecha_Registro}}" id="fregistroCliente"
                   name="fregistroCliente" required>
               </div>
             </div>
-    
     
             <div class="row">
               <div class="form-group col">
