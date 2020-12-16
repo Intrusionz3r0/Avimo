@@ -145,9 +145,9 @@
             </div>
 
             <div class="form-group col">
-              <label for="Genero">Estatus</label>
+              <label for="Estatus">Estatus</label>
               <select class="form-control" id="estatusAval" name="estatusAval" required>
-                <option value="{{empleado.Sexo}}" selected>{{empleado.Sexo}}</option>
+                <option value="{{empleado.Estatus}}" selected>{{empleado.Estatus}}</option>
                 <option>Activo</option>
                 <option>Inactivo</option>
               </select>
@@ -316,12 +316,16 @@
             </div>
           </div>
           <br><br>
-          <button class="btn btn-secondary" type="button" name="btnRegresarEmp" id="btnRegresarEmp" onclick="MostrarRegEmp();">Regresar</button>
-          <button class="btn btn-primary" type="submit" name="btnValidarEmpleado" id="btnValidarEmpleado"
-            onclick="onFormSubmit()">Registrar
-            Empleado</button>
+          <div class="row">
+            <div class="col">
+              <button class="btn btn-secondary" type="button" name="btnRegresarEmp" id="btnRegresarEmp" onclick="MostrarRegEmp();">Regresar</button>
+            </div>
+            <div class="col">
+              <button class="btn btn-secondary" type="button" name="btnRegresarEmp" id="btnComprobar" onclick="onFormSubmit()">Comprobar</button>
+          <button class="btn btn-primary" type="submit" name="btnValidarEmpleado" id="btnValidarEmpleado" style="display: none;">Registrar Empleado</button>
+            </div>
+          </div>
         </div>
-
 
       </form>
 

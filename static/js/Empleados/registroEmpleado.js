@@ -55,12 +55,14 @@ function validarDatosEmpleado(){
     }
     
 
-    if(!validarContraseña(formDatos[18],formDatos[19])){
+    if((!validarContraseña(formDatos[18],formDatos[19]))){
         mensaje=mensaje+" La contraseña no coincide"
         aux=false;
     }
 
     if(aux){ //Si la variable aux es True entonces envia los datos.
+        document.getElementById("btnValidarEmpleado").style.display = 'block';
+        document.getElementById("btnComprobar").style.display = 'none';
         return formDatos;
     }
     else{// si la variable aux es false entonces muestra un error en pantalla.
@@ -97,23 +99,6 @@ function ValidarArchivo(oninput) { //Verifica las extenciones de lo archivos.
     return true;                                                        
 }
 
-function validarNombre(nombre){
-    var regex = /^[A-Z]{1}\w+/                                                                
-    var response = regex.test(nombre)                                                           
-    return response;    
-}
-
-function validarApellidos(apellidos){
-    var regex = /^\w{8}/                                                                
-    var response = regex.test(apellidos)                                                           
-    return response;
-}
-
-function validarUsuario(Usuario){
-    var regex = /^\w{5}/                                                                
-    var response = regex.test(Usuario)                                                           
-    return response;
-}
 
 function validarContraseña(dato1,dato2){
     if(dato1==dato2){
@@ -124,11 +109,6 @@ function validarContraseña(dato1,dato2){
     }
 }
 
-function validarNumero(Numero){
-    var regex = /^\d+/                                                                
-        var response = regex.test(Numero)                                                           
-        return response; 
-}
 
 function validarTelefono(valor){                                
     var regex = /^\d{3}-\d{3}-\d{4}$/                                                     
@@ -142,17 +122,7 @@ function validarCURP(valor){
     return reponse;                                                                        
 }
 
-function validarCalle(calle){
-    var regex = /^\w{3}/                                                                
-    var response = regex.test(calle)                                                           
-    return response;
-}
 
-function validarEntreCalles(Entre_Calles){
-    var regex = /^\w{7}/                                                                
-    var response = regex.test(Entre_Calles)                                                           
-    return response;
-}
 
 //DOMICILIO
 

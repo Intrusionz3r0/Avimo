@@ -295,6 +295,7 @@ def actualizarDatosEmpleado():
     #empleado.Comprobante_Domicilio=request.files['ComproDomi']
     empleado.Usuario=request.form['Usuario']
     empleado.Contraseña=request.form['Contraseña2']
+    pass2=request.form['Contraseña']
     empleado.Rol=request.form['Rol']
     
     if(empleado.Rol == "Jefe/Subjefe" or empleado.Rol == "J"):
@@ -306,7 +307,9 @@ def actualizarDatosEmpleado():
     elif(empleado.Rol == "Asesor de Crédito" or empleado.Rol == "C"):
         empleado.Rol="C"
     
-    empleado.actualizar()
+    if(empleado.Contraseña==pass2):
+        empleado.actualizar()
+    
 
     return redirect(url_for('ventanaRegistroEmpleados'))
 
