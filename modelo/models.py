@@ -22,7 +22,7 @@ class Clientes(db.Model):
     Telefono=Column(String,nullable=False)
     CURP=Column(String,nullable=False)
     Fecha_Nacimiento=Column(Date,nullable=False)
-    Fecha_Registro=Column(DateTime,nullable=False)
+    Fecha_Registro=Column(Date,nullable=False)
     Estatus=Column(String,nullable=False)
     FotoINE_Delantera=Column(BLOB,nullable=False)
     FotoINE_Trasera=Column(BLOB,nullable=False)
