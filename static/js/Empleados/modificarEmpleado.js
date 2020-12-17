@@ -26,14 +26,11 @@ function validarDatosEmpleado(){
     formDatos[11]=document.getElementById("curpEmp").value;
     formDatos[12]=document.getElementById("fnacimientoEmp").value;
     formDatos[13]=document.getElementById("fingresoEmp").value;
-    formDatos[14]=document.getElementById("fine1").value;
-    formDatos[15]=document.getElementById("fine2").value;
-    formDatos[16]=document.getElementById("ComproDomi").value;
-    formDatos[17]=document.getElementById("Usuario").value;
-    formDatos[18]=document.getElementById("Contraseña1").value;
-    formDatos[19]=document.getElementById("Contraseña2").value;
-    formDatos[20]=document.getElementById("Rol").value;
-    formDatos[21]=document.getElementById("fotoempe").value;
+    formDatos[14]=document.getElementById("Usuario").value;
+    formDatos[15]=document.getElementById("Contraseña1").value;
+    formDatos[16]=document.getElementById("Contraseña2").value;
+    formDatos[17]=document.getElementById("Rol").value;
+    
    
     for(const key in formDatos){
         if(formDatos[key]==""){

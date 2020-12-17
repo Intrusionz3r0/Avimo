@@ -37,8 +37,7 @@
           </li>
           <!--Menu de prestamos-->
           <li>
-            <a href="#prestamosSubmenu" data-toggle="collapse" aria-expanded="false"
-              class="dropdown-toggle">Credito</a>
+            <a href="#prestamosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Credito</a>
             <ul class="collapse list-unstyled" id="prestamosSubmenu">
               <li>
                 <a href="/credito/registraCredito">Registro credito</a>
@@ -116,29 +115,39 @@
       </nav>
       <!--Abajo de esto va tu código-->
       <h3>Registro Crédito <span class="badge badge-secondary">New</span></h3>
-      <form method="POST" action="/credito/registrarCredito/new">
+      <form method="POST" action="/credito/registrarCredito/new" enctype="multipart/form-data">
 
 
         <div class="row">
           <div class="col">
             <div class="form-group">
               <label for="cliente">ID Cliente</label>
-              <input type="text" class="form-control" id="idcliente" name="idcliente" required>
+              <input type="text" class="form-control" id="idcliente" maxlength="4" name="idcliente" required>
             </div>
           </div>
 
           <div class="col">
             <div class="form-group">
               <label for="cliente">ID Empleado</label>
-              <input type="text" class="form-control" id="idempleado" name="idempleado" required>
+              <input type="text" class="form-control" id="idempleado" maxlength="4" name="idempleado" required>
             </div>
           </div>
         </div>
 
-        <div class="form-group">
-          <label for="Monto">Monto</label>
-          <input type="text" class="form-control" id="monto" name="monto" maxlength="18" required>
+        <div class="row">
+          <div class="col">
+            <label for="Monto">CURP</label>
+            <input type="text" class="form-control" id="curp" name="curp" maxlength="18" required>
+          </div>
+  
+          <div class="col">
+            <label for="Monto">Monto</label>
+            <input type="text" class="form-control" id="monto" name="monto" maxlength="18" required>
+          </div>
         </div>
+        <br>
+
+
 
 
         <div class="row">
@@ -154,8 +163,7 @@
 
           <div class="form-group col">
             <label for="Fch_Inicio">Fecha de Inicio</label>
-            <input class="form-control" type="date" id="Fch_Inicio"
-              name="Fch_Inicio">
+            <input class="form-control" type="date" id="Fch_Inicio" name="Fch_Inicio">
           </div>
 
 
@@ -170,7 +178,8 @@
 
           <div class="form-group col">
             <label for="file">Foto Entrega de Crédito</label>
-            <input type="file" class="form-control-file" onchange="ValidarArchivo(this);" id="file" required>
+            <input type="file" class="form-control-file" onchange="ValidarArchivo(this);" id="entregaC" name="entregaC"
+              required>
           </div>
         </div>
 

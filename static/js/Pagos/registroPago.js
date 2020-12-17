@@ -4,8 +4,7 @@ var extValidas = [".jpg", ".jpeg",".png"];
 function onFormSubmit(){
     var datoslistos= validarDatosPago();
     if(datoslistos != undefined){
-        alert("Los datos estan listos para ser enviados a la base de datos.");
-        Limpiar();
+
     }
     
 }
@@ -20,6 +19,7 @@ function validarDatosPago(){
     formDatos[3]=document.getElementById("Semanas").value;
     formDatos[4]=document.getElementById("Fch_Pago").value;
     formDatos[5]=document.getElementById("F_Comprobante").value;
+    formDatos[6]=document.getElementById("curp").value;
 
     for(const key in formDatos){
         if(formDatos[key]==""){
@@ -29,7 +29,9 @@ function validarDatosPago(){
         }
     }
 
-    
+    if(!validarCURP(formDatos[6])){
+        mensaje=mensaje+"La curp introducida es invalida"
+    }
     
     if(isNaN(formDatos[0])){
         mensaje=mensaje+" Ingresaste datos incorrectos"
@@ -95,3 +97,8 @@ function validarNumero(val){
     return response;
 }
 
+function validarCURP(valor){                                                                
+    var regex = /^[A-Z]{4}\d{6}\w{8}/                                                     
+    var reponse = regex.test(valor)                                 
+    return reponse;                                                                        
+}  

@@ -21,8 +21,7 @@ function validarDatos() {
     formDatos[3] = document.getElementById('SemanasPlazo').value;
     formDatos[5] = document.getElementById('Fch_Inicio').value;
     formDatos[6] = document.getElementById('Fch_Limite').value;
-    formDatos[7] = document.getElementById('entregaC').value;
-    formDatos[8] = document.getElementById('curp').value;
+
 
 
 
@@ -35,10 +34,6 @@ function validarDatos() {
         }
     }
 
-    if(!validarCURP(formDatos[8])){
-        mensaje=mensaje+" La curp introducida es invalida"
-        aux=false;
-    }
 
     if(formDatos[2]<=9999){
         mensaje=mensaje+" El monto debe ser mayor a 10000"

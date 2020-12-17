@@ -224,7 +224,7 @@
             </div>
             <div class="form-group">
               <label for="curp">Curp</label>
-              <input type="text" class="form-control" value="{{cliente.CURP}}" id="curpCliente" name="curpCliente" maxlength="18" required >
+              <input type="text" class="form-control" readonly value="{{cliente.CURP}}" id="curpCliente" name="curpCliente" maxlength="18" required >
             </div>
             <br>
     
@@ -243,27 +243,7 @@
               </div>
             </div>
     
-            <div class="row">
-              <div class="form-group col">
-                <label>INE Delantera</label>
-                <input type="file" class="form-control-file" id="file1Cliente" name="file1Cliente" onchange="ValidarArchivo(this);" required>
-              </div>
-              <div class="form-group col">
-                <label>INE Trasera</label>
-                <input type="file" class="form-control-file" id="file2Cliente" name="file2Cliente" onchange="ValidarArchivo(this);" required>
-              </div>
-            </div>
 
-            <div class="row">
-              <div class="form-group col">
-                <label>Foto de cliente</label>
-                <input type="file" class="form-control-file" id="file3Cliente" name="file3Cliente" onchange="ValidarArchivo(this);" required>
-              </div>
-              <div class="form-group col">
-                <label>Comprobante de domicilio</label>
-                <input type="file" class="form-control-file" id="file4Cliente" name="file4Cliente" onchange="ValidarArchivo(this);" required>
-              </div>
-            </div>
             
             <button type="button" class="btn btn-primary" id="btnSiguiente" onclick="validarDatosClientes()">Siguiente</button>
        
@@ -354,18 +334,7 @@
   
   
           <div class="row">
-            <div class="form-group col">
-              <label>Foto INE 1</label>
-              <input type="file" class="form-control-file" id="file1Aval" name="file1Aval" onchange="ValidarArchivo(this);" required>
-            </div>
-            <div class="form-group col">
-              <label>Foto INE 2</label>
-              <input type="file" class="form-control-file" id="file2Aval" name="file2aval" onchange="ValidarArchivo(this);" required>
-            </div>
-            <div class="form-group col">
-              <label>Comprobante de domicilio</label>
-              <input type="file" class="form-control-file" id="file3Aval" name="file3Aval" onchange="ValidarArchivo(this);" required>
-            </div>
+
           </div>
           <button type="button" class="btn btn-primary" id="btnComprobar" onclick="validarDatosAval()">Comprobar</button>
         </div>
@@ -438,7 +407,7 @@
   <script src="../../static/js/popper.js"></script>
   <script src="../../static/js/bootstrap.min.js"></script>
   <script src="../../static/js/main.js"></script>
-  <script src="../../static/js/Clientes/registroCliente.js"></script>
+  <script src="../../static/js/Clientes/modificarCliente.js"></script>
 </body>
 
 </html>

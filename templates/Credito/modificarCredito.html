@@ -131,14 +131,14 @@
           <div class="col">
             <div class="form-group">
               <label for="cliente">ID Cliente</label>
-              <input type="text" class="form-control" value="{{credito.Cliente}}" id="idcliente" name="idcliente" required>
+              <input type="text" class="form-control" value="{{credito.Cliente}}" readonly id="idcliente" name="idcliente" required>
             </div>
           </div>
 
           <div class="col">
             <div class="form-group">
               <label for="cliente">ID Nombre</label>
-              <input type="text" class="form-control" value="{{credito.Empleado_Responsable}}" id="idempleado" name="idempleado" required>
+              <input type="text" class="form-control" value="{{credito.Empleado_Responsable}}" readonly id="idempleado" name="idempleado" required>
             </div>
           </div>
         </div>
@@ -187,13 +187,8 @@
             <label for="Fch_Limite">Fecha Limite de Credito</label>
             <input class="form-control" value="{{credito.Fecha_Limite}}" type="date" id="Fch_Limite" name="Fch_Limite">
           </div>
-
-
-          <div class="form-group col">
-            <label for="file">Foto Entrega de Crédito</label>
-            <input type="file" class="form-control-file" onchange="ValidarArchivo(this);" id="file" required>
           </div>
-        </div>
+
 
 
         <button type="button" class="btn btn-primary" id="comprobar" onclick="onFormSubmit()">Comprobar</button>
@@ -252,7 +247,7 @@
   <script src="../../static/js/popper.js"></script>
   <script src="../../static/js/bootstrap.min.js"></script>
   <script src="../../static/js/main.js"></script>
-  <script src="../../static/js/Credito/registroCredito.js"></script>
+  <script src="../../static/js/Credito/modificarCredito.js"></script>
 </body>
 
 </html>

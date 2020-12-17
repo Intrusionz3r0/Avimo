@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy                                                                                                                                                          
-from sqlalchemy import Column,Integer,String,ForeignKey,Date,DateTime,LargeBinary,BLOB
+from sqlalchemy import Column,Integer,String,ForeignKey,Date,DateTime,BLOB
 from sqlalchemy.orm import relationship                                                                                                                                                          
 
 
@@ -24,10 +24,10 @@ class Clientes(db.Model):
     Fecha_Nacimiento=Column(Date,nullable=False)
     Fecha_Registro=Column(Date,nullable=False)
     Estatus=Column(String,nullable=False)
-    FotoINE_Delantera=Column(BLOB,nullable=False)
-    FotoINE_Trasera=Column(BLOB,nullable=False)
-    FotoCliente=Column(BLOB,nullable=False)
-    Comprobante_Domicilio=Column(BLOB,nullable=False)
+    FotoINE_Delantera=Column(String,nullable=False)
+    FotoINE_Trasera=Column(String,nullable=False)
+    FotoCliente=Column(String,nullable=False)
+    Comprobante_Domicilio=Column(String,nullable=False)
     
     def insertar(self):                                                                                                                                                                          
         db.session.add(self)                                                                                                                                                                     
@@ -62,9 +62,9 @@ class Avales(db.Model):
     NumExterior=Column(Integer,nullable=False)
     EntreCalles=Column(String,nullable=False)
     Telefono=Column(String,nullable=False)
-    FotoINE_Delantera=Column(BLOB,nullable=False)
-    FotoINE_Trasera=Column(BLOB,nullable=False)
-    Comprobante_Domicilio=Column(BLOB,nullable=False)
+    FotoINE_Delantera=Column(String,nullable=False)
+    FotoINE_Trasera=Column(String,nullable=False)
+    Comprobante_Domicilio=Column(String,nullable=False)
     
     def insertar(self):                                                                                                                                                                          
         db.session.add(self)                                                                                                                                                                     
@@ -102,10 +102,10 @@ class Empleados(db.Model):
     Fecha_Nacimiento=Column(Date,nullable=False)
     Fecha_Contratacion=Column(Date,nullable=False)
     Estatus=Column(String,nullable=False)
-    Foto_Empleado=Column(BLOB,nullable=False)
-    FotoINE_Delantera=Column(BLOB,nullable=False)
-    FotoINE_Trasera=Column(BLOB,nullable=False)
-    Comprobante_Domicilio=Column(BLOB,nullable=False)
+    Foto_Empleado=Column(String,nullable=False)
+    FotoINE_Delantera=Column(String,nullable=False)
+    FotoINE_Trasera=Column(String,nullable=False)
+    Comprobante_Domicilio=Column(String,nullable=False)
     Usuario=Column(String,nullable=False)
     Contraseña=Column(String,nullable=False)
     Rol=Column(String,nullable=False)
@@ -138,7 +138,7 @@ class Credito(db.Model):
     Estatus=Column(String,nullable=False)
     Fecha_Inicio=Column(Date,nullable=False)
     Fecha_Limite=Column(Date,nullable=False)
-    Foto_EntregaCredito=Column(BLOB,nullable=False)
+    Foto_EntregaCredito=Column(String,nullable=False)
 
     def insertar(self):                                                                                                                                                                          
         db.session.add(self)                                                                                                                                                                     
@@ -165,7 +165,7 @@ class Pagos(db.Model):
     Monto=Column(Integer,nullable=False)
     Semana=Column(Integer,nullable=False)
     Fecha_Pago=Column(Date,nullable=False)
-    Foto_Comprobante=Column(BLOB,nullable=False)
+    Foto_Comprobante=Column(String,nullable=False)
 
     def insertar(self):                                                                                                                                                                          
         db.session.add(self)                                                                                                                                                                     
