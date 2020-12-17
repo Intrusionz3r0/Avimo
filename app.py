@@ -385,9 +385,7 @@ def registrarCredito():
     credito.Estatus="Deuda"
     
     file1=request.files['entregaC']
-
     filename1=secure_filename(file1.filename)
-
     path = os.path.join(app.config['UPLOAD_FOLDER']+curp, file1.filename)
     
     
