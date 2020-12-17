@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <title>Avimo Software</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css' ) }}">
+
+    <style>
+        .letra{
+            font-family:'Arial';
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="wrapper d-flex align-items-stretch">
+        <nav id="sidebar">
+            <div class="p-4 pt-5">
+                <a href="#" class="img logo rounded-circle mb-5"
+                    style="background-image: url(../static/images/logo.jpg);"></a>
+                <center>
+                    <p id="empleadoName">Elon Reeve Musk</p>
+                </center>
+                <ul class="list-unstyled components mb-5">
+                    <!--Menu de Clientes-->
+                    <li>
+                        <a href="#clientesSubmenu" data-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle">Clientes</a>
+                        <ul class="collapse list-unstyled" id="clientesSubmenu">
+                            <li>
+                                <a href="/clientes/registrocliente">Registro Cliente</a>
+                            </li>
+                            <li>
+                                <a href="/clientes/opcionesCliente/">Opciones Cliente</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!--Menu de prestamos-->
+                    <li>
+                        <a href="#prestamosSubmenu" data-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle">Credito</a>
+                        <ul class="collapse list-unstyled" id="prestamosSubmenu">
+                            <li>
+                                <a href="/credito/registraCredito">Registro credito</a>
+                            </li>
+                            <li>
+                                <a href="/credito/opcionesCredito">Consulta credito</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!--Menu de Pagos-->
+                    <li>
+                        <a href="#pagosSubmenu" data-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle">Pagos</a>
+                        <ul class="collapse list-unstyled" id="pagosSubmenu">
+                            <li>
+                                <a href="/Pago/ConsultaPagos">Opciones pagos</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#empleadosSubmenu" data-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle">Empledos</a>
+                        <ul class="collapse list-unstyled" id="empleadosSubmenu">
+                            <li>
+                                <a href="/empleados/registroempleado/">Registrar Empleado</a>
+                            </li>
+                            <li>
+                                <a href="/opcionesEmpleado/">Opciones Empleado</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Cerrar Sesión</a>
+                    </li>
+                </ul>
+
+                <div class="footer">
+                    <p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Avimo Software &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved.</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                </div>
+
+            </div>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content" class="p-4 p-md-5">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                        <i class="fa fa-bars"></i>
+                        <span class="sr-only">Toggle Menu</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Generar reporte</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Consulta historial</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!--Abajo de esto va tu código-->
+            <h3 style="text-align: center;"><span class="badge badge-info">Consulta de Pago</span></h3><br>
+
+            <!--Nueva Vista-->
+            
+                <div class="row">
+                    <div class="form-group col-3"></div>
+                    <div class="form-group col-2">
+                        <label style="color: black;"><strong>ID Pago</strong></label><br>
+                        <label class="letra">1000</label><!--Recuperar dato de Pago-->
+                        <br><br>
+                        <label style="color: black;"><strong>Crédito</strong></label><br>
+                        <label class="letra">1000</label><!--Recuperar dato de Pago-->
+                        <br><br>
+                        <label style="color: black;"><strong>Cliente</strong></label><br>
+                        <label class="letra">1000</label><!--Recuperar dato de Pago-->
+                        <br><br>
+                    </div>
+
+                    <div class="form-group col-2">
+                        <label style="color: black;"><strong>Monto</strong></label><br>
+                        <label class="letra">10000</label><!--Recuperar dato de Pago-->
+                        <br><br>
+                        <label style="color: black;"><strong>Foto de Comprobante</strong></label><br>
+                        <button style="border-color:aqua"><img src="../../static/images/comprobantente2.png" width="125" height="125" class="img-thumbnail" data-toggle="modal" data-target="#ModalF_COMPRO"></button>
+                        <br><br>
+                    </div>
+
+                    <div class="form-group col-2">                       
+                        <label style="color: black;"><strong>Semana</strong></label><br>
+                        <label class="letra">1</label>
+                        <br><br>
+                        <label style="color: black;"><strong>Fecha de Pago</strong></label><br>
+                        <label class="letra">12/12/2020</label>
+                        <br><br>
+                    </div>
+                    <div class="form-group col-3"></div>
+                </div>
+            
+                <div class="modal fade" id="ModalF_COMPRO" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title" style="text-align: center;">Comprobante:</h3>
+                        </div>
+                        <div class="modal-body"><img src="../../static/images/Comprobante_pago.png" class="img-rounded"
+                                alt="Cinque Terre" width="468" height="700" /> </div> <!--Recuperar Foto Comprobante de Pago-->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+            <!--Arriba de esto va tu código-->
+        </div>
+    </div>
+    </div>
+
+    <script src="../../static/js/jquery.min.js"></script>
+    <script src="../../static/js/popper.js"></script>
+    <script src="../../static/js/bootstrap.min.js"></script>
+    <script src="../../static/js/main.js"></script>
+    <script src="../../static/js/Empleados/consultaEmpleado.js"></script>
+    <script src="../../static/css/style.css"></script>
+</body>
+
+</html>

@@ -12,7 +12,7 @@ app.secret_key = "4V1M0S3CR3TKEY"
 
  
 #Configuración SqlAlchemy Mysql
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:password@localhost/AVIMO'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@Avila.01@localhost/AVIMO'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOAD_FOLDER'] = "static/uploads/"
 
@@ -27,6 +27,22 @@ def Login():
 @app.route('/CerrarSesion')
 def CerrarSesion():
     return redirect(url_for("Login"))
+
+@app.route('/ConEmplev2')
+def consultaEmpleadoV2():
+    return render_template('Empleados/consultaEmpleadoV2.html')
+
+@app.route('/ConPagov2')
+def consultaPagoV2():
+    return render_template('Pagos/consultaPagoV2.html')
+
+@app.route('/ConCreditov2')
+def consultaCreditov2():
+    return render_template('Credito/consultaCreditoV2.html')
+
+@app.route('/ConClientev2')
+def consultaClienteV2():
+    return render_template('Clientes/consultaClienteV2.html')
 
 #Comienzo del CRUD de Clientes y Avales.
 

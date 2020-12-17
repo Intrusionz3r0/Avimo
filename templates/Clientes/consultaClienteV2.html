@@ -11,6 +11,20 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css' ) }}">
 
+  <style>
+    .letra {
+      font-family: 'Arial';
+    }
+
+    .margi {
+      width: 1300px;
+      padding-left: 20px;
+      padding-right: 20px;
+      margin-left: 30px;
+      margin-right: 30px;
+      border: 3px solid cyan;
+    }
+  </style>
 </head>
 
 <body onload="OcultarTodo();">
@@ -18,7 +32,8 @@
   <div class="wrapper d-flex align-items-stretch">
     <nav id="sidebar">
       <div class="p-4 pt-5">
-        <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(../../static/images/logo.jpg);"></a>
+        <a href="#" class="img logo rounded-circle mb-5"
+          style="background-image: url(../../static/images/logo.jpg);"></a>
         <center>
           <p id="empleadoName">Elon Reeve Musk</p>
         </center>
@@ -37,8 +52,7 @@
           </li>
           <!--Menu de prestamos-->
           <li>
-            <a href="#prestamosSubmenu" data-toggle="collapse" aria-expanded="false"
-              class="dropdown-toggle">Credito</a>
+            <a href="#prestamosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Credito</a>
             <ul class="collapse list-unstyled" id="prestamosSubmenu">
               <li>
                 <a href="/credito/registraCredito">Registro credito</a>
@@ -115,127 +129,246 @@
         </div>
       </nav>
       <!--Abajo de esto va tu código-->
+      <h3 style="text-align: center;"><span class="badge badge-info">Consulta de Cliente</span></h3><br>
+      <div>
+      <div class="row">
 
-
-      <h3>Consulta Cliente</h3>
-
-      <form action="" method="get">
-
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <div class="input-group-text" id="btnGroupAddon">Clave</div>
-          </div>
-          <input type="text" class="form-control" aria-label="Input group example" aria-describedby="btnGroupAddon">
-          <button type="button" class="btn btn-primary" onclick="MostrarTodo();">Buscar</button>
+        <div class="col-form-label">
+          <img src="../../static/images/fotoEmpleado.jpg" width="150" height="150" class="img-thumbnail">
         </div>
-        <br><br>
 
-        <div id="DatosTotales">
-          <div id="DatosCliente" class="fluid">
-            <h3><span class="badge badge-info" style="text-align: center">Datos Cliente</span></h3>
-            <div class="row">
-              <div class="col-form-label">
-                <img src="../../static/images/fotoEmpleado.jpg" width="200" height="200" class="img-thumbnail">
-              </div>
+        <div class="form-group col-2">
+          <label style="color: black;"><strong>ID de Cliente</strong></label><br>
+          <label>1000</label>
+        </div>
 
-              <div class="col-form-label">
-                <tr><strong>ID:</strong></tr><br>
-                <tr><strong>Nombre Completo:</strong></tr><br>
-                <label><strong>Sexo :</strong></label><br>
-                <label><strong>Domicilio :</strong></label><br>
-                <label><strong>Telefono :</strong></label><br>
-                <label><strong>Fecha de Ingreso:</strong></label><br>
-                <label><strong>Estatus :</strong></label><br>
-              </div>
-              &nbsp; &nbsp;
-              <div class="col-form-label">
-                <input type="text" id="ID" class="sinBorde"  value="AJHSJDHSJHDJ" disabled><br>
-                <input type="text" id="NCompleto" class="sinBorde" value="Sarmiento Avila Geovanni" disabled><br>
-                <input type="text" id="Sexo" class="sinBorde" disabled><br>
-                <input type="text" id="Domicilio" class="sinBorde" disabled><br>
-                <input type="text" id="Telefono" class="sinBorde" disabled><br>
-                <input type="text" id="Fch_Ingreso" class="sinBorde" disabled><br>
-                <input type="text" id="Estatus" class="sinBorde" disabled><br>
-              </div>
-              &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
-              <div class="col-form-label">
-
-                <label><strong>CURP :</strong></label><br>
-                <label><strong>Fecha de Nacimiento :</strong></label><br>
-                <label><strong>Foto INE Delantera :</strong></label><br>
-                <label><strong>Foto INE Trasera :</strong></label><br>
-                <label><strong>Comprobante de Domicilio :</strong></label><br>
-              </div>
-              &nbsp; &nbsp;
-              <div class="col-form-label">
-
-                <input type="text" id="CURP" class="sinBorde" disabled><br>
-                <input type="text" id="Fch_Nacimiento" class="sinBorde" disabled><br>
-                <input type="text" id="Fine_Dela" class="sinBorde" disabled><br>
-                <input type="text" id="Fine_Tras" class="sinBorde" disabled><br>
-                <input type="text" id="Compro_Domicilio" class="sinBorde" disabled><br>
-
-
-              </div>
-
-            </div>
-          </div>
+        <div class="form-group col-3">
+          <label style="color: black;"><strong>Nombre Completo</strong></label><br>
+          <label>Luis Armando Perez Reyes</label>
           <br><br>
-          <div id="Datos_Aval_Cliente" class="fluid">
-            <h3><span class="badge badge-info" style="text-align: center">Datos Aval</span></h3>
-            <div class="row">
+          <label style="color: black;"><strong>Fecha de Registro</strong></label><br>
+          <label>10/12/2020</label>
+        </div>
 
-              <div class="col-form-label">
-                <img src="../../static/images/Cliente_Aval.png" width="200" height="200" class="img-thumbnail">
-              </div>
-              <div class="col-form-label">
-                <label><strong>Nombre :</strong></label><br>
-                <label><strong>Domicilio :</strong></label><br>
-                <label><strong>Telefono :</strong></label><br>
-              </div>
-              &nbsp; &nbsp;
-              <div class="col-form-label">
-                <input class="sinBorde" disabled><br>
-                <input class="sinBorde" disabled><br>
-                <input class="sinBorde" disabled><br>
-              </div>
-              &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
-              <div class="col-form-label">
-                <label><strong>Foto INE Delantera :</strong></label><br>
-                <label><strong>Foto INE Trasera :</strong></label><br>
-                <label><strong>Comprobante de Domicilio :</strong></label><br>
-              </div>
-              &nbsp; &nbsp;
-              <div class="col-form-label">
-                <input class="sinBorde" disabled><br>
-                <input class="sinBorde" disabled><br>
-                <input class="sinBorde" disabled><br>
-              </div>
+        <div class="form-group col-3">
+          <label style="color: black;"><strong>Telefono</strong></label><br>
+          <label>351-865-4586</label>
+          <br><br>
+          <label style="color: black;"><strong>Fecha de Nacimiento</strong></label><br>
+          <label>15/06/1992</label>
+        </div>
 
-            </div>
-          </div>
+        <div class="form-group col-1">
+          <label style="color: black;"><strong>Estatus</strong></label><br>
+          <label>Activo</label>
+          <br><br>
+          <label style="color: black;"><strong>Sexo</strong></label><br>
+          <label>Masculino</label>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="form-group col-3"></div>
+        <div class="form-group col-4">
+          <label style="color: black;"><strong>Direccion Completa</strong></label><br>
+          <label>5 de Mayo 27 0,Jardinadas,Zamora de Hidalgo,Michoacán de Ocampo</label>
+        </div>
+
+        <div class="form-group col-2">
+          <label style="color: black;"><strong>CURP</strong></label><br>
+          <label>SAFF920615HMNRVV02</label>
+        </div>
+
+      </div>
+
+      <br><br>
+
+      <div class="row">
+        <div class="form-group col">
 
         </div>
 
+        <div class="form-group col-3">
+          <label style="color: black;"><strong>Foto INE Delantera</strong></label><br>
+          <button style="border-color:aqua"><img src="../../static/images/INE_Delantera.png" width="200" height="200"
+              class="img-thumbnail " data-toggle="modal" data-target="#ModalINE_D"></button>
+        </div>
 
-      </form>
+        <div class="form-group col-3">
+          <label style="color: black;"><strong>Foto INE Trasera</strong></label><br>
+          <button style="border-color:aqua"><img src="../../static/images/INE_Trasera.png" width="180" height="180"
+              class="img-thumbnail" data-toggle="modal" data-target="#ModalINE_T"></button>
+        </div>
 
+        <div class="form-group col-3">
+          <label style="color: black;"><strong>Comprobante de Domicilio</strong></label><br>
+          <button style="border-color:aqua"><img src="../../static/images/comprobantente.png" width="125" height="125"
+              class="img-thumbnail" data-toggle="modal" data-target="#ModalC_DOMI"></button>
+        </div>
 
+        <div class="form-group col">
 
+        </div>
 
+      </div>
+    </div>
+      <br><br>
+
+      <h3 style="text-align: center;"><span class="badge badge-warning">AVAL</span></h3><br>
+
+      <div class="row">
+
+        <div class="form-group col-2">
+
+        </div>
+
+        <div class="form-group col-3">
+          <label style="color: black;"><strong>Nombre Completo</strong></label><br>
+          <label>Ana Luisa Manzo Leyva</label>
+          <br><br>
+          <label style="color: black;"><strong>Foto INE Delantera</strong></label><br>
+          <button style="border-color:aqua"><img src="../../static/images/INE_Delantera.png" width="200" height="200"
+              class="img-thumbnail " data-toggle="modal" data-target="#ModalINE_D_AVAL"></button>
+        </div>
+
+        <div class="form-group col-4">
+          <label style="color: black;"><strong>Direccion Completa</strong></label><br>
+          <label>Marimba 4 5,Jardines de San Juan,Zamora de Hidalgo,Michoacán de Ocampo</label>
+          <br><br>
+          <label style="color: black;"><strong>Foto INE Trasera</strong></label><br>
+          <button style="border-color:aqua"><img src="../../static/images/INE_Trasera.png" width="180" height="180"
+              class="img-thumbnail" data-toggle="modal" data-target="#ModalINE_T_AVAL"></button>
+        </div>
+
+        <div class="form-group col-2">
+          <label style="color: black;"><strong>Telefono</strong></label><br>
+          <label>351-456-1598</label>
+          <br><br>
+          <label style="color: black;"><strong>Comprobante de Domicilio</strong></label><br>
+          <button style="border-color:aqua"><img src="../../static/images/comprobantente.png" width="125" height="125"
+              class="img-thumbnail" data-toggle="modal" data-target="#ModalC_DOMI_AVAL"></button>
+        </div>
+      </div>
+
+      
+
+      <div id="ModalINE_D" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+        data-target=".bd-example-modal-lg">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" style="text-align: center;">Foto INE Delantera:</h3>
+            </div>
+            <div class="modal-body"><img src="../../static/images/INE_D.jpg" class="img-rounded" alt="Cinque Terre"
+                width="770" height="500" /> </div>
+            <!--Recuperar Foto INE Trasera  del empleado-->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="ModalINE_T" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+        data-target=".bd-example-modal-lg">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" style="text-align: center;">Foto INE Trasera:</h3>
+            </div>
+            <div class="modal-body"><img src="../../static/images/Foto_INE_T.PNG" class="img-rounded" alt="Cinque Terre"
+                width="770" height="500" /> </div>
+            <!--Recuperar Foto INE Trasera  del empleado-->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="ModalC_DOMI" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" style="text-align: center;">Comprobante :</h3>
+            </div>
+            <div class="modal-body"><img src="../../static/images/Compro_Domi_Recibo.jpg" class="img-rounded"
+                alt="Cinque Terre" width="468" height="700" /> </div>
+            <!--Recuperar Foto Comprobante de Pago-->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+
+      <div id="ModalINE_D_AVAL" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+        data-target=".bd-example-modal-lg">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" style="text-align: center;">Foto INE Delantera:</h3>
+            </div>
+            <div class="modal-body"><img src="../../static/images/INE_D.jpg" class="img-rounded" alt="Cinque Terre"
+                width="770" height="500" /> </div>
+            <!--Recuperar Foto INE Trasera  del empleado-->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="ModalINE_T_AVAL" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+        data-target=".bd-example-modal-lg">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" style="text-align: center;">Foto INE Trasera:</h3>
+            </div>
+            <div class="modal-body"><img src="../../static/images/Foto_INE_T.PNG" class="img-rounded" alt="Cinque Terre"
+                width="770" height="500" /> </div>
+            <!--Recuperar Foto INE Trasera  del empleado-->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="ModalC_DOMI_AVAL" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" style="text-align: center;">Comprobante :</h3>
+            </div>
+            <div class="modal-body"><img src="../../static/images/Compro_Domi_Recibo.jpg" class="img-rounded"
+                alt="Cinque Terre" width="468" height="700" /> </div>
+            <!--Recuperar Foto Comprobante de Pago-->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
       <!--Arriba de esto va tu código-->
     </div>
   </div>
   </div>
-  <script> 
-  function MostrarTodo() {
-      document.getElementById("DatosTotales").style.display="block"
-    } 
-  function OcultarTodo(){
-      document.getElementById("DatosTotales").style.display="none"
-  }
+  <script>
+    function MostrarTodo() {
+      document.getElementById("DatosTotales").style.display = "block"
+    }
+    function OcultarTodo() {
+      document.getElementById("DatosTotales").style.display = "none"
+    }
   </script>
   <script src="../../static/js/jquery.min.js"></script>
   <script src="../../static/js/popper.js"></script>
