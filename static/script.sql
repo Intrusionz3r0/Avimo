@@ -58,6 +58,7 @@ ALTER TABLE Avales AUTO_INCREMENT=1000;
 create table Empleados(
     
 ID_Empleado int auto_increment,
+Clave VARCHAR(20) not null UNIQUE,
 Nombre VARCHAR(30) not null,
 Apellidos VARCHAR(60) not null,
 Sexo VARCHAR(9) not null,
@@ -87,7 +88,7 @@ ALTER TABLE Empleados AUTO_INCREMENT=1000;
 /*Creacion tabla Credito*/
 create table Credito(
 ID_Credito int auto_increment,
-Cliente int not null,
+Clave varchar(14) not null,
 Empleado_Responsable int not null,
 MontoPrestado int not null,
 MontoPagar int not null,
@@ -98,7 +99,7 @@ Fecha_Limite date not null,
 Foto_EntregaCredito varchar(100), /* Checar si la foto se subira en que tiempo*/
 
 primary key(ID_Credito),
-foreign key(Cliente) references Clientes(ID_Cliente),
+foreign key(Clave) references Clientes(Clave),
 foreign key(Empleado_Responsable) references Empleados(ID_Empleado)
 );
 ALTER TABLE Credito AUTO_INCREMENT=1000;
@@ -107,7 +108,7 @@ ALTER TABLE Credito AUTO_INCREMENT=1000;
 Create table Pagos(
 ID_pagos int auto_increment,
 Credito int not null,
-Cliente int not null,
+Clave VARCHAR(13) not null,
 Monto int not null,
 Semana int not null,
 Fecha_Pago date not null,
@@ -115,7 +116,7 @@ Foto_Comprobante varchar(100),
 
 primary key(ID_Pagos),
 foreign key(Credito) references Credito(ID_Credito),
-foreign key(Cliente) references Clientes(ID_Cliente)
+foreign key(Clave) references Clientes(Clave)
 );
 ALTER TABLE Pagos AUTO_INCREMENT=1;
 

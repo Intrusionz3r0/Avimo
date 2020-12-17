@@ -55,9 +55,9 @@ def agregarCliente():
     cliente.Estatus = "Activo"
     
 
-    os.mkdir("static/uploads/"+cliente.CURP)
-    os.mkdir("static/uploads/"+cliente.CURP+"/Clientes")
-    os.mkdir("static/uploads/"+cliente.CURP+"/Avales")
+    os.mkdir("static/uploads/"+cliente.Clave)
+    os.mkdir("static/uploads/"+cliente.Clave+"/Clientes")
+    os.mkdir("static/uploads/"+cliente.Clave+"/Avales")
     ine1 = request.files['file1Cliente']
     ine2 = request.files['file2Cliente']
     fotocliente = request.files['file3Cliente']
@@ -68,16 +68,16 @@ def agregarCliente():
     filename3 = secure_filename(fotocliente.filename)
     filename4 = secure_filename(comprobante.filename)
     
-    path = os.path.join(app.config['UPLOAD_FOLDER']+cliente.CURP+"/Clientes", ine1.filename)
+    path = os.path.join(app.config['UPLOAD_FOLDER']+cliente.Clave+"/Clientes", ine1.filename)
     ine1.save(path)
 
-    path = os.path.join(app.config['UPLOAD_FOLDER']+cliente.CURP+"/Clientes", ine2.filename)
+    path = os.path.join(app.config['UPLOAD_FOLDER']+cliente.Clave+"/Clientes", ine2.filename)
     ine2.save(path)
 
-    path = os.path.join(app.config['UPLOAD_FOLDER']+cliente.CURP+"/Clientes", fotocliente.filename)
+    path = os.path.join(app.config['UPLOAD_FOLDER']+cliente.Clave+"/Clientes", fotocliente.filename)
     fotocliente.save(path)
 
-    path = os.path.join(app.config['UPLOAD_FOLDER']+cliente.CURP+"/Clientes", comprobante.filename)
+    path = os.path.join(app.config['UPLOAD_FOLDER']+cliente.Clave+"/Clientes", comprobante.filename)
     comprobante.save(path)
     
     cliente.FotoINE_Delantera = filename1
@@ -110,13 +110,13 @@ def agregarCliente():
     filename2 = secure_filename(ine2a.filename)
     filename3 = secure_filename(comprobantea.filename)
     
-    path = os.path.join(app.config['UPLOAD_FOLDER']+cliente.CURP+"/Avales", ine1a.filename)
+    path = os.path.join(app.config['UPLOAD_FOLDER']+cliente.Clave+"/Avales", ine1a.filename)
     ine1a.save(path)
 
-    path = os.path.join(app.config['UPLOAD_FOLDER']+cliente.CURP+"/Avales", ine2a.filename)
+    path = os.path.join(app.config['UPLOAD_FOLDER']+cliente.Clave+"/Avales", ine2a.filename)
     ine2a.save(path)
 
-    path = os.path.join(app.config['UPLOAD_FOLDER']+cliente.CURP+"/Avales", comprobantea.filename)
+    path = os.path.join(app.config['UPLOAD_FOLDER']+cliente.Clave+"/Avales", comprobantea.filename)
     comprobantea.save(path)
     
     aval.FotoINE_Delantera = filename1
@@ -148,6 +148,21 @@ def obtenerDatosClienteAval(id):
     cliente=Clientes()
     cliente.ID_Cliente=id
     cliente=cliente.consultaIndividual()
+
+    return render_template("Clientes/consultaCliente.html",cliente=cliente,aval=aval)
+
+@app.route("/clientes/opcionesCliente/clave/<string:clave>")
+def obtenerDatosClienteAvalC(clave):
+    
+    aval=Avales()
+    aval.Clave=clave
+    aval=aval.consultaIndividualClave()
+    
+    cliente=Clientes()
+    cliente.Clave=clave
+    cliente=cliente.consultaIndividualClave()
+
+    print(cliente)
 
     return render_template("Clientes/consultaCliente.html",cliente=cliente,aval=aval)
 
@@ -241,16 +256,14 @@ def registrarEmpleado():
     empleado.Fecha_Nacimiento=request.form['fnacimientoEmp']
     empleado.Fecha_Contratacion=request.form['fingresoEmp']
     empleado.Estatus="Activo"
-    #empleado.Foto_Empleado=request.files['fotoempe']
-    #empleado.FotoINE_Delantera=request.files['file1']
-    #empleado.FotoINE_Trasera=request.files['file1']
-    #empleado.Comprobante_Domicilio=request.files['ComproDomi']
+    empleado.Clave=empleado.CURP[:10]+empleado.CURP[-3:]
+
     empleado.Usuario=request.form['Usuario']
     empleado.Contraseña=request.form['Contraseña2']
     empleado.Rol=request.form['Rol']
     
 
-    os.mkdir("static/uploads/"+empleado.CURP)
+    os.mkdir("static/uploads/"+empleado.Clave)
     ine1 = request.files['fine1']
     ine2 = request.files['fine2']
     fotoempleado = request.files['fotoempe']
@@ -261,16 +274,16 @@ def registrarEmpleado():
     filename3 = secure_filename(fotoempleado.filename)
     filename4 = secure_filename(comprobante.filename)
     
-    path = os.path.join(app.config['UPLOAD_FOLDER']+empleado.CURP, ine1.filename)
+    path = os.path.join(app.config['UPLOAD_FOLDER']+empleado.Clave, ine1.filename)
     ine1.save(path)
 
-    path = os.path.join(app.config['UPLOAD_FOLDER']+empleado.CURP, ine2.filename)
+    path = os.path.join(app.config['UPLOAD_FOLDER']+empleado.Clave, ine2.filename)
     ine2.save(path)
 
-    path = os.path.join(app.config['UPLOAD_FOLDER']+empleado.CURP, fotoempleado.filename)
+    path = os.path.join(app.config['UPLOAD_FOLDER']+empleado.Clave, fotoempleado.filename)
     fotoempleado.save(path)
 
-    path = os.path.join(app.config['UPLOAD_FOLDER']+empleado.CURP, comprobante.filename)
+    path = os.path.join(app.config['UPLOAD_FOLDER']+empleado.Clave, comprobante.filename)
     comprobante.save(path)
     
     empleado.FotoINE_Delantera = filename1
@@ -278,7 +291,6 @@ def registrarEmpleado():
     empleado.Foto_Empleado = filename3
     empleado.Comprobante_Domicilio = filename4
 
-    print(path)
 
     empleado.insertar()
 
@@ -291,11 +303,19 @@ def ventanaConsultaEmpleado():
 
     return render_template("Empleados/opcionesEmpleado.html",empleado=empleado)
 
-@app.route("/opcionesEmpleado/<int:id>")
-def consultarEmpleadoIn(id):
+#@app.route("/opcionesEmpleado/<int:id>")
+#def consultarEmpleadoIn(id):
+#    empleado=Empleados()
+    #empleado.ID_Empleado=id
+    #empleado=empleado.consultaIndividual()
+#    
+#    return render_template("Empleados/consultaEmpleado.html",empleado=empleado)
+
+@app.route("/opcionesEmpleado/<string:clave>")
+def consultarEmpleadoInC(clave):
     empleado=Empleados()
-    empleado.ID_Empleado=id
-    empleado=empleado.consultaIndividual()
+    empleado.Clave=clave
+    empleado=empleado.consultaIndividualClave()
     
     return render_template("Empleados/consultaEmpleado.html",empleado=empleado)
 
@@ -353,14 +373,15 @@ def ventanaCredito():
 @app.route("/credito/registrarCredito/new",methods=['POST'])
 def registrarCredito():
     credito=Credito()
-    credito.Cliente=request.form['idempleado']
+    credito.Clave=request.form['idcliente']
+    
     credito.Empleado_Responsable=request.form['idempleado']
     credito.MontoPrestado=request.form['monto']
     credito.MontoPagar=request.form['monto']
     credito.Semanas=request.form['SemanasPlazo']
     credito.Fecha_Inicio=request.form['Fch_Inicio']
     credito.Fecha_Limite=request.form['Fch_Limite']
-    curp = request.form['curp']
+    curp = request.form['idcliente']
     credito.Estatus="Deuda"
     
     file1=request.files['entregaC']
@@ -451,12 +472,12 @@ def ventanaRegistraPago(id):
 @app.route("/Pago/RegistraPago/nuevo",methods=['POST'])
 def registrarPago():
     pago=Pagos()
-    pago.Credito=request.form['ID_Cliente']
-    pago.Cliente=request.form['ID_Credito']
+    pago.Credito=request.form['ID_Credito']
+    pago.Clave=request.form['ID_Cliente']
     pago.Monto=request.form['Monto']
     pago.Semana=request.form['Semanas']
     pago.Fecha_Pago=request.form['Fch_Pago']
-    curp = request.form['curp']
+    curp = pago.Clave
     
     file1=request.files['F_Comprobante']
     filename1=secure_filename(file1.filename)

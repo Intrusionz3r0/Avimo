@@ -122,19 +122,21 @@
       <div id="divOpcionesCliente">
         <div class="input-group">
           <div class="input-group-prepend">
-            <div class="input-group-text" id="btnGroupAddon">ID</div>
+            <div class="input-group-text" id="btnGroupAddon">Clave</div>
           </div>
-          <input type="text" class="form-control" id="clavesita" aria-label="Input group example"
-            aria-describedby="btnGroupAddon">
+          <input type="text" class="form-control" id="clavesita" aria-label="Input group example" aria-describedby="btnGroupAddon">
+          
           <button type="button" class="btn btn-primary" onclick="getCliente()">Consultar</button>
+          
         </div>
-
+        <small class="form-text text-muted">La clave es generada con los primeros diez y últimos tres dígitos de la curp.</small>
         <br>
 
         <table class="table">
           <thead class="thead-dark">
             <tr>
               <th scope="col">ID</th>
+              <th scope="col">Clave</th>
               <th scope="col">Nombre Completo</th>
               <th scope="col">Telefono</th>
               <th scope="col">Dirección</th>
@@ -148,6 +150,7 @@
           <tbody>
             <tr>
               <th scope="row">{{c.ID_Cliente}}</th>
+              <td>{{c.Clave}}</td>
               <td>{{c.Nombre}} {{c.Apellidos}}</td>
               <td>{{c.Telefono}}</td>
               <td>{{c.CallePrincipal}} #{{c.NumInterior}} {{c.Colonia}}, {{c.Municipio}} {{c.Estado}}</td>

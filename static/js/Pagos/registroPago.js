@@ -19,7 +19,7 @@ function validarDatosPago(){
     formDatos[3]=document.getElementById("Semanas").value;
     formDatos[4]=document.getElementById("Fch_Pago").value;
     formDatos[5]=document.getElementById("F_Comprobante").value;
-    formDatos[6]=document.getElementById("curp").value;
+    
 
     for(const key in formDatos){
         if(formDatos[key]==""){
@@ -29,14 +29,9 @@ function validarDatosPago(){
         }
     }
 
-    if(!validarCURP(formDatos[6])){
-        mensaje=mensaje+"La curp introducida es invalida"
-    }
+
     
-    if(isNaN(formDatos[0])){
-        mensaje=mensaje+" Ingresaste datos incorrectos"
-        aux=false
-    }
+
     if(isNaN(formDatos[1])){
         mensaje=mensaje+" Ingresaste datos incorrectos"
         aux=false

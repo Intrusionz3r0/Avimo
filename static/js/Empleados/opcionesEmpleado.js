@@ -51,7 +51,7 @@ function onFormSubmit() {
 
 
   function getEmpleado(){
-
     var id=document.getElementById("clavesita").value
+    //location.href="/opcionesEmpleado/"+id
     location.href="/opcionesEmpleado/"+id
   }

@@ -45,6 +45,9 @@ class Clientes(db.Model):
     def consultaIndividual(self):
         cliente=self.query.get(self.ID_Cliente)
         return cliente
+    def consultaIndividualClave(self):
+        cliente=self.query.filter_by(Clave=self.Clave).first()
+        return cliente
 
 
 
@@ -82,11 +85,14 @@ class Avales(db.Model):
     def consultaIndividual(self):
         aval=self.query.get(self.ID_Aval)
         return aval
-
+    def consultaIndividualClave(self):
+        aval=self.query.filter_by(Clave=self.Clave).first()
+        return aval
 
 class Empleados(db.Model):
     __tablename__='Empleados'
     ID_Empleado=Column(Integer,primary_key=True)
+    Clave=Column(String,nullable=False)
     Nombre=Column(String,nullable=False)
     Apellidos=Column(String,nullable=False)
     Sexo=Column(String,nullable=False)
@@ -126,11 +132,14 @@ class Empleados(db.Model):
     def consultaIndividual(self):
         emp=self.query.get(self.ID_Empleado)
         return emp
+    def consultaIndividualClave(self):
+        emp=self.query.filter_by(Clave=self.Clave).first()
+        return emp
 
 class Credito(db.Model):
     __tablename__='Credito'
     ID_Credito=Column(Integer,primary_key=True)
-    Cliente=Column(Integer,nullable=False)
+    Clave=Column(String,nullable=False)
     Empleado_Responsable=Column(Integer,nullable=False)
     MontoPrestado=Column(Integer,nullable=False)
     MontoPagar=Column(Integer,nullable=False)
@@ -161,7 +170,7 @@ class Pagos(db.Model):
     __tablename__ = "Pagos"
     ID_pagos=Column(Integer,primary_key=True)
     Credito=Column(Integer,nullable=False)
-    Cliente=Column(Integer,nullable=False)
+    Clave=Column(String,nullable=False)
     Monto=Column(Integer,nullable=False)
     Semana=Column(Integer,nullable=False)
     Fecha_Pago=Column(Date,nullable=False)
