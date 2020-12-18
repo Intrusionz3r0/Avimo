@@ -10,17 +10,19 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css' ) }}">
+  
 
 </head>
 
-<body>
+<body onload="consultaEstados(); consultaEstadosAval();">
 
   <div class="wrapper d-flex align-items-stretch">
     <nav id="sidebar">
       <div class="p-4 pt-5">
-        <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(../../static/images/logo.jpg);"></a>
+        <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(../static/uploads/{{current_user.Clave}}/{{current_user.Foto_Empleado}});"></a>
+        
         <center>
-          <p id="empleadoName">Elon Reeve Musk</p>
+          <p id="empleadoName">{{current_user.Nombre}} {{current_user.Apellidos}}</p>
         </center>
         <ul class="list-unstyled components mb-5">
           <!--Menu de Clientes-->
@@ -38,7 +40,7 @@
           <!--Menu de prestamos-->
           <li>
             <a href="#prestamosSubmenu" data-toggle="collapse" aria-expanded="false"
-              class="dropdown-toggle">Prestamos</a>
+              class="dropdown-toggle">Credito</a>
             <ul class="collapse list-unstyled" id="prestamosSubmenu">
               <li>
                 <a href="/credito/registraCredito">Registro credito</a>
@@ -53,14 +55,10 @@
             <a href="#pagosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pagos</a>
             <ul class="collapse list-unstyled" id="pagosSubmenu">
               <li>
-                <a href="#">Registrar pago</a>
-              </li>
-              <li>
-                <a href="#">Consulta pago</a>
+                <a href="/Pago/ConsultaPagos">Opciones pagos</a>
               </li>
             </ul>
           </li>
-
           <li>
             <a href="#empleadosSubmenu" data-toggle="collapse" aria-expanded="false"
               class="dropdown-toggle">Empledos</a>
@@ -73,9 +71,8 @@
               </li>
             </ul>
           </li>
-
           <li>
-            <a href="#">Cerrar Sesión</a>
+            <a href="/CerrarSesion">Cerrar Sesión</a>
           </li>
         </ul>
 

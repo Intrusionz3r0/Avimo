@@ -1,7 +1,8 @@
 from flask_sqlalchemy import SQLAlchemy                                                                                                                                                          
 from sqlalchemy import Column,Integer,String,ForeignKey,Date,DateTime,BLOB
 from sqlalchemy.orm import relationship                                                                                                                                                          
-
+from flask_login import UserMixin
+from werkzeug.security import generate_password_hash, check_password_hash
 
 db=SQLAlchemy()                                                                                                                                                                                  
                                                                                                                                                                                                  
@@ -135,6 +136,40 @@ class Empleados(db.Model):
     def consultaIndividualClave(self):
         emp=self.query.filter_by(Clave=self.Clave).first()
         return emp
+    
+    @property
+    def password(self):
+        raise AttributeError('El atributo password no es de lectura')
+    
+    def validarPassword(self,passs):
+        pwd = Empleados.query.filter_by(Contraseña=passs).first()
+        return pwd
+
+    def is_active(self):
+        if self.Estatus=='Activo':
+            return True
+        else:
+            return False
+    
+    def is_authenticated(self):
+        return True
+    
+    def is_anonymous(self):
+        return False
+    
+    def get_id(self):
+        return self.ID_Empleado
+    
+    def getTipo(self):
+        return self.Rol
+    
+    def validar(self,us,ps):
+        emp=Empleados.query.filter_by(Usuario=us).first()
+        if(emp!=None):
+            if(emp.validarPassword(ps)):
+                return emp
+            else:
+                return None
 
 class Credito(db.Model):
     __tablename__='Credito'

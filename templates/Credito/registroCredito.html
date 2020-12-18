@@ -9,19 +9,24 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/css/style.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css' ) }}">
+  
 
 </head>
 
-<body>
+<body onload="consultaEstados(); consultaEstadosAval();">
 
   <div class="wrapper d-flex align-items-stretch">
     <nav id="sidebar">
       <div class="p-4 pt-5">
-        <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(../static/images/logo.jpg);"></a>
+        <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(../static/uploads/{{current_user.Clave}}/{{current_user.Foto_Empleado}});"></a>
         <center>
-          <p id="empleadoName">Elon Reeve Musk</p>
+          <p id="empleadoName">{{current_user.Rol}}</p>
         </center>
+        <center>
+          <p id="empleadoName">{{current_user.Nombre}} {{current_user.Apellidos}}</p>
+        </center>
+
         <ul class="list-unstyled components mb-5">
           <!--Menu de Clientes-->
           <li>
@@ -37,7 +42,8 @@
           </li>
           <!--Menu de prestamos-->
           <li>
-            <a href="#prestamosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Credito</a>
+            <a href="#prestamosSubmenu" data-toggle="collapse" aria-expanded="false"
+              class="dropdown-toggle">Credito</a>
             <ul class="collapse list-unstyled" id="prestamosSubmenu">
               <li>
                 <a href="/credito/registraCredito">Registro credito</a>
@@ -122,14 +128,14 @@
           <div class="col">
             <div class="form-group">
               <label for="cliente">Clave</label>
-              <input type="text" class="form-control" id="idcliente" maxlength="13" name="idcliente" required>
+              <input type="text" class="form-control" id="idcliente" maxlength="14" name="idcliente" required>
             </div>
           </div>
 
           <div class="col">
             <div class="form-group">
               <label for="cliente">ID Empleado</label>
-              <input type="text" class="form-control" id="idempleado" maxlength="4" name="idempleado" required>
+              <input type="text" readonly class="form-control" value="{{current_user.ID_Empleado}}" id="idempleado" maxlength="4" name="idempleado" required>
             </div>
           </div>
         </div>

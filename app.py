@@ -4,32 +4,61 @@ from flask_mysqldb import MySQL
 from flask_sqlalchemy import SQLAlchemy
 from modelo.models import Clientes,Avales,Empleados,Credito,Pagos
 from werkzeug.utils import secure_filename
+from flask_login import LoginManager, login_user, current_user, logout_user, login_required
 
 app = Flask(__name__)
 app.secret_key = "4V1M0S3CR3TKEY"
 
 
-
- 
 #Configuración SqlAlchemy Mysql
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:password@localhost/AVIMO'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOAD_FOLDER'] = "static/uploads/"
-
-
- 
+loginManager=LoginManager()
+loginManager.init_app(app)
+loginManager.login_view="ventanaCliente"
 db = SQLAlchemy(app)
+
+
+
+@loginManager.user_loader
+def load_user(id):
+    return Empleados.query.get(int(id))
 
 @app.route('/')
 def Login():
     return render_template('Login.html')
 
+@app.route("/CerrarSesion")
+def cerrarSes():
+    if(current_user.is_authenticated):
+         logout_user()
+         return redirect(url_for("ventanaCliente"))
+    else:
+        abort(404)
 
+@app.route("/login",methods=['POST'])
+def iniciarSesion():
+    Em=Empleados()
+    Em=Em.validar(request.form['user'],request.form['pass'])
+    if(Em!=None):
+        print(Em.getTipo())
+        login_user(Em)
+        return render_template("Clientes/registroClientes.html")
+    else:
+        return "El usuario o la contraseña es invalido"
+    
+    
+        
 #Comienzo del CRUD de Clientes y Avales.
 
 @app.route('/clientes/registrocliente')
 def ventanaCliente():
-    return render_template('Clientes/registroClientes.html')
+    if( current_user.is_authenticated):
+        return render_template('Clientes/registroClientes.html')
+    else:
+        return render_template("Login.html")
+
 
 @app.route('/clientes/registrocliente/nuevo',methods=['POST'])
 def agregarCliente():
@@ -51,10 +80,10 @@ def agregarCliente():
     cliente.Fecha_Registro = request.form['fregistroCliente']
     cliente.Estatus = "Activo"
     
-
-    os.mkdir("static/uploads/"+cliente.Clave)
-    os.mkdir("static/uploads/"+cliente.Clave+"/Clientes")
-    os.mkdir("static/uploads/"+cliente.Clave+"/Avales")
+    if not os.path.isdir("static/uploads/"+cliente.Clave):
+        os.mkdir("static/uploads/"+cliente.Clave)
+        os.mkdir("static/uploads/"+cliente.Clave+"/Clientes")
+        os.mkdir("static/uploads/"+cliente.Clave+"/Avales")
     ine1 = request.files['file1Cliente']
     ine2 = request.files['file2Cliente']
     fotocliente = request.files['file3Cliente']
@@ -125,7 +154,9 @@ def agregarCliente():
 
     return redirect(url_for('ventanaCliente'))
 
+
 @app.route("/clientes/opcionesCliente/")
+@login_required
 def ventanaConsultaCliente():
     cliente=Clientes()
     cliente=cliente.consultaGeneral()
@@ -136,6 +167,7 @@ def ventanaConsultaCliente():
     return render_template("Clientes/opcionesCliente.html",cliente=cliente,aval=aval)
 
 @app.route("/clientes/opcionesCliente/<int:id>")
+@login_required
 def obtenerDatosClienteAval(id):
     
     aval=Avales()
@@ -149,6 +181,7 @@ def obtenerDatosClienteAval(id):
     return render_template("Clientes/consultaCliente.html",cliente=cliente,aval=aval)
 
 @app.route("/opcionesCliente/clave/<string:clave>")
+@login_required
 def obtenerDatosClienteAvalC(clave):
     
     aval=Avales()
@@ -164,6 +197,7 @@ def obtenerDatosClienteAvalC(clave):
     return render_template("Clientes/consultaClienteV2.html",cliente=cliente,aval=aval)
 
 @app.route("/clientes/opcionesCliente/eliminar/<int:id>")
+@login_required
 def eliminarClienteAval(id):
 
     aval=Avales()
@@ -177,6 +211,7 @@ def eliminarClienteAval(id):
     return redirect(url_for("ventanaConsultaCliente"))
 
 @app.route("/opcionesCliente/modificar/<int:id>")
+@login_required
 def modificarClienteAval(id):
     cliente=Clientes()
     cliente.ID_Cliente=id
@@ -232,6 +267,7 @@ def actualizarDatos():
 
 #Comienzo de CRUD de Empleados.
 @app.route("/empleados/registroempleado/")
+@login_required
 def ventanaRegistroEmpleados():    
     return render_template("Empleados/registroEmpleado.html")
 
@@ -294,6 +330,7 @@ def registrarEmpleado():
     return redirect(url_for('ventanaRegistroEmpleados'))
 
 @app.route("/opcionesEmpleado/")
+@login_required
 def ventanaConsultaEmpleado():
     empleado=Empleados()
     empleado=empleado.consultaGeneral()
@@ -309,6 +346,7 @@ def ventanaConsultaEmpleado():
 #    return render_template("Empleados/consultaEmpleado.html",empleado=empleado)
 
 @app.route("/opcionesEmpleado/<string:clave>")
+@login_required
 def consultarEmpleadoInC(clave):
     empleado=Empleados()
     empleado.Clave=clave
@@ -325,6 +363,7 @@ def eliminarEmpleado(id):
     return redirect(url_for('ventanaConsultaEmpleado'))
 
 @app.route("/opcionesEmpleado/modificar/<int:id>")
+@login_required
 def modificarDatosEmpleado(id):
     empleado=Empleados()
     empleado.ID_Empleado=id
@@ -364,6 +403,7 @@ def actualizarDatosEmpleado():
 #CRUD de Creditos.
 
 @app.route("/credito/registraCredito")
+@login_required
 def ventanaCredito():
     return render_template("Credito/registroCredito.html")
 
@@ -395,6 +435,7 @@ def registrarCredito():
     return redirect(url_for("consultaCreditoGeneral"))
 
 @app.route("/consultaindividual/<int:id>")
+@login_required
 def consultaindividualCredito(id):
 
     credito=Credito()
@@ -409,6 +450,7 @@ def consultaindividualCredito(id):
 
 
 @app.route("/credito/opcionesCredito")
+@login_required
 def consultaCreditoGeneral():
     credito=Credito()
     credito=credito.consultaGeneral()
@@ -425,6 +467,7 @@ def eliminarCredito(id):
     return redirect(url_for('consultaCreditoGeneral'))
 
 @app.route("/modificarCredito/<int:id>")
+@login_required
 def modificarCredito(id):
 
     credito=Credito()
@@ -456,6 +499,7 @@ def actualizar():
 
 
 @app.route("/Pago/registraPago/<int:id>")
+@login_required
 def ventanaRegistraPago(id):
     credito=Credito()
     credito.ID_Credito=id
@@ -496,11 +540,13 @@ def registrarPago():
 
 
 @app.route("/Pago/ConsultaPagos")
+@login_required
 def consultaPagos():
     return render_template("Pagos/opcionesPago.html")
 
 
 @app.route("/consultarmispagos/<int:id>")
+@login_required
 def consultaPagosIn(id):
 
     pagos=Pagos()

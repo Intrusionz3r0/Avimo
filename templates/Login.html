@@ -1,58 +1,65 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <title>LOGIN</title>
-        
+
+<head>
+    <title>LOGIN</title>
+
     <!--Bootsrap 4 CDN-->
-	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
     <!--Fontawesome CDN-->
-	    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-	<!--Custom styles-->
-	    <link rel="stylesheet" type="text/css" href="../static/css/Login.css"><!--checar ruta-->
-        <meta charset="utf-8">
-    
-    
-    </head>
-    <body>
-        <div class="container">
-            <div class="d-flex justify-content-center h-100">
-                <div class="card-header">
-                    <h3>Iniciar Sesión</h3>
-                    <div class="card body">
-                        <form>
-                            <br>
-                            <div class="input-group from-group">
-                                <img src="../../static/images/avimo.jpeg"width="398" height="100"> <!--checar ruta-->
-                            </div>
-                            <br><br>
-                            <div class="input-group form-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                </div>
-                                <input type="text" class="form-control" placeholder="Usuario">
-                            </div>
-                            <div class="input-group form-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-key"></i></span>
-                                </div>
-                                <input type="password" class="form-control" placeholder="Contraseña">
-                            </div>
+    <!--Custom styles-->
+    <link rel="stylesheet" type="text/css" href="../static/css/Login.css">
+    <!--checar ruta-->
+    <meta charset="utf-8">
 
-                            <div class="form-group">
-                                <button type="button" class="btn float-right login_btn">
-                                
-                                    <strong><a href="/clientes/registrocliente" style="text-decoration: none;">ACCEDER</a></strong>
-                                
-                                </button>
 
-                                
+</head>
+
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-center h-100">
+            <div class="card-header">
+                <h3>Iniciar Sesión</h3>
+                <div class="card body">
+                    <form action="/login" method="POST">
+                        <br>
+                        <div class="input-group from-group">
+                            <img src="../../static/images/avimo.jpeg" width="398" height="100">
+                            <!--checar ruta-->
+                        </div>
+                        <br><br>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                        </form>
-                    </div>
+                            <input type="text" class="form-control" placeholder="Usuario" name="user">
+                        </div>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            <input type="password" class="form-control" placeholder="Contraseña" name="pass">
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn float-right login_btn">
+
+                                <strong><a style="text-decoration: none;">ACCEDER</a></strong>
+
+                            </button>
+
+
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>
