@@ -5,5 +5,5 @@ function getValue(){
 
 function getModi(){
   id=document.getElementById("clavesita").value;
-  location.href="/Pago/consultarmispagos/"+id
+  location.href="/consultarmispagos/"+id
 }

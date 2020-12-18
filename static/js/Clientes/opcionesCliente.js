@@ -12,7 +12,7 @@ function modificarCliente(){
 
 function getCliente(){
   var id = document.getElementById("clavesita").value
-  location.href="/clientes/opcionesCliente/clave/"+id
+  location.href="/opcionesCliente/clave/"+id
 
 }
 

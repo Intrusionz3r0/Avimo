@@ -134,36 +134,36 @@
       <div class="row">
 
         <div class="col-form-label">
-          <img src="../../static/images/fotoEmpleado.jpg" width="150" height="150" class="img-thumbnail">
+          <img src="../../static/uploads/{{cliente.Clave}}/Clientes/{{cliente.FotoCliente}}" width="150" height="150" class="img-thumbnail">
         </div>
 
         <div class="form-group col-2">
           <label style="color: black;"><strong>ID de Cliente</strong></label><br>
-          <label>1000</label>
+          <label>{{cliente.ID_Cliente}}</label>
         </div>
 
         <div class="form-group col-3">
           <label style="color: black;"><strong>Nombre Completo</strong></label><br>
-          <label>Luis Armando Perez Reyes</label>
+          <label>{{cliente.Nombre}} {{cliente.Apellidos}}</label>
           <br><br>
           <label style="color: black;"><strong>Fecha de Registro</strong></label><br>
-          <label>10/12/2020</label>
+          <label>{{cliente.Fecha_Registro}}</label>
         </div>
 
         <div class="form-group col-3">
           <label style="color: black;"><strong>Telefono</strong></label><br>
-          <label>351-865-4586</label>
+          <label>{{cliente.Telefono}}</label>
           <br><br>
           <label style="color: black;"><strong>Fecha de Nacimiento</strong></label><br>
-          <label>15/06/1992</label>
+          <label>{{cliente.Fecha_Nacimiento}}</label>
         </div>
 
         <div class="form-group col-1">
           <label style="color: black;"><strong>Estatus</strong></label><br>
-          <label>Activo</label>
+          <label>{{cliente.Estatus}}</label>
           <br><br>
           <label style="color: black;"><strong>Sexo</strong></label><br>
-          <label>Masculino</label>
+          <label>{{cliente.Genero}}</label>
         </div>
 
       </div>
@@ -172,12 +172,12 @@
         <div class="form-group col-3"></div>
         <div class="form-group col-4">
           <label style="color: black;"><strong>Direccion Completa</strong></label><br>
-          <label>5 de Mayo 27 0,Jardinadas,Zamora de Hidalgo,Michoacán de Ocampo</label>
+          <label>{{cliente.CallePrincipal}} #{{cliente.NumInterior}}, {{cliente.NumExterior}}, {{cliente.Colonia}} {{cliente.Municipio}} {{cliente.Estado}}.</label>
         </div>
 
         <div class="form-group col-2">
           <label style="color: black;"><strong>CURP</strong></label><br>
-          <label>SAFF920615HMNRVV02</label>
+          <label>{{cliente.CURP}}</label>
         </div>
 
       </div>
@@ -225,7 +225,7 @@
 
         <div class="form-group col-3">
           <label style="color: black;"><strong>Nombre Completo</strong></label><br>
-          <label>Ana Luisa Manzo Leyva</label>
+          <label>{{aval.Nombre}} {{aval.Apellidos}}</label>
           <br><br>
           <label style="color: black;"><strong>Foto INE Delantera</strong></label><br>
           <button style="border-color:aqua"><img src="../../static/images/INE_Delantera.png" width="200" height="200"
@@ -234,7 +234,7 @@
 
         <div class="form-group col-4">
           <label style="color: black;"><strong>Direccion Completa</strong></label><br>
-          <label>Marimba 4 5,Jardines de San Juan,Zamora de Hidalgo,Michoacán de Ocampo</label>
+          <label>{{aval.CallePrincipal}} #{{aval.NumInterior}}, {{aval.NumExterior}}, {{aval.Colonia}} {{aval.Municipio}} {{aval.Estado}}.</label>
           <br><br>
           <label style="color: black;"><strong>Foto INE Trasera</strong></label><br>
           <button style="border-color:aqua"><img src="../../static/images/INE_Trasera.png" width="180" height="180"
@@ -243,7 +243,7 @@
 
         <div class="form-group col-2">
           <label style="color: black;"><strong>Telefono</strong></label><br>
-          <label>351-456-1598</label>
+          <label>{{aval.Telefono}}</label>
           <br><br>
           <label style="color: black;"><strong>Comprobante de Domicilio</strong></label><br>
           <button style="border-color:aqua"><img src="../../static/images/comprobantente.png" width="125" height="125"
@@ -260,7 +260,7 @@
             <div class="modal-header">
               <h3 class="modal-title" style="text-align: center;">Foto INE Delantera:</h3>
             </div>
-            <div class="modal-body"><img src="../../static/images/INE_D.jpg" class="img-rounded" alt="Cinque Terre"
+            <div class="modal-body"><img src="../../static/uploads/{{aval.Clave}}/Avales/{{aval.FotoINE_Delantera}}" class="img-rounded" alt="Cinque Terre"
                 width="770" height="500" /> </div>
             <!--Recuperar Foto INE Trasera  del empleado-->
             <div class="modal-footer">
@@ -277,7 +277,7 @@
             <div class="modal-header">
               <h3 class="modal-title" style="text-align: center;">Foto INE Trasera:</h3>
             </div>
-            <div class="modal-body"><img src="../../static/images/Foto_INE_T.PNG" class="img-rounded" alt="Cinque Terre"
+            <div class="modal-body"><img src="../../static/uploads/{{aval.Clave}}/Avales/{{aval.FotoINE_Trasera}}" class="img-rounded" alt="Cinque Terre"
                 width="770" height="500" /> </div>
             <!--Recuperar Foto INE Trasera  del empleado-->
             <div class="modal-footer">
@@ -294,7 +294,7 @@
             <div class="modal-header">
               <h3 class="modal-title" style="text-align: center;">Comprobante :</h3>
             </div>
-            <div class="modal-body"><img src="../../static/images/Compro_Domi_Recibo.jpg" class="img-rounded"
+            <div class="modal-body"><img src="../../static/uploads/{{aval.Clave}}/Avales/{{aval.Comprobante_Domicilio}}" class="img-rounded"
                 alt="Cinque Terre" width="468" height="700" /> </div>
             <!--Recuperar Foto Comprobante de Pago-->
             <div class="modal-footer">

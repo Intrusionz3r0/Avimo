@@ -137,54 +137,54 @@
             <div class="row">
 
                 <div class="col-form-label">
-                    <img src="../../static/images/fotoEmpleado.jpg" width="150" height="150" class="img-thumbnail">
+                    <img src="../../static/uploads/{{empleado.Clave}}/{{empleado.Foto_Empleado}}" width="150" height="150" class="img-thumbnail">
                 </div>
                 <br>
                 <div class="form-group col-1">
                     <label style="color: black;"><strong>ID</strong></label><br>
-                    <label class="letra">1000</label>
+                    <label class="letra">{{empleado.ID_Empleado}}</label>
                     <!--Recuperar dato de Empleado-->
                     <br><br>
                     <label style="color: black;"><strong>Usuario</strong></label>
-                    <label class="letra">AdrianINK</label>
+                    <label class="letra">{{empleado.Usuario}}</label>
                     <!--Recuperar dato de Empleado-->
                 </div>
                 &nbsp; &nbsp;
                 <div class="form-group col-3">
                     <label style="color: black;"><strong>Nombre Completo</strong></label><br>
-                    <label class="letra">Adrian Guzman Loera</label>
+                    <label class="letra">{{empleado.Nombre}} {{empleado.Apellidos}}</label>
                     <!--Recuperar dato de Empleado-->
                     <br><br>
                     <label style="color: black;"><strong>Genero</strong></label><br>
-                    <label class="letra">Machin</label>
+                    <label class="letra">{{empleado.Sexo}}</label>
                     <!--Recuperar dato de Empleado-->
                     <br><br>
                     <label style="color: black;"><strong>CURP</strong></label><br>
-                    <label class="letra">SAAG980113HMNRVV01</label>
+                    <label class="letra">{{empleado.CURP}}</label>
                     <!--Recuperar dato de Empleado-->
                 </div>
                 &nbsp; &nbsp;
                 <div class="form-group col-3">
                     <label style="color: black;"><strong>Telefono</strong></label><br>
-                    <label class="letra">351-111-1111</label>
+                    <label class="letra">{{empleado.Telefono}}</label>
                     <!--Recuperar dato de Empleado-->
                     <br><br>
                     <label style="color: black;"><strong>Fecha de contratación</strong></label><br>
-                    <label class="letra">20/08/2020</label>
+                    <label class="letra">{{empleado.Fecha_Contratacion}}</label>
                     <!--Recuperar dato de Empleado-->
                     <br><br>
                     <label style="color: black;"><strong>Fecha de Nacimiento</strong></label><br>
-                    <label class="letra">13/01/1998</label>
+                    <label class="letra">{{empleado.Fecha_Nacimiento}}</label>
                     <!--Recuperar dato de Empleado-->
                 </div>
                 &nbsp; &nbsp;
                 <div class="form-group col-2">
                     <label style="color: black;"><strong>Estatus</strong></label><br>
-                    <label class="letra">Activo</label>
+                    <label class="letra">{{empleado.Estatus}}</label>
                     <!--Recuperar dato de Empleado-->
                     <br><br>
                     <label style="color: black;"><strong>Rol</strong></label><br>
-                    <label class="letra">Administracion</label>
+                    <label class="letra">{{empleado.Rol}}</label>
                     <!--Recuperar dato de Empleado-->
                 </div>
 
@@ -205,13 +205,13 @@
 
                 <div class="form-group col-5">
                     <label style="color: black;"><strong>Direccion Completa</strong></label><br>
-                    <label class="letra">Fuentes2 7 2 ,Jardinadas,Zamora de Hidalgo,Michoacán de Ocampo</label>
+                    <label class="letra">{{empleado.CallePrincipal}} #{{empleado.NumInterior}}, {{empleado.NumExterior}}, {{empleado.Colonia}} {{empleado.Municipio}} {{empleado.Estado}}.</label>
                     <!--Recuperar dato de Empleado-->
                 </div>
 
                 <div class="form-group col-2">
                     <label style="color: black;"><strong>Entre las calles</strong></label><br>
-                    <label class="letra">Colon y Madero</label>
+                    <label class="letra">{{empleado.EntreCalles}}</label>
                     <!--Recuperar dato de Empleado-->
                 </div>
 
@@ -253,9 +253,9 @@
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h3 class="modal-title" style="text-align: center;">Foto INE Trasera:</h3>
+                            <h3 class="modal-title" style="text-align: center;">Foto INE Delantera:</h3>
                         </div>
-                        <div class="modal-body"><img src="../../static/images/INE_D.jpg" class="img-rounded"
+                        <div class="modal-body"><img src="../../static/uploads/{{empleado.Clave}}/{{empleado.FotoINE_Delantera}}" class="img-rounded"
                                 alt="Cinque Terre" width="770" height="500" /> </div>
                         <!--Recuperar Foto INE Trasera  del empleado-->
                         <div class="modal-footer">
@@ -272,7 +272,7 @@
                         <div class="modal-header">
                             <h3 class="modal-title" style="text-align: center;">Foto INE Trasera:</h3>
                         </div>
-                        <div class="modal-body"><img src="../../static/images/Foto_INE_T.PNG" class="img-rounded"
+                        <div class="modal-body"><img src="../../static/uploads/{{empleado.Clave}}/{{empleado.FotoINE_Trasera}}" class="img-rounded"
                                 alt="Cinque Terre" width="770" height="500" /> </div>
                         <!--Recuperar Foto INE Trasera  del empleado-->
                         <div class="modal-footer">
@@ -288,7 +288,7 @@
                         <div class="modal-header">
                             <h3 class="modal-title" style="text-align: center;">Comprobante :</h3>
                         </div>
-                        <div class="modal-body"><img src="../../static/images/Compro_Domi_Recibo.jpg" class="img-rounded"
+                        <div class="modal-body"><img src="../../static/uploads/{{empleado.Clave}}/{{empleado.Comprobante_Domicilio}}" class="img-rounded"
                                 alt="Cinque Terre" width="468" height="700" /> </div> <!--Recuperar Foto Comprobante de Pago-->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>

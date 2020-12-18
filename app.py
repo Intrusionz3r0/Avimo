@@ -12,7 +12,7 @@ app.secret_key = "4V1M0S3CR3TKEY"
 
  
 #Configuración SqlAlchemy Mysql
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@Avila.01@localhost/AVIMO'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:password@localhost/AVIMO'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOAD_FOLDER'] = "static/uploads/"
 
@@ -167,7 +167,7 @@ def obtenerDatosClienteAval(id):
 
     return render_template("Clientes/consultaCliente.html",cliente=cliente,aval=aval)
 
-@app.route("/clientes/opcionesCliente/clave/<string:clave>")
+@app.route("/opcionesCliente/clave/<string:clave>")
 def obtenerDatosClienteAvalC(clave):
     
     aval=Avales()
@@ -178,9 +178,9 @@ def obtenerDatosClienteAvalC(clave):
     cliente.Clave=clave
     cliente=cliente.consultaIndividualClave()
 
-    print(cliente)
+    
 
-    return render_template("Clientes/consultaCliente.html",cliente=cliente,aval=aval)
+    return render_template("Clientes/consultaClienteV2.html",cliente=cliente,aval=aval)
 
 @app.route("/clientes/opcionesCliente/eliminar/<int:id>")
 def eliminarClienteAval(id):
@@ -333,7 +333,7 @@ def consultarEmpleadoInC(clave):
     empleado.Clave=clave
     empleado=empleado.consultaIndividualClave()
     
-    return render_template("Empleados/consultaEmpleado.html",empleado=empleado)
+    return render_template("Empleados/consultaEmpleadoV2.html",empleado=empleado)
 
 @app.route("/opcionesEmpleado/eliminar/<int:id>")
 def eliminarEmpleado(id):
@@ -424,7 +424,7 @@ def consultaindividualCredito(id):
     cliente.ID_Cliente=id
     cliente=cliente.consultaIndividual()
     
-    return render_template("Credito/consultaCredito.html",credito=credito,cliente=cliente)
+    return render_template("Credito/consultaCreditoV2.html",credito=credito,cliente=cliente)
 
 
 @app.route("/credito/opcionesCredito")
@@ -519,14 +519,14 @@ def consultaPagos():
     return render_template("Pagos/opcionesPago.html")
 
 
-@app.route("/Pago/consultarmispagos/<int:id>")
+@app.route("/consultarmispagos/<int:id>")
 def consultaPagosIn(id):
 
     pagos=Pagos()
     pagos.ID_pagos=id
     pagos=pagos.consultaGeneral()
 
-    return render_template("Pagos/consultaPago.html",pagos=pagos)
+    return render_template("Pagos/consultaPagoV2.html",pagos=pagos)
 
 
 

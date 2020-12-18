@@ -126,7 +126,7 @@
 
             <!--Abajo de esto va tu código-->
             
-                <h3 style="text-align: center;"><span class="badge badge-info">Consulta de Pago</span></h3><br>
+                <h3 style="text-align: center;"><span class="badge badge-info">Consulta de Credito</span></h3><br>
 
                 <!--Nueva Vista-->
 
@@ -134,19 +134,19 @@
                     <div class="form-group col-1"></div>
                     <div class="form-group col-2">
                         <label style="color: black;"><strong>ID Crédito</strong></label><br>
-                        <label class="letra">1000</label><!--Recuperar dato de Credito-->
+                        <label class="letra">{{credito.ID_Credito}}</label><!--Recuperar dato de Credito-->
                         <br><br>
                         <label style="color: black;"><strong>Monto</strong></label><br>
-                        <label class="letra">50000</label><!--Recuperar dato de Credito-->
+                        <label class="letra">{{credito.MontoPrestado}}</label><!--Recuperar dato de Credito-->
                         <br><br>
                         <label style="color: black;"><strong>Fecha De Inicio</strong></label><br>
-                        <label class="letra">17/12/2020</label><!--Recuperar dato de Credito-->
+                        <label class="letra">{{credito.Fecha_Inicio}}</label><!--Recuperar dato de Credito-->
                         <br><br>
                     </div>
 
                     <div class="form-group col-2">
                         <label style="color: black;"><strong>Cliente</strong></label><br>
-                        <label class="letra">1000</label><!--Recuperar dato de Credito-->
+                        <label class="letra">{{cliente.Nombre}} {{cliente.apellidos}}</label><!--Recuperar dato de Credito-->
                         <br><br>
                         <label style="color: black;"><strong>Semanas</strong></label><br>
                         <label class="letra">12</label><!--Recuperar dato de Credito-->
