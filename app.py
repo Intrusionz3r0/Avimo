@@ -20,29 +20,10 @@ app.config['UPLOAD_FOLDER'] = "static/uploads/"
  
 db = SQLAlchemy(app)
 
-@app.route('/Login')
+@app.route('/')
 def Login():
     return render_template('Login.html')
 
-@app.route('/CerrarSesion')
-def CerrarSesion():
-    return redirect(url_for("Login"))
-
-@app.route('/ConEmplev2')
-def consultaEmpleadoV2():
-    return render_template('Empleados/consultaEmpleadoV2.html')
-
-@app.route('/ConPagov2')
-def consultaPagoV2():
-    return render_template('Pagos/consultaPagoV2.html')
-
-@app.route('/ConCreditov2')
-def consultaCreditov2():
-    return render_template('Credito/consultaCreditoV2.html')
-
-@app.route('/ConClientev2')
-def consultaClienteV2():
-    return render_template('Clientes/consultaClienteV2.html')
 
 #Comienzo del CRUD de Clientes y Avales.
 
