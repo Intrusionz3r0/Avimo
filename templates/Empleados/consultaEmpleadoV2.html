@@ -45,9 +45,11 @@
             <a href="#prestamosSubmenu" data-toggle="collapse" aria-expanded="false"
               class="dropdown-toggle">Credito</a>
             <ul class="collapse list-unstyled" id="prestamosSubmenu">
+              {% if current_user.is_authenticated and current_user.Rol=="Jefe" or  current_user.Rol=="Asesor de Crédito" %}
               <li>
                 <a href="/credito/registraCredito">Registro credito</a>
               </li>
+              {% endif %}
               <li>
                 <a href="/credito/opcionesCredito">Consulta credito</a>
               </li>

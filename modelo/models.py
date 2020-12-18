@@ -227,4 +227,9 @@ class Pagos(db.Model):
     def consultaIndividual(self):
         pago=self.query.get(self.ID_pagos)
         return pago
+    
+    def consultaPagosCreditoIndi(self):
+        pago=self.query.filter_by(Credito=self.Credito).all()
+        return pago
+    
 

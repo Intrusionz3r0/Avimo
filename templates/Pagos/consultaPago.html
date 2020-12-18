@@ -9,79 +9,88 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../../static/css/style.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css' ) }}">
+  
 
 </head>
 
-<body>
+<body onload="consultaEstados(); consultaEstadosAval();">
 
   <div class="wrapper d-flex align-items-stretch">
     <nav id="sidebar">
       <div class="p-4 pt-5">
-        <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(../../static/images/logo.jpg);"></a>
+        <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(../../static/uploads/{{current_user.Clave}}/{{current_user.Foto_Empleado}});"></a>
         <center>
-          <p id="empleadoName">Elon Reeve Musk</p>
+          <p id="empleadoName">{{current_user.Rol}}</p>
         </center>
+        <center>
+          <p id="empleadoName">{{current_user.Nombre}} {{current_user.Apellidos}}</p>
+        </center>
+
         <ul class="list-unstyled components mb-5">
-              <!--Menu de Clientes-->
+          <!--Menu de Clientes-->
+          <li>
+            <a href="#clientesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Clientes</a>
+            <ul class="collapse list-unstyled" id="clientesSubmenu">
               <li>
-                <a href="#clientesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Clientes</a>
-                <ul class="collapse list-unstyled" id="clientesSubmenu">
-                  <li>
-                    <a href="/clientes/registrocliente">Registro Cliente</a>
-                  </li>
-                  <li>
-                    <a href="/clientes/opcionesCliente/">Opciones Cliente</a>
-                  </li>
-                </ul>
-              </li>
-              <!--Menu de prestamos-->
-              <li>
-                <a href="#prestamosSubmenu" data-toggle="collapse" aria-expanded="false"
-                  class="dropdown-toggle">Credito</a>
-                <ul class="collapse list-unstyled" id="prestamosSubmenu">
-                  <li>
-                    <a href="/credito/registraCredito">Registro credito</a>
-                  </li>
-                  <li>
-                    <a href="/credito/opcionesCredito">Consulta credito</a>
-                  </li>
-                </ul>
-              </li>
-              <!--Menu de Pagos-->
-              <li>
-                <a href="#pagosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pagos</a>
-                <ul class="collapse list-unstyled" id="pagosSubmenu">
-                  <li>
-                    <a href="/Pago/ConsultaPagos">Opciones pagos</a>
-                  </li>
-                </ul>
+                <a href="/clientes/registrocliente">Registro Cliente</a>
               </li>
               <li>
-                <a href="#empleadosSubmenu" data-toggle="collapse" aria-expanded="false"
-                  class="dropdown-toggle">Empledos</a>
-                <ul class="collapse list-unstyled" id="empleadosSubmenu">
-                  <li>
-                    <a href="/empleados/registroempleado/">Registrar Empleado</a>
-                  </li>
-                  <li>
-                    <a href="/opcionesEmpleado/">Opciones Empleado</a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a href="#">Cerrar Sesión</a>
+                <a href="/clientes/opcionesCliente/">Opciones Cliente</a>
               </li>
             </ul>
+          </li>
+          <!--Menu de prestamos-->
+          <li>
+            <a href="#prestamosSubmenu" data-toggle="collapse" aria-expanded="false"
+              class="dropdown-toggle">Credito</a>
+            <ul class="collapse list-unstyled" id="prestamosSubmenu">
+              {% if current_user.is_authenticated and current_user.Rol=="Jefe" or  current_user.Rol=="Asesor de Crédito" %}
+              <li>
+                <a href="/credito/registraCredito">Registro credito</a>
+              </li>
+              {% endif %}
+              <li>
+                <a href="/credito/opcionesCredito">Consulta credito</a>
+              </li>
+            </ul>
+          </li>
+          <!--Menu de Pagos-->
+          <li>
+            <a href="#pagosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pagos</a>
+            <ul class="collapse list-unstyled" id="pagosSubmenu">
+              <li>
+                <a href="/Pago/ConsultaPagos">Opciones pagos</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            {% if current_user.is_authenticated and current_user.Rol=="Jefe" %}
+            <a href="#empleadosSubmenu" data-toggle="collapse" aria-expanded="false"
+              class="dropdown-toggle">Empledos</a>
+            <ul class="collapse list-unstyled" id="empleadosSubmenu">
+              <li>
+                <a href="/empleados/registroempleado/">Registrar Empleado</a>
+              </li>
+              <li>
+                <a href="/opcionesEmpleado/">Opciones Empleado</a>
+              </li>
+            </ul>
+          </li>
+          {% endif %}
+          <li>
+            <a href="/CerrarSesion">Cerrar Sesión</a>
+          </li>
+        </ul>
 
-            <div class="footer">
-              <p>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                Avimo Software &copy;
-                <script>document.write(new Date().getFullYear());</script> All rights reserved.</a>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-              </p>
-            </div>
+        <div class="footer">
+          <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Avimo Software &copy;
+            <script>document.write(new Date().getFullYear());</script> All rights reserved.</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          </p>
+        </div>
 
       </div>
     </nav>

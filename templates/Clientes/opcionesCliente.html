@@ -10,7 +10,7 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css' ) }}">
-  
+
 
 </head>
 
@@ -19,7 +19,8 @@
   <div class="wrapper d-flex align-items-stretch">
     <nav id="sidebar">
       <div class="p-4 pt-5">
-        <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(../../static/uploads/{{current_user.Clave}}/{{current_user.Foto_Empleado}});"></a>
+        <a href="#" class="img logo rounded-circle mb-5"
+          style="background-image: url(../../static/uploads/{{current_user.Clave}}/{{current_user.Foto_Empleado}});"></a>
         <center>
           <p id="empleadoName">{{current_user.Rol}}</p>
         </center>
@@ -42,12 +43,13 @@
           </li>
           <!--Menu de prestamos-->
           <li>
-            <a href="#prestamosSubmenu" data-toggle="collapse" aria-expanded="false"
-              class="dropdown-toggle">Credito</a>
+            <a href="#prestamosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Credito</a>
             <ul class="collapse list-unstyled" id="prestamosSubmenu">
+              {% if current_user.is_authenticated and current_user.Rol=="Jefe" or  current_user.Rol=="Asesor de Crédito" %}
               <li>
                 <a href="/credito/registraCredito">Registro credito</a>
               </li>
+              {% endif %}
               <li>
                 <a href="/credito/opcionesCredito">Consulta credito</a>
               </li>
@@ -63,6 +65,7 @@
             </ul>
           </li>
           <li>
+            {% if current_user.is_authenticated and current_user.Rol=="Jefe" %}
             <a href="#empleadosSubmenu" data-toggle="collapse" aria-expanded="false"
               class="dropdown-toggle">Empledos</a>
             <ul class="collapse list-unstyled" id="empleadosSubmenu">
@@ -74,6 +77,7 @@
               </li>
             </ul>
           </li>
+          {% endif %}
           <li>
             <a href="/CerrarSesion">Cerrar Sesión</a>
           </li>
@@ -129,12 +133,14 @@
           <div class="input-group-prepend">
             <div class="input-group-text" id="btnGroupAddon">Clave</div>
           </div>
-          <input type="text" class="form-control" id="clavesita" aria-label="Input group example" aria-describedby="btnGroupAddon">
-          
+          <input type="text" class="form-control" id="clavesita" aria-label="Input group example"
+            aria-describedby="btnGroupAddon">
+
           <button type="button" class="btn btn-primary" onclick="getCliente()">Consultar</button>
-          
+
         </div>
-        <small class="form-text text-muted">La clave es generada con los primeros diez y últimos tres dígitos de la curp.</small>
+        <small class="form-text text-muted">La clave es generada con los primeros diez y últimos tres dígitos de la
+          curp.</small>
         <br>
 
         <table class="table">
@@ -148,7 +154,7 @@
               <th scope="col">Estatus</th>
               <th scope="col"></th>
               <th scope="col"></th>
-              
+
             </tr>
           </thead>
           {% for c in cliente %}
@@ -160,20 +166,21 @@
               <td>{{c.Telefono}}</td>
               <td>{{c.CallePrincipal}} #{{c.NumInterior}} {{c.Colonia}}, {{c.Municipio}} {{c.Estado}}</td>
               <td>{{c.Estatus}}</td>
-              <td><a href="/opcionesCliente/modificar/{{c.ID_Cliente}}"><button type="button" class="btn btn-warning">Modificar</button></a></td>
-              <td><a href="/clientes/opcionesCliente/eliminar/{{c.ID_Cliente}}"><button type="button" class="btn btn-danger">Eliminar</button></a></td>
+              {% if current_user.is_authenticated and current_user.Rol=="Jefe" %}
+              <td><a href="/opcionesCliente/modificar/{{c.ID_Cliente}}"><button type="button"
+                    class="btn btn-warning">Modificar</button></a></td>
+              <td><a href="/clientes/opcionesCliente/eliminar/{{c.ID_Cliente}}"><button type="button"
+                    class="btn btn-danger">Eliminar</button></a></td>
+              {% endif %}
             </tr>
           </tbody>
           {% endfor %}
         </table>
-  
-  
 
 
-
-      <!--Arriba de esto va tu código-->
+        <!--Arriba de esto va tu código-->
+      </div>
     </div>
-  </div>
   </div>
 
 

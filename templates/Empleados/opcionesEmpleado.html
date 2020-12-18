@@ -45,9 +45,11 @@
             <a href="#prestamosSubmenu" data-toggle="collapse" aria-expanded="false"
               class="dropdown-toggle">Credito</a>
             <ul class="collapse list-unstyled" id="prestamosSubmenu">
+              {% if current_user.is_authenticated and current_user.Rol=="Jefe" or  current_user.Rol=="Asesor de Crédito" %}
               <li>
                 <a href="/credito/registraCredito">Registro credito</a>
               </li>
+              {% endif %}
               <li>
                 <a href="/credito/opcionesCredito">Consulta credito</a>
               </li>
@@ -160,8 +162,10 @@
               <td>{{e.CallePrincipal}} #{{e.NumInterior}} {{e.Colonia}}, {{e.Municipio}} {{e.Estado}}</td>
               <td>{{e.Rol}}</td>
               <td>{{e.Estatus}}</td>
+              {% if current_user.is_authenticated and current_user.Rol=="Jefe" %}
               <td><a href="/opcionesEmpleado/modificar/{{e.ID_Empleado}}"><button type="button" class="btn btn-warning">Modificar</button></a></td>
               <td><a href="/opcionesEmpleado/eliminar/{{e.ID_Empleado}}"><button type="button" class="btn btn-danger">Eliminar</button></a></td>
+              {% endif %}
             </tr>
           </tbody>
           {% endfor %}
