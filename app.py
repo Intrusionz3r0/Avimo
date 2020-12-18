@@ -11,7 +11,7 @@ app.secret_key = "4V1M0S3CR3TKEY"
 
 
 #Configuración SqlAlchemy Mysql
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:password@localhost/AVIMO'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@Avila.01@localhost/AVIMO'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOAD_FOLDER'] = "static/uploads/"
 loginManager=LoginManager()
@@ -542,7 +542,9 @@ def registrarPago():
 @app.route("/Pago/ConsultaPagos")
 @login_required
 def consultaPagos():
-    return render_template("Pagos/opcionesPago.html")
+    pagos=Pagos()
+    pagos=pagos.consultaGeneral()
+    return render_template("Pagos/opcionesPago.html",pagos=pagos)
 
 
 @app.route("/consultarmispagos/<int:id>")
@@ -554,6 +556,7 @@ def consultaPagosIn(id):
     pagos=pagos.consultaGeneral()
 
     return render_template("Pagos/consultaPagoV2.html",pagos=pagos)
+
 
 
 

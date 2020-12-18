@@ -132,9 +132,51 @@
           <input type="text" class="form-control" id="clavesita" maxlength="4" aria-label="Input group example"
             aria-describedby="btnGroupAddon">
           <button type="button" class="btn btn-warning" onclick="getValue()">Realizar Pago</button>
-          <button type="button" class="btn btn-primary" onclick="getModi()">Consultar</button>
+          
         </div>
+        <br><br>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th>ID Pago</th>
+              <th>Credito</th>
+              <th>Clave</th>
+              <th>Monto</th>
+              <th>Semana</th>
+              <th>Fecha de Pago</th>
+              
+            </tr>
 
+          </thead>
+          {% for p in pagos %}
+          <tbody>
+            <th scope="row">{{p.ID_pagos}}</th>
+            <td>{{p.Credito}}</td>
+            <td>{{p.Clave}}</td>
+            <td>{{p.Monto}}</td>
+            <td>{{p.Semana}}</td>
+            <td>{{p.Fecha_Pago}}</td>
+            
+          </tbody>
+          <div class="modal fade" id="ModalF_COMPRO" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h3 class="modal-title" style="text-align: center;">Comprobante:</h3>
+                </div>
+                <div class="modal-body"><img src="../../static/uploads/{{p.Clave}}/{{p.Foto_Comprobante}}"
+                    class="img-rounded" alt="Cinque Terre" width="468" height="700" /> </div>
+                <!--Recuperar Foto Comprobante de Pago-->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {% endfor %}
+        </table>
 
 
 
