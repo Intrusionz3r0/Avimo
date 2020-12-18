@@ -114,9 +114,8 @@ Semana int not null,
 Fecha_Pago date not null,
 Foto_Comprobante varchar(100),
 
-primary key(ID_Pagos),
-foreign key(Credito) references Credito(ID_Credito),
-foreign key(Clave) references Clientes(Clave)
+primary key(ID_Pagos)
 );
 ALTER TABLE Pagos AUTO_INCREMENT=1;
 
+insert into Empleados(Clave,Nombre,Apellidos,Sexo,Telefono,Estado,Municipio,Colonia,CallePrincipal,EntreCalles,NumExterior,NumInterior,CURP,Fecha_Nacimiento,Fecha_Contratacion,Estatus,Foto_Empleado,FotoINE_Delantera,FotoINE_Trasera,Comprobante_Domicilio,Usuario,Contraseña,Rol) value('AAAA000000A00','Administrador',' ','Masculino','351-519-8521',' ',' ',' ',' ',' ','0','10','AAAA000000AAAAAA00','1990-10-10','2020-12-17','Activo','null','null','null','null','PowerFull','pa55Word','Jefe');

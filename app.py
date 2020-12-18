@@ -295,7 +295,7 @@ def registrarEmpleado():
     empleado.Contraseña=request.form['Contraseña2']
     empleado.Rol=request.form['Rol']
     
-
+    print(empleado.Rol)
     os.mkdir("static/uploads/"+empleado.Clave)
     ine1 = request.files['fine1']
     ine2 = request.files['fine2']
@@ -441,12 +441,17 @@ def consultaindividualCredito(id):
     credito=Credito()
     credito.ID_Credito=id
     credito=credito.consultaIndividual()
+    
+    empe=Empleados()
+    empe.ID_Empleado=credito.Empleado_Responsable
+    empe=empe.consultaIndividual()
 
     cliente=Clientes()
-    cliente.ID_Cliente=id
-    cliente=cliente.consultaIndividual()
+    cliente.Clave=credito.Clave
+    cliente=cliente.consultaIndividualClave()
     
-    return render_template("Credito/consultaCreditoV2.html",credito=credito,cliente=cliente)
+    
+    return render_template("Credito/consultaCreditoV2.html",credito=credito,empe=empe,cliente=cliente)
 
 
 @app.route("/credito/opcionesCredito")
@@ -454,7 +459,7 @@ def consultaindividualCredito(id):
 def consultaCreditoGeneral():
     credito=Credito()
     credito=credito.consultaGeneral()
-    
+ 
     return render_template("Credito/opcionesCredito.html",credito=credito)
 
 @app.route("/credito/eliminarCredito/<int:id>")
@@ -505,7 +510,11 @@ def ventanaRegistraPago(id):
     credito.ID_Credito=id
     credito=credito.consultaIndividual()
 
-    return render_template("Pagos/registroPago.html",credito=credito)
+    cliente=Clientes()
+    cliente.Clave=credito.Clave
+    cliente=cliente.consultaIndividualClave()
+
+    return render_template("Pagos/registroPago.html",credito=credito,cliente=cliente)
 
 
 @app.route("/Pago/RegistraPago/nuevo",methods=['POST'])

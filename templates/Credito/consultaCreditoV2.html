@@ -96,7 +96,7 @@
     </nav>
 
         <!-- Page Content  -->
-        <div id="content" class="p-4 p-md-5">
+        <div id="content" class="p-4 p-md-5" >
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
@@ -125,7 +125,7 @@
             </nav>
 
             <!--Abajo de esto va tu código-->
-            
+              
                 <h3 style="text-align: center;"><span class="badge badge-info">Consulta de Credito</span></h3><br>
 
                 <!--Nueva Vista-->
@@ -146,25 +146,25 @@
 
                     <div class="form-group col-2">
                         <label style="color: black;"><strong>Cliente</strong></label><br>
-                        <label class="letra">{{cliente.Nombre}} {{cliente.apellidos}}</label><!--Recuperar dato de Credito-->
+                        <label class="letra">{{cliente.Nombre}} {{cliente.Apellidos}}</label><!--Recuperar dato de Credito-->
                         <br><br>
                         <label style="color: black;"><strong>Semanas</strong></label><br>
-                        <label class="letra">12</label><!--Recuperar dato de Credito-->
+                        <label class="letra">{{credito.Semanas}}</label><!--Recuperar dato de Credito-->
                         <br><br>
-                        <label style="color: black;"><strong>Fecha De Fin</strong></label><br>
-                        <label class="letra">17/03/2021</label><!--Recuperar dato de Credito-->
+                        <label style="color: black;"><strong>Fecha De Limite</strong></label><br>
+                        <label class="letra">{{credito.Fecha_Limite}}</label><!--Recuperar dato de Credito-->
                         <br><br>
                     </div>
 
                     <div class="form-group col-3">
                         <label style="color: black;"><strong>Empleado Responsable</strong></label><br>
-                        <label class="letra">Adrian</label><!--Recuperar dato de Credito-->
+                        <label class="letra">{{empe.Nombre}} {{empe.Apellidos}}</label><!--Recuperar dato de Credito-->
                         <br><br>
                     </div>
 
                     <div class="form-group col-3">
                         <label style="color: black;"><strong>Estatus</strong></label><br>
-                        <label class="letra">Deuda</label><!--Recuperar dato de Credito-->
+                        <label class="letra">{{credito.Estatus}}</label><!--Recuperar dato de Credito-->
                         <br><br>
                         <label style="color: black;"><strong>Entrega de Crédito</strong></label><br>
                         <button style="border-color:aqua"><img src="../../static/images/Entrega_Credito.png" width="125"
@@ -173,7 +173,7 @@
                     </div>
 
                 </div>
-            </div>
+            
             <div id="myModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
                 data-target=".bd-example-modal-lg">
                 <div class="modal-dialog modal-lg">
@@ -181,7 +181,7 @@
                         <div class="modal-header">
                             <h3 class="modal-title" style="text-align: center;">Entrega de Crédito:</h3>
                         </div>
-                        <div class="modal-body"><img src="../../static/images/Entrega_Credito2.jpg" class="img-rounded"
+                        <div class="modal-body"><img src="../../static/uploads/{{cliente.Clave}}/{{credito.Foto_EntregaCredito}}" class="img-rounded"
                                 alt="Cinque Terre" width="770" height="500" /> </div> <!--Recuperar Foto Entrega de Credito de Credito-->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
@@ -190,7 +190,7 @@
                 </div>
             </div>
 
-
+          </div>
             <!--Arriba de esto va tu código-->
         </div>
     </div>
